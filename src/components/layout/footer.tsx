@@ -77,7 +77,7 @@ export default function Footer() {
           </div>
           <Link
             href="/book-consultation"
-            className="inline-flex items-center gap-2 font-bold text-sm rounded-full px-6 py-2.5 whitespace-nowrap hover:scale-105 transition-all shadow-lg"
+            className="inline-flex items-center gap-2 font-bold text-sm rounded-full px-8 py-4 whitespace-nowrap hover:scale-105 transition-all shadow-lg"
             style={{ background: "#E8A317", color: "#ffffff" }}
           >
             Book Free Consultation <ArrowRight className="w-4 h-4" />

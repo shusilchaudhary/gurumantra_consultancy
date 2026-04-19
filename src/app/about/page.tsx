@@ -69,7 +69,7 @@ export default function AboutPage() {
               </p>
               <Link
                 href="/book-consultation"
-                className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full font-bold text-sm text-white bg-primary hover:bg-primary/90 hover:shadow-lg transition-all"
+                className="inline-flex items-center gap-2 px-8 py-4 rounded-full font-bold text-sm text-white bg-primary hover:bg-primary/90 hover:shadow-lg transition-all"
               >
                 Book Free Consultation <ArrowRight className="w-4 h-4" />
               </Link>

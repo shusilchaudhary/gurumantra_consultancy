@@ -181,7 +181,7 @@ function ConsultationForm() {
       </div>
       <button
         type="submit"
-        className="w-full bg-primary text-white py-3 rounded-xl font-bold text-sm hover:bg-primary/90 transition-colors shadow-lg hover:shadow-xl"
+        className="w-full bg-primary text-white py-4 rounded-xl font-bold text-sm hover:bg-primary/90 transition-colors shadow-lg hover:shadow-xl"
       >
         Get Free Consultation →
       </button>
@@ -554,7 +554,7 @@ export default function HomePage() {
           <div className="text-center mt-10">
             <Link
               href="/success-stories"
-              className="inline-flex items-center gap-2 border-2 border-white/30 text-white font-bold px-8 py-3 rounded-full hover:bg-white/10 transition-all text-sm"
+              className="inline-flex items-center gap-2 border-2 border-white/30 text-white font-bold px-8 py-4 rounded-full hover:bg-white/10 transition-all text-sm"
             >
               Read All Success Stories <ArrowRight className="w-4 h-4" />
             </Link>
@@ -672,7 +672,7 @@ export default function HomePage() {
             </div>
             <Link
               href="/blog"
-              className="inline-flex items-center gap-2 text-primary font-semibold text-sm border border-primary/30 px-5 py-2.5 rounded-full hover:bg-primary hover:text-white transition-all whitespace-nowrap"
+              className="inline-flex items-center gap-2 text-primary font-semibold text-sm border border-primary/30 px-6 py-3.5 rounded-full hover:bg-primary hover:text-white transition-all whitespace-nowrap"
             >
               View All Articles <ArrowRight className="w-4 h-4" />
             </Link>
