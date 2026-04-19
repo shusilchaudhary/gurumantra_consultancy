@@ -52,33 +52,81 @@ export const testimonials = [
 export const services = [
   {
     title: "Career Counselling",
+    tagline: "Find the right country, course & career path — tailored to your profile and budget.",
     description: "One-on-one sessions with experienced counselors who understand Nepal's education landscape and global opportunities. We help you choose the right country, university, and program aligned with your career goals and budget.",
     icon: "GraduationCap",
+    features: [
+      "Profile evaluation & gap analysis",
+      "Country & program shortlisting",
+      "Career path & ROI planning",
+      "Budget & scholarship planning",
+    ],
+    href: "/book-consultation",
   },
   {
     title: "University Admission",
+    tagline: "We craft compelling applications and secure offer letters from 200+ partner universities.",
     description: "We manage your entire application — from shortlisting universities to crafting compelling SOPs and securing offer letters. Our direct partnerships with 200+ universities worldwide ensure faster processing.",
     icon: "School",
+    features: [
+      "SOP & personal essay writing",
+      "LOR guidance & formatting",
+      "Application tracking & follow-up",
+      "Faster processing via direct ties",
+    ],
+    href: "/study-destinations",
   },
   {
     title: "Visa Assistance",
+    tagline: "98% first-attempt visa success — built on watertight documentation and interview prep.",
     description: "Our 98% visa success rate speaks for itself. We prepare watertight applications with proper documentation, financial proof structuring, and thorough interview preparation tailored to each country's requirements.",
     icon: "FileCheck",
+    features: [
+      "Document checklist & verification",
+      "Financial proof structuring",
+      "Mock visa interview coaching",
+      "Country-specific visa strategy",
+    ],
+    href: "/book-consultation",
   },
   {
     title: "Test Preparation",
+    tagline: "Achieve your target IELTS, PTE or TOEFL score on the first attempt — guaranteed.",
     description: "Expert coaching for IELTS, PTE, TOEFL, SAT, GRE, and JLPT. Small batch sizes, experienced trainers, and focused practice tests to help you achieve your target score on the first attempt.",
     icon: "BookOpen",
+    features: [
+      "IELTS, PTE & TOEFL coaching",
+      "Small batches of 10–15 students",
+      "2 full mock tests per week",
+      "Score improvement guarantee",
+    ],
+    href: "/test-preparation",
   },
   {
     title: "Scholarship Guidance",
+    tagline: "We've helped students secure NPR 5 Crore+ in scholarships — and we'll help you too.",
     description: "We identify and help you apply for merit-based, need-based, and government scholarships. From Chevening to MEXT to Australia Awards — we have helped students secure over NPR 5 Crore in scholarships collectively.",
     icon: "Award",
+    features: [
+      "Scholarship eligibility mapping",
+      "Chevening, MEXT, Australia Awards",
+      "Application essay & SOP support",
+      "NPR 5 Crore+ secured collectively",
+    ],
+    href: "/scholarships",
   },
   {
     title: "Pre-Departure Support",
+    tagline: "Land confidently — from airport arrival to finding your student community abroad.",
     description: "Comprehensive briefings covering airport procedures, accommodation setup, banking, phone plans, cultural tips, and connecting you with Nepali student communities at your destination city.",
     icon: "Plane",
+    features: [
+      "Airport & arrival orientation",
+      "Accommodation & banking setup",
+      "Local Nepali community access",
+      "Cultural & academic survival tips",
+    ],
+    href: "/book-consultation",
   },
 ];
 
