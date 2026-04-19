@@ -141,7 +141,7 @@ export default function Footer() {
                 <div className="w-7 h-7 rounded-lg flex items-center justify-center shrink-0 mt-0.5" style={{ background: "rgba(255,255,255,0.10)" }}>
                   <MapPin className="w-3.5 h-3.5" />
                 </div>
-                <span>Putalisadak, Kathmandu,<br />Nepal</span>
+                <span>Chabahil Central Complex, 3rd Floor,<br />Nearby KL Tower, Opp. Smart Palace,<br />Chabahil, Kathmandu, Nepal</span>
               </div>
             </div>
 

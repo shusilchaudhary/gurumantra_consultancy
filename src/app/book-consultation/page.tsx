@@ -20,7 +20,7 @@ const TRUST_POINTS = [
 const CONTACT = [
   { icon: Phone, label: "Phone",   value: "+977-01-4XXXXXX",          href: "tel:+97714000000" },
   { icon: Mail,  label: "Email",   value: "info@gurumantra.edu.np",    href: "mailto:info@gurumantra.edu.np" },
-  { icon: MapPin, label: "Office", value: "Putalisadak, Kathmandu",    href: undefined },
+  { icon: MapPin, label: "Office", value: "Chabahil Central Complex, 3rd Floor, Nearby KL Tower, Opp. Smart Palace, Chabahil, Kathmandu", href: undefined },
   { icon: Clock, label: "Hours",   value: "Sun–Fri  10 AM – 5 PM",    href: undefined },
 ];
 

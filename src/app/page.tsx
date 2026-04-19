@@ -620,7 +620,7 @@ export default function HomePage() {
                   </div>
                   <div>
                     <div className="font-semibold text-foreground">Visit Our Office</div>
-                    <span>Putalisadak, Kathmandu, Nepal</span>
+                    <span>Chabahil Central Complex, 3rd Floor, Nearby KL Tower, Opp. Smart Palace, Chabahil, Kathmandu</span>
                   </div>
                 </div>
                 <div className="flex items-center gap-3 text-sm text-muted-foreground">
@@ -781,7 +781,7 @@ export default function HomePage() {
             name: "Gurumantra Education Consultancy",
             url: "https://gurumantra.com.np",
             description: "Nepal's premium study abroad consultancy with 2,000+ students placed worldwide.",
-            address: { "@type": "PostalAddress", streetAddress: "Putalisadak", addressLocality: "Kathmandu", addressCountry: "NP" },
+            address: { "@type": "PostalAddress", streetAddress: "Chabahil Central Complex, 3rd Floor, Nearby KL Tower, Opp. Smart Palace", addressLocality: "Chabahil, Kathmandu", addressCountry: "NP" },
             telephone: "+977-01-4XXXXXX",
             areaServed: "Nepal",
           }),
