@@ -1,261 +1,423 @@
 "use client";
 import { useState } from "react";
 import Link from "next/link";
-import { ArrowRight, CheckCircle, Clock, BookOpen, BarChart2, Banknote, Zap } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
-const tests = [
+/* ─── Data ─── */
+const TESTS = [
   {
     id: "ielts",
     name: "IELTS",
     fullName: "International English Language Testing System",
+    badge: "Most Popular",
     color: "#1565C0",
-    bg: "#EEF4FF",
+    colorLight: "#EBF2FF",
+    colorMid: "#BFDBFE",
     description:
       "The world's most widely accepted English test — required for Australia, UK, Canada, and New Zealand. Available in Academic and General Training formats.",
-    metrics: [
-      { icon: BookOpen,  label: "Format",       value: "Listening (30 min) + Reading (60 min) + Writing (60 min) + Speaking (11–14 min)" },
-      { icon: BarChart2, label: "Scoring",      value: "Band 1–9", sub: "Most universities require 6.0–7.0" },
-      { icon: Clock,     label: "Duration",     value: "2 hours 45 minutes" },
-      { icon: Banknote,  label: "Test Fee",     value: "NPR 29,500" },
+    facts: [
+      { label: "Format",   value: "Listening · Reading · Writing · Speaking" },
+      { label: "Duration", value: "2 hours 45 minutes" },
+      { label: "Scoring",  value: "Band 1–9  ·  Universities require 6.0–7.0" },
+      { label: "Results",  value: "3–13 days" },
+      { label: "Test Fee", value: "NPR 29,500" },
     ],
     features: [
-      "Small batch of 10–15 students",
+      "Small batch — max 15 students",
       "2 full mock tests per week",
-      "Individual speaking practice",
+      "Individual speaking sessions",
       "Score guarantee program",
-      "Flexible morning / evening batches",
+      "Flexible morning & evening batches",
     ],
-    badge: "Most Popular",
   },
   {
     id: "pte",
     name: "PTE Academic",
     fullName: "Pearson Test of English Academic",
-    color: "#7B1FA2",
-    bg: "#F5EEFF",
+    badge: "Fastest Results",
+    color: "#6D28D9",
+    colorLight: "#F3EEFF",
+    colorMid: "#DDD6FE",
     description:
-      "Computer-based test popular for Australia and New Zealand. Fast results (typically 48 hours) and fully automated scoring for consistency.",
-    metrics: [
-      { icon: BookOpen,  label: "Format",       value: "Speaking & Writing (54–67 min) + Reading (29–30 min) + Listening (30–43 min)" },
-      { icon: BarChart2, label: "Scoring",      value: "10–90", sub: "Most universities require 50–65" },
-      { icon: Clock,     label: "Duration",     value: "Approximately 2 hours" },
-      { icon: Banknote,  label: "Test Fee",     value: "NPR 26,300" },
+      "Computer-based test popular for Australia and New Zealand. Fully AI-scored with results in 48 hours — no examiner bias, no waiting.",
+    facts: [
+      { label: "Format",   value: "Speaking & Writing · Reading · Listening" },
+      { label: "Duration", value: "Approximately 2 hours" },
+      { label: "Scoring",  value: "10–90  ·  Universities require 50–65" },
+      { label: "Results",  value: "48 hours" },
+      { label: "Test Fee", value: "NPR 26,300" },
     ],
     features: [
-      "Computer lab with practice software",
+      "Dedicated computer lab",
       "AI scoring pattern analysis",
       "Template strategies for writing",
-      "Results in 48 hours",
-      "Unlimited practice tests on PTE platform",
+      "Unlimited PTE platform practice tests",
+      "Fast-track preparation batches",
     ],
-    badge: "Fastest Results",
   },
   {
     id: "toefl",
     name: "TOEFL iBT",
     fullName: "Test of English as a Foreign Language",
-    color: "#2E7D32",
-    bg: "#EDFAEE",
+    badge: "USA & Canada",
+    color: "#065F46",
+    colorLight: "#ECFDF5",
+    colorMid: "#A7F3D0",
     description:
-      "Preferred by US and Canadian universities. Internet-based test focusing on academic English proficiency in university settings.",
-    metrics: [
-      { icon: BookOpen,  label: "Format",       value: "Reading (35 min) + Listening (36 min) + Speaking (16 min) + Writing (29 min)" },
-      { icon: BarChart2, label: "Scoring",      value: "0–120", sub: "Most universities require 61–100" },
-      { icon: Clock,     label: "Duration",     value: "Approximately 2 hours" },
-      { icon: Banknote,  label: "Test Fee",     value: "NPR 28,600 (USD 205)" },
+      "Preferred by US and Canadian universities. Internet-based test that measures academic English across all four skills in a university context.",
+    facts: [
+      { label: "Format",   value: "Reading · Listening · Speaking · Writing" },
+      { label: "Duration", value: "Approximately 2 hours" },
+      { label: "Scoring",  value: "0–120  ·  Universities require 61–100" },
+      { label: "Results",  value: "4–8 days" },
+      { label: "Test Fee", value: "NPR 28,600  (USD 205)" },
     ],
     features: [
       "Integrated skills practice",
-      "Note-taking strategies",
+      "Academic note-taking strategies",
       "Speaking response frameworks",
-      "Full-length practice tests",
+      "Full-length timed practice tests",
       "Score improvement tracking",
     ],
-    badge: "USA & Canada",
   },
 ];
 
-const comparison = [
-  { label: "Score Range",    ielts: "Band 1–9",      pte: "10–90",          toefl: "0–120"         },
-  { label: "Duration",       ielts: "2 hr 45 min",   pte: "~2 hours",       toefl: "~2 hours"      },
-  { label: "Results",        ielts: "3–13 days",     pte: "48 hours",       toefl: "4–8 days"      },
-  { label: "Format",         ielts: "Paper / Computer", pte: "Computer only", toefl: "Computer only"},
-  { label: "Accepted by",    ielts: "Globally",      pte: "AU / NZ / UK",   toefl: "USA / Canada"  },
-  { label: "Test Fee (NPR)", ielts: "29,500",        pte: "26,300",         toefl: "28,600"        },
-  { label: "Speaking",       ielts: "With examiner", pte: "AI-scored mic",  toefl: "AI-scored mic" },
+const COMPARISON: { label: string; ielts: string; pte: string; toefl: string }[] = [
+  { label: "Score Range",    ielts: "Band 1–9",        pte: "10–90",          toefl: "0–120"          },
+  { label: "Duration",       ielts: "2 hr 45 min",     pte: "~2 hours",       toefl: "~2 hours"       },
+  { label: "Results",        ielts: "3–13 days",       pte: "48 hours ⚡",    toefl: "4–8 days"       },
+  { label: "Test Format",    ielts: "Paper / Computer", pte: "Computer only", toefl: "Computer only"  },
+  { label: "Accepted by",    ielts: "Global",           pte: "AU / NZ / UK",  toefl: "USA / Canada"   },
+  { label: "Speaking",       ielts: "Human examiner",  pte: "AI mic",         toefl: "AI mic"         },
+  { label: "Fee (NPR)",      ielts: "29,500",          pte: "26,300",         toefl: "28,600"         },
 ];
 
+/* ─── Component ─── */
 export default function TestPrepTabs() {
-  const [active, setActive] = useState("ielts");
-  const test = tests.find((t) => t.id === active)!;
+  const [activeId, setActiveId] = useState("ielts");
+  const t = TESTS.find((x) => x.id === activeId)!;
 
   return (
-    <>
-      {/* ── Tab Navigation ── */}
-      <section className="bg-background border-b border-border sticky top-[72px] z-40">
-        <div className="container-main">
-          <div className="flex overflow-x-auto gap-1 py-2 scrollbar-none">
-            {tests.map((t) => (
-              <button
-                key={t.id}
-                onClick={() => setActive(t.id)}
-                className="flex items-center gap-2.5 px-5 py-3 rounded-xl text-sm font-semibold whitespace-nowrap transition-all"
-                style={
-                  active === t.id
-                    ? { background: t.color, color: "#fff", boxShadow: `0 4px 14px ${t.color}40` }
-                    : { background: "transparent", color: "var(--muted-foreground)" }
-                }
-              >
-                <span
-                  className="w-2.5 h-2.5 rounded-full shrink-0"
-                  style={{ background: active === t.id ? "rgba(255,255,255,0.7)" : t.color }}
-                />
-                {t.name}
-                {t.badge && (
-                  <span
-                    className="hidden sm:inline text-[10px] font-bold px-2 py-0.5 rounded-full"
-                    style={
-                      active === t.id
-                        ? { background: "rgba(255,255,255,0.2)", color: "#fff" }
-                        : { background: t.bg, color: t.color }
-                    }
-                  >
-                    {t.badge}
-                  </span>
-                )}
-              </button>
-            ))}
-          </div>
-        </div>
-      </section>
+    <div className="bg-background">
 
-      {/* ── Test Detail ── */}
-      <section className="bg-background section-py">
-        <div className="container-main">
-
-          {/* Header */}
-          <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-5 mb-10">
-            <div className="flex items-center gap-4">
-              <div
-                className="w-14 h-14 rounded-2xl flex items-center justify-center shrink-0 text-xl font-black text-white"
-                style={{ background: test.color }}
-              >
-                {test.name.slice(0, 2)}
-              </div>
-              <div>
-                <div className="flex items-center gap-2 flex-wrap">
-                  <h2 className="text-2xl font-extrabold text-foreground tracking-tight">{test.name}</h2>
-                  <span
-                    className="text-[11px] font-bold px-2.5 py-0.5 rounded-full"
-                    style={{ background: test.bg, color: test.color }}
-                  >
+      {/* ══════════════════════════════════════════
+          TEST SELECTOR — 3 large selector cards
+      ══════════════════════════════════════════ */}
+      <div style={{ borderBottom: "1px solid var(--border)", background: "var(--muted)" }}>
+        <div className="container-main" style={{ paddingTop: "2rem", paddingBottom: "2rem" }}>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "1rem" }}>
+            {TESTS.map((test) => {
+              const isActive = activeId === test.id;
+              return (
+                <button
+                  key={test.id}
+                  onClick={() => setActiveId(test.id)}
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "flex-start",
+                    gap: "0.5rem",
+                    padding: "1.25rem 1.5rem",
+                    borderRadius: "1rem",
+                    border: isActive ? `2px solid ${test.color}` : "2px solid var(--border)",
+                    background: isActive ? test.colorLight : "var(--card)",
+                    cursor: "pointer",
+                    textAlign: "left",
+                    transition: "all 0.2s ease",
+                    boxShadow: isActive ? `0 4px 20px ${test.color}25` : "none",
+                    position: "relative",
+                    overflow: "hidden",
+                  }}
+                >
+                  {/* Active top bar */}
+                  {isActive && (
+                    <div style={{
+                      position: "absolute", top: 0, left: 0, right: 0,
+                      height: 3, background: test.color,
+                    }} />
+                  )}
+                  {/* Badge */}
+                  <span style={{
+                    fontSize: "0.65rem", fontWeight: 800, textTransform: "uppercase",
+                    letterSpacing: "0.08em", padding: "0.2rem 0.6rem",
+                    borderRadius: 999,
+                    background: isActive ? test.color : test.colorMid,
+                    color: isActive ? "#fff" : test.color,
+                  }}>
                     {test.badge}
                   </span>
-                </div>
-                <p className="text-sm text-muted-foreground mt-0.5">{test.fullName}</p>
-              </div>
-            </div>
-            <Link
-              href="/book-consultation"
-              className="inline-flex items-center gap-2 font-bold text-sm px-6 py-3.5 rounded-xl text-white shrink-0 hover:opacity-90 hover:scale-105 transition-all shadow-md"
-              style={{ background: test.color }}
-            >
-              Enroll Now <ArrowRight className="w-4 h-4" />
-            </Link>
-          </div>
-
-          {/* Description */}
-          <p className="text-base text-muted-foreground leading-relaxed mb-8 max-w-3xl">{test.description}</p>
-
-          {/* Metrics */}
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-10">
-            {test.metrics.map(({ icon: Icon, label, value, sub }) => (
-              <div
-                key={label}
-                className="rounded-2xl p-5 border"
-                style={{ background: test.bg, borderColor: `${test.color}25` }}
-              >
-                <div className="flex items-center gap-2 mb-3">
-                  <Icon className="w-4 h-4 shrink-0" style={{ color: test.color }} />
-                  <span className="text-[0.7rem] font-bold uppercase tracking-wider" style={{ color: test.color }}>
-                    {label}
+                  {/* Name */}
+                  <span style={{
+                    fontSize: "1rem", fontWeight: 800,
+                    color: isActive ? test.color : "var(--foreground)",
+                    lineHeight: 1.2,
+                  }}>
+                    {test.name}
                   </span>
-                </div>
-                <p className="text-sm font-bold text-foreground leading-snug">{value}</p>
-                {sub && <p className="text-xs text-muted-foreground mt-1">{sub}</p>}
-              </div>
-            ))}
+                  {/* Full name */}
+                  <span style={{
+                    fontSize: "0.7rem", color: "var(--muted-foreground)",
+                    lineHeight: 1.4,
+                  }}>
+                    {test.fullName}
+                  </span>
+                </button>
+              );
+            })}
           </div>
+        </div>
+      </div>
 
-          {/* Features */}
-          <div className="bg-card border border-border rounded-2xl p-7 lg:p-9">
-            <h3 className="font-bold text-base text-foreground mb-6 flex items-center gap-2">
-              <Zap className="w-4 h-4" style={{ color: test.color }} />
-              What You Get at Gurumantra Education Consultancy
-            </h3>
-            <ul className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4" role="list">
-              {test.features.map((f) => (
-                <li key={f} className="flex items-center gap-3">
-                  <span
-                    className="w-6 h-6 rounded-full flex items-center justify-center shrink-0"
-                    style={{ background: test.bg }}
-                  >
-                    <svg width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden="true">
-                      <path d="M2 5l2 2 4-4" stroke={test.color} strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+      {/* ══════════════════════════════════════════
+          TEST DETAIL PANEL
+      ══════════════════════════════════════════ */}
+      <div className="container-main" style={{ paddingTop: "3.5rem", paddingBottom: "3.5rem" }}>
+
+        {/* ── Top accent bar ── */}
+        <div style={{
+          height: 4, borderRadius: 999, marginBottom: "2rem",
+          background: `linear-gradient(90deg, ${t.color}, ${t.colorMid})`,
+        }} />
+
+        {/* ── Header row ── */}
+        <div style={{
+          display: "flex", alignItems: "flex-start",
+          justifyContent: "space-between", gap: "1.5rem",
+          marginBottom: "1.5rem",
+          flexWrap: "wrap",
+        }}>
+          <div>
+            <div style={{ display: "flex", alignItems: "center", gap: "0.75rem", flexWrap: "wrap" }}>
+              <h2 style={{
+                fontSize: "clamp(1.5rem, 3vw, 2.25rem)", fontWeight: 900,
+                color: t.color, letterSpacing: "-0.02em", lineHeight: 1.1,
+              }}>
+                {t.name}
+              </h2>
+              <span style={{
+                fontSize: "0.7rem", fontWeight: 800, textTransform: "uppercase",
+                letterSpacing: "0.08em", padding: "0.3rem 0.8rem",
+                borderRadius: 999, background: t.colorLight, color: t.color,
+                border: `1px solid ${t.colorMid}`,
+              }}>
+                {t.badge}
+              </span>
+            </div>
+            <p style={{ fontSize: "0.85rem", color: "var(--muted-foreground)", marginTop: "0.25rem" }}>
+              {t.fullName}
+            </p>
+          </div>
+          <Link
+            href="/book-consultation"
+            style={{
+              display: "inline-flex", alignItems: "center", gap: "0.5rem",
+              padding: "0.875rem 1.75rem", borderRadius: "0.875rem",
+              background: t.color, color: "#fff",
+              fontWeight: 700, fontSize: "0.875rem", textDecoration: "none",
+              whiteSpace: "nowrap", flexShrink: 0,
+              boxShadow: `0 4px 14px ${t.color}40`,
+              transition: "opacity 0.15s, transform 0.15s",
+            }}
+          >
+            Enroll Now <ArrowRight style={{ width: 16, height: 16 }} />
+          </Link>
+        </div>
+
+        {/* ── Description ── */}
+        <p style={{
+          fontSize: "1rem", color: "var(--muted-foreground)",
+          lineHeight: 1.8, marginBottom: "2.5rem",
+          maxWidth: "70ch",
+          padding: "1rem 1.25rem",
+          borderLeft: `3px solid ${t.color}`,
+          background: t.colorLight,
+          borderRadius: "0 0.75rem 0.75rem 0",
+        }}>
+          {t.description}
+        </p>
+
+        {/* ── Two-column: Features | Key Facts ── */}
+        <div style={{
+          display: "grid",
+          gridTemplateColumns: "1fr 1fr",
+          gap: "1.5rem",
+        }}
+          className="test-detail-grid"
+        >
+
+          {/* LEFT: What You Get */}
+          <div style={{
+            background: "var(--card)",
+            border: "1px solid var(--border)",
+            borderRadius: "1rem",
+            padding: "2rem",
+          }}>
+            <p style={{
+              fontSize: "0.65rem", fontWeight: 800, textTransform: "uppercase",
+              letterSpacing: "0.12em", color: t.color, marginBottom: "1.25rem",
+            }}>
+              What You Get at Gurumantra
+            </p>
+            <ul style={{ listStyle: "none", display: "flex", flexDirection: "column", gap: "0.875rem" }}>
+              {t.features.map((f) => (
+                <li key={f} style={{ display: "flex", alignItems: "center", gap: "0.75rem" }}>
+                  <span style={{
+                    width: 24, height: 24, borderRadius: "50%", flexShrink: 0,
+                    background: t.colorLight,
+                    display: "flex", alignItems: "center", justifyContent: "center",
+                    border: `1.5px solid ${t.colorMid}`,
+                  }}>
+                    <svg width="11" height="11" viewBox="0 0 11 11" fill="none" aria-hidden="true">
+                      <path d="M2 5.5l2.5 2.5 4.5-5" stroke={t.color} strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
                     </svg>
                   </span>
-                  <span className="text-sm text-foreground">{f}</span>
+                  <span style={{ fontSize: "0.9rem", color: "var(--foreground)", lineHeight: 1.5 }}>{f}</span>
                 </li>
               ))}
             </ul>
           </div>
 
-        </div>
-      </section>
-
-      {/* ── Comparison Table ── */}
-      <section className="bg-muted section-py">
-        <div className="container-main">
-          <div className="text-center section-header">
-            <span className="section-label">Side by Side</span>
-            <h2 className="section-title">Compare All Three Tests</h2>
-            <p className="section-desc">Not sure which test to take? Compare them here to find your best fit.</p>
+          {/* RIGHT: Key Facts */}
+          <div style={{
+            background: t.colorLight,
+            border: `1px solid ${t.colorMid}`,
+            borderRadius: "1rem",
+            padding: "2rem",
+          }}>
+            <p style={{
+              fontSize: "0.65rem", fontWeight: 800, textTransform: "uppercase",
+              letterSpacing: "0.12em", color: t.color, marginBottom: "1.25rem",
+            }}>
+              Key Facts
+            </p>
+            <div style={{ display: "flex", flexDirection: "column", gap: "0" }}>
+              {t.facts.map((fact, i) => (
+                <div key={fact.label} style={{
+                  padding: "0.875rem 0",
+                  borderBottom: i < t.facts.length - 1 ? `1px solid ${t.colorMid}` : "none",
+                  display: "flex", flexDirection: "column", gap: "0.2rem",
+                }}>
+                  <span style={{
+                    fontSize: "0.65rem", fontWeight: 800, textTransform: "uppercase",
+                    letterSpacing: "0.1em", color: t.color, opacity: 0.8,
+                  }}>
+                    {fact.label}
+                  </span>
+                  <span style={{
+                    fontSize: "0.9rem", fontWeight: 600, color: "var(--foreground)",
+                    lineHeight: 1.5,
+                  }}>
+                    {fact.value}
+                  </span>
+                </div>
+              ))}
+            </div>
           </div>
 
-          <div className="bg-card border border-border rounded-2xl overflow-hidden">
-            <div className="overflow-x-auto">
-              <table className="w-full text-sm" role="table">
+        </div>
+      </div>
+
+      {/* ══════════════════════════════════════════
+          COMPARISON TABLE
+      ══════════════════════════════════════════ */}
+      <div style={{ background: "var(--muted)", borderTop: "1px solid var(--border)" }}>
+        <div className="container-main" style={{ paddingTop: "3.5rem", paddingBottom: "3.5rem" }}>
+
+          {/* Header */}
+          <div style={{ textAlign: "center", marginBottom: "2.5rem" }}>
+            <span className="section-label">Side by Side</span>
+            <h2 className="section-title" style={{ marginTop: "0.5rem" }}>Compare All Three Tests</h2>
+            <p className="section-desc">Not sure which to take? Use this table to find your best fit.</p>
+          </div>
+
+          {/* Table */}
+          <div style={{
+            background: "var(--card)",
+            border: "1px solid var(--border)",
+            borderRadius: "1.25rem",
+            overflow: "hidden",
+          }}>
+            <div style={{ overflowX: "auto" }}>
+              <table style={{ width: "100%", borderCollapse: "collapse", fontSize: "0.875rem" }}>
                 <thead>
-                  <tr className="border-b border-border">
-                    <th className="px-6 py-4 text-left text-xs font-bold uppercase tracking-wider text-muted-foreground w-36">Feature</th>
-                    {tests.map((t) => (
-                      <th key={t.id} className="px-6 py-4 text-left">
-                        <div className="flex items-center gap-2">
-                          <span
-                            className="w-2.5 h-2.5 rounded-full shrink-0"
-                            style={{ background: t.color }}
-                          />
-                          <span className="font-bold text-foreground text-sm">{t.name}</span>
+                  <tr>
+                    <th style={{
+                      padding: "1rem 1.5rem", textAlign: "left",
+                      fontSize: "0.7rem", fontWeight: 800, textTransform: "uppercase",
+                      letterSpacing: "0.1em", color: "var(--muted-foreground)",
+                      borderBottom: "2px solid var(--border)",
+                      width: "28%", background: "var(--muted)",
+                    }}>
+                      Feature
+                    </th>
+                    {TESTS.map((test) => (
+                      <th key={test.id} style={{
+                        padding: "1rem 1.5rem", textAlign: "left",
+                        borderBottom: "2px solid var(--border)",
+                        background: activeId === test.id ? test.colorLight : "var(--card)",
+                      }}>
+                        <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
+                          <span style={{
+                            width: 10, height: 10, borderRadius: "50%",
+                            background: test.color, flexShrink: 0,
+                          }} />
+                          <span style={{
+                            fontWeight: 800, fontSize: "0.875rem",
+                            color: activeId === test.id ? test.color : "var(--foreground)",
+                          }}>
+                            {test.name}
+                          </span>
                         </div>
                       </th>
                     ))}
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-border">
-                  {comparison.map((row, i) => (
-                    <tr key={row.label} className={i % 2 === 0 ? "" : "bg-muted/40"}>
-                      <td className="px-6 py-4 text-xs font-bold uppercase tracking-wider text-muted-foreground">{row.label}</td>
-                      <td className="px-6 py-4 font-medium text-foreground">{row.ielts}</td>
-                      <td className="px-6 py-4 font-medium text-foreground">{row.pte}</td>
-                      <td className="px-6 py-4 font-medium text-foreground">{row.toefl}</td>
+                <tbody>
+                  {COMPARISON.map((row, i) => (
+                    <tr key={row.label} style={{
+                      borderBottom: i < COMPARISON.length - 1 ? "1px solid var(--border)" : "none",
+                      background: i % 2 === 0 ? "transparent" : "var(--muted)",
+                    }}>
+                      <td style={{
+                        padding: "0.875rem 1.5rem",
+                        fontSize: "0.75rem", fontWeight: 700, textTransform: "uppercase",
+                        letterSpacing: "0.07em", color: "var(--muted-foreground)",
+                      }}>
+                        {row.label}
+                      </td>
+                      {(["ielts", "pte", "toefl"] as const).map((key, j) => {
+                        const test = TESTS[j];
+                        const isActive = activeId === test.id;
+                        return (
+                          <td key={key} style={{
+                            padding: "0.875rem 1.5rem",
+                            fontWeight: isActive ? 700 : 500,
+                            color: isActive ? test.color : "var(--foreground)",
+                            background: isActive ? `${test.colorLight}` : "transparent",
+                          }}>
+                            {row[key]}
+                          </td>
+                        );
+                      })}
                     </tr>
                   ))}
                 </tbody>
               </table>
             </div>
           </div>
+
         </div>
-      </section>
-    </>
+      </div>
+
+      {/* Responsive grid fix */}
+      <style>{`
+        @media (max-width: 640px) {
+          .test-detail-grid {
+            grid-template-columns: 1fr !important;
+          }
+        }
+      `}</style>
+
+    </div>
   );
 }
