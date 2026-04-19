@@ -55,8 +55,9 @@ export default function StudyDestinationsPage() {
     <>
       {/* ══════ HERO ══════ */}
       <section style={{
-        background: "var(--primary)", color: "#fff",
-        paddingTop: "5rem", paddingBottom: "5rem",
+        background: `linear-gradient(rgba(21,101,192,0.82), rgba(13,71,161,0.90)), url(https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=1400&h=700&fit=crop&auto=format&q=80)`,
+        backgroundSize: "cover", backgroundPosition: "center",
+        color: "#fff", paddingTop: "5rem", paddingBottom: "5rem",
         position: "relative", overflow: "hidden",
       }}>
         <div aria-hidden="true" style={{ position: "absolute", inset: 0, overflow: "hidden", pointerEvents: "none" }}>

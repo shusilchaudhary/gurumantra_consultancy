@@ -132,7 +132,7 @@ export default function HomePage() {
   return (
     <>
       {/* ══════ HERO ══════ */}
-      <section style={{ background: "var(--primary)", color: "#fff", paddingTop: "5rem", paddingBottom: "5rem", position: "relative", overflow: "hidden" }}>
+      <section style={{ background: `linear-gradient(rgba(21,101,192,0.82), rgba(13,71,161,0.90)), url(https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=1400&h=700&fit=crop&auto=format&q=80)`, backgroundSize: "cover", backgroundPosition: "center", color: "#fff", paddingTop: "5rem", paddingBottom: "5rem", position: "relative", overflow: "hidden" }}>
         <div aria-hidden="true" style={{ position: "absolute", inset: 0, overflow: "hidden", pointerEvents: "none" }}>
           <div style={{ position: "absolute", top: "-10rem", left: "-10rem", width: "24rem", height: "24rem", borderRadius: "50%", background: "var(--accent)", opacity: 0.08, filter: "blur(100px)" }} />
           <div style={{ position: "absolute", bottom: "-5rem", right: "-5rem", width: "32rem", height: "32rem", borderRadius: "50%", background: "var(--accent)", opacity: 0.06, filter: "blur(120px)" }} />
