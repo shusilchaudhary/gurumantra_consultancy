@@ -611,7 +611,7 @@ export default function HomePage() {
                   </div>
                   <div>
                     <div className="font-semibold text-foreground">Call Us Directly</div>
-                    <a href="tel:+97714000000" className="text-primary hover:underline">+977-01-4XXXXXX</a>
+                    <a href="tel:+9779802356302" className="text-primary hover:underline">+977-9802356302</a>
                   </div>
                 </div>
                 <div className="flex items-center gap-3 text-sm text-muted-foreground">
@@ -620,7 +620,7 @@ export default function HomePage() {
                   </div>
                   <div>
                     <div className="font-semibold text-foreground">Visit Our Office</div>
-                    <span>Chabahil Central Complex, 3rd Floor, Nearby KL Tower, Opp. Smart Palace, Chabahil, Kathmandu</span>
+                    <span>Chabahil Central Complex, 3rd Floor, Kathmandu, Nepal</span>
                   </div>
                 </div>
                 <div className="flex items-center gap-3 text-sm text-muted-foreground">
@@ -760,7 +760,7 @@ export default function HomePage() {
                 Book Free Consultation <ArrowRight className="w-5 h-5" />
               </Link>
               <a
-                href="tel:+97714000000"
+                href="tel:+9779802356302"
                 className="inline-flex items-center gap-3 rounded-2xl text-white font-bold hover:bg-white/10 transition-colors text-base"
                 style={{ padding: "1rem 2.25rem", border: "2px solid rgba(255,255,255,0.3)" }}
               >
@@ -781,8 +781,8 @@ export default function HomePage() {
             name: "Gurumantra Education Consultancy",
             url: "https://gurumantra.com.np",
             description: "Nepal's premium study abroad consultancy with 2,000+ students placed worldwide.",
-            address: { "@type": "PostalAddress", streetAddress: "Chabahil Central Complex, 3rd Floor, Nearby KL Tower, Opp. Smart Palace", addressLocality: "Chabahil, Kathmandu", addressCountry: "NP" },
-            telephone: "+977-01-4XXXXXX",
+            address: { "@type": "PostalAddress", streetAddress: "Chabahil Central Complex, 3rd Floor", addressLocality: "Kathmandu", addressCountry: "NP" },
+            telephone: "+977-9802356302",
             areaServed: "Nepal",
           }),
         }}

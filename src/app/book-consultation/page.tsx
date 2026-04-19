@@ -1,13 +1,6 @@
 "use client";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { consultationSchema, type ConsultationFormData } from "@/lib/schemas";
-import { useState } from "react";
 import Link from "next/link";
-import { CheckCircle, Phone, Mail, MapPin, Clock, ArrowRight } from "lucide-react";
-
-const DESTINATIONS = ["Australia", "Canada", "UK", "USA", "New Zealand", "Germany", "Japan", "Ireland", "Not Sure Yet"];
-const EDUCATION_LEVELS = ["+2 / High School", "Bachelor's Running", "Bachelor's Completed", "Master's Completed", "Other"];
+import { Phone, Mail, MapPin, Clock, ArrowRight } from "lucide-react";
 
 const TRUST_POINTS = [
   "98% visa success rate",
@@ -18,26 +11,13 @@ const TRUST_POINTS = [
 ];
 
 const CONTACT = [
-  { icon: Phone, label: "Phone",   value: "+977-01-4XXXXXX",          href: "tel:+97714000000" },
+  { icon: Phone, label: "Phone",   value: "+977-9802356302",           href: "tel:+9779802356302" },
   { icon: Mail,  label: "Email",   value: "info@gurumantra.edu.np",    href: "mailto:info@gurumantra.edu.np" },
-  { icon: MapPin, label: "Office", value: "Chabahil Central Complex, 3rd Floor, Nearby KL Tower, Opp. Smart Palace, Chabahil, Kathmandu", href: undefined },
+  { icon: MapPin, label: "Office", value: "Chabahil Central Complex, 3rd Floor, Kathmandu, Nepal", href: "https://share.google/TOTKV4Wefsk7MYnBf" },
   { icon: Clock, label: "Hours",   value: "Sun–Fri  10 AM – 5 PM",    href: undefined },
 ];
 
-const INPUT_CLS = `w-full px-4 py-3 rounded-xl border border-border bg-background text-foreground text-sm
-  placeholder:text-muted-foreground
-  focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary
-  transition-all`;
-
-const SELECT_CLS = `${INPUT_CLS} appearance-none cursor-pointer`;
-
 export default function BookConsultationPage() {
-  const [submitted, setSubmitted] = useState(false);
-  const { register, handleSubmit, formState: { errors } } = useForm<ConsultationFormData>({
-    resolver: zodResolver(consultationSchema),
-  });
-
-  const onSubmit = (_data: ConsultationFormData) => setSubmitted(true);
 
   return (
     <>
@@ -66,114 +46,14 @@ export default function BookConsultationPage() {
             {/* ── Form ── */}
             <div className="lg:col-span-3">
               <div className="bg-card border border-border rounded-2xl overflow-hidden">
-                {/* Card top bar */}
                 <div className="h-[3px] w-full bg-gradient-to-r from-primary via-primary/70 to-primary/30" aria-hidden="true" />
-
-                <div className="p-8">
-                  {submitted ? (
-                    <div className="flex flex-col items-center text-center py-10">
-                      <div className="w-16 h-16 rounded-full bg-green-50 flex items-center justify-center mb-5">
-                        <CheckCircle className="w-9 h-9 text-green-500" aria-hidden="true" />
-                      </div>
-                      <h2 className="text-2xl font-bold text-foreground mb-2">Thank You!</h2>
-                      <p className="text-muted-foreground text-sm max-w-sm leading-relaxed mb-8">
-                        We&apos;ve received your details. Our counselor will contact you within 24 hours to schedule your free consultation.
-                      </p>
-                      <Link
-                        href="/study-destinations"
-                        className="inline-flex items-center gap-2 px-8 py-4 rounded-full font-semibold text-sm text-white bg-primary hover:bg-primary/90 transition-all"
-                      >
-                        Explore Destinations <ArrowRight className="w-4 h-4" />
-                      </Link>
-                    </div>
-                  ) : (
-                    <>
-                      <h2 className="text-xl font-bold text-foreground mb-1">Your Details</h2>
-                      <p className="text-sm text-muted-foreground mb-7">Fill in the form and we&apos;ll get back to you within 24 hours.</p>
-
-                      <form onSubmit={handleSubmit(onSubmit)} noValidate className="flex flex-col gap-5">
-
-                        {/* Full name */}
-                        <div>
-                          <label htmlFor="fullName" className="block text-sm font-semibold text-foreground mb-1.5">
-                            Full Name <span className="text-red-500">*</span>
-                          </label>
-                          <input id="fullName" {...register("fullName")} className={INPUT_CLS} placeholder="Your full name" />
-                          {errors.fullName && <p className="text-red-500 text-xs mt-1.5">{errors.fullName.message}</p>}
-                        </div>
-
-                        {/* Email + Phone */}
-                        <div className="grid sm:grid-cols-2 gap-5">
-                          <div>
-                            <label htmlFor="email" className="block text-sm font-semibold text-foreground mb-1.5">
-                              Email <span className="text-red-500">*</span>
-                            </label>
-                            <input id="email" type="email" {...register("email")} className={INPUT_CLS} placeholder="you@email.com" />
-                            {errors.email && <p className="text-red-500 text-xs mt-1.5">{errors.email.message}</p>}
-                          </div>
-                          <div>
-                            <label htmlFor="phone" className="block text-sm font-semibold text-foreground mb-1.5">
-                              Phone <span className="text-red-500">*</span>
-                            </label>
-                            <input id="phone" {...register("phone")} className={INPUT_CLS} placeholder="+977 98XXXXXXXX" />
-                            {errors.phone && <p className="text-red-500 text-xs mt-1.5">{errors.phone.message}</p>}
-                          </div>
-                        </div>
-
-                        {/* Destination + Education */}
-                        <div className="grid sm:grid-cols-2 gap-5">
-                          <div>
-                            <label htmlFor="destination" className="block text-sm font-semibold text-foreground mb-1.5">
-                              Preferred Destination <span className="text-red-500">*</span>
-                            </label>
-                            <select id="destination" {...register("destination")} className={SELECT_CLS}>
-                              <option value="">Select destination</option>
-                              {DESTINATIONS.map((d) => <option key={d} value={d}>{d}</option>)}
-                            </select>
-                            {errors.destination && <p className="text-red-500 text-xs mt-1.5">{errors.destination.message}</p>}
-                          </div>
-                          <div>
-                            <label htmlFor="education" className="block text-sm font-semibold text-foreground mb-1.5">
-                              Education Level <span className="text-red-500">*</span>
-                            </label>
-                            <select id="education" {...register("education")} className={SELECT_CLS}>
-                              <option value="">Select level</option>
-                              {EDUCATION_LEVELS.map((e) => <option key={e} value={e}>{e}</option>)}
-                            </select>
-                            {errors.education && <p className="text-red-500 text-xs mt-1.5">{errors.education.message}</p>}
-                          </div>
-                        </div>
-
-                        {/* Message */}
-                        <div>
-                          <label htmlFor="message" className="block text-sm font-semibold text-foreground mb-1.5">
-                            Message <span className="text-muted-foreground font-normal">(optional)</span>
-                          </label>
-                          <textarea
-                            id="message"
-                            rows={4}
-                            {...register("message")}
-                            className={`${INPUT_CLS} resize-none`}
-                            placeholder="Tell us about your goals, current qualifications, budget..."
-                          />
-                        </div>
-
-                        {/* Submit */}
-                        <button
-                          type="submit"
-                          className="w-full py-4 rounded-xl font-bold text-sm text-white bg-primary hover:bg-primary/90 hover:shadow-lg active:scale-[0.99] transition-all
-                                     focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
-                        >
-                          Submit — Get Free Consultation
-                        </button>
-
-                        <p className="text-xs text-muted-foreground text-center">
-                          100% free · No obligation · We respond within 24 hours
-                        </p>
-                      </form>
-                    </>
-                  )}
-                </div>
+                <iframe
+                  src="https://cmst.xyz/form/7cd3a171-6d61-4da4-b24"
+                  title="Book Free Consultation"
+                  className="w-full border-0"
+                  style={{ minHeight: 680 }}
+                  loading="lazy"
+                />
               </div>
             </div>
 
