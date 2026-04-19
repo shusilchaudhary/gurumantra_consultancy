@@ -13,6 +13,11 @@ const CATEGORY_COLORS: Record<string, string> = {
   "Test Prep":    "#7B1FA2",
   "Visa Updates": "#2E7D32",
 };
+const CATEGORY_IMAGES: Record<string, string> = {
+  "Guide":        "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=600&h=200&fit=crop&auto=format&q=80",
+  "Test Prep":    "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=600&h=200&fit=crop&auto=format&q=80",
+  "Visa Updates": "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=600&h=200&fit=crop&auto=format&q=80",
+};
 
 export default function BlogPage() {
   return (
@@ -70,7 +75,8 @@ export default function BlogPage() {
                     <div style={{
                       height: 160, flexShrink: 0,
                       display: "flex", alignItems: "center", justifyContent: "center",
-                      background: `linear-gradient(135deg, ${color}18 0%, ${color}08 100%)`,
+                      background: `linear-gradient(135deg, ${color}BB 0%, ${color}88 100%), url(${CATEGORY_IMAGES[post.category] ?? CATEGORY_IMAGES["Guide"]})`,
+                      backgroundSize: "cover", backgroundPosition: "center",
                     }}>
                       <span style={{
                         fontSize: "0.72rem", fontWeight: 800, textTransform: "uppercase",

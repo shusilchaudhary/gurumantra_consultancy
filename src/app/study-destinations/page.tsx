@@ -7,6 +7,17 @@ export const metadata: Metadata = {
   description: "Explore 8 top study destinations for Nepali students: Australia, Canada, UK, USA, New Zealand, Germany, Japan, Ireland.",
 };
 
+const DEST_IMAGES: Record<string, string> = {
+  "australia":   "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=160&fit=crop&auto=format&q=80",
+  "canada":      "https://images.unsplash.com/photo-1517935706615-2717063c2225?w=400&h=160&fit=crop&auto=format&q=80",
+  "uk":          "https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=400&h=160&fit=crop&auto=format&q=80",
+  "usa":         "https://images.unsplash.com/photo-1501466044931-62695aada8e9?w=400&h=160&fit=crop&auto=format&q=80",
+  "new-zealand": "https://images.unsplash.com/photo-1507699622108-4be3abd695ad?w=400&h=160&fit=crop&auto=format&q=80",
+  "germany":     "https://images.unsplash.com/photo-1467269204594-9661b134dd2b?w=400&h=160&fit=crop&auto=format&q=80",
+  "japan":       "https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=400&h=160&fit=crop&auto=format&q=80",
+  "ireland":     "https://images.unsplash.com/photo-1590089415225-401ed6f9db8e?w=400&h=160&fit=crop&auto=format&q=80",
+};
+
 const destinations = [
   { name: "Australia",      slug: "australia",   flag: "🇦🇺", tagline: "World-class universities & up to 4 years post-study work rights",      color: "#1565C0", color2: "#0D47A1", highlights: ["7 top-100 universities", "48 hrs/fortnight work", "2–4 yr post-study visa"], badge: "Most Popular",  badgeColor: "#E8A317" },
   { name: "Canada",         slug: "canada",      flag: "🇨🇦", tagline: "Clear PR pathway, co-op programs & affordable world-class education",    color: "#B71C1C", color2: "#7F0000", highlights: ["3-year PGWP", "Express Entry PR", "Affordable tuition"],                    badge: "PR Friendly",  badgeColor: "#1565C0" },
@@ -88,8 +99,8 @@ export default function StudyDestinationsPage() {
           <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: "1.25rem" }} className="dest-grid">
             {destinations.map((d) => (
               <Link key={d.slug} href={`/study-destinations/${d.slug}`} style={{ textDecoration: "none", display: "flex", flexDirection: "column", borderRadius: "1rem", overflow: "hidden", border: "1px solid var(--border)" }}>
-                {/* Gradient banner */}
-                <div style={{ background: `linear-gradient(135deg, ${d.color} 0%, ${d.color2} 100%)`, padding: "1.75rem 1.25rem 1.25rem", position: "relative", flexShrink: 0 }}>
+                {/* Image banner */}
+                <div style={{ background: `linear-gradient(135deg, ${d.color}CC 0%, ${d.color2}CC 100%), url(${DEST_IMAGES[d.slug]})`, backgroundSize: "cover", backgroundPosition: "center", padding: "1.75rem 1.25rem 1.25rem", position: "relative", flexShrink: 0 }}>
                   <span style={{ position: "absolute", top: "0.75rem", right: "0.75rem", fontSize: "0.68rem", fontWeight: 800, color: "#fff", padding: "0.2rem 0.6rem", borderRadius: 999, background: d.badgeColor }}>
                     {d.badge}
                   </span>

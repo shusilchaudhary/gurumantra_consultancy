@@ -8,6 +8,23 @@ import {
 } from "lucide-react";
 import { testimonials, services, blogPosts } from "@/data/content";
 
+/* ── Images ── */
+const DEST_IMAGES: Record<string, string> = {
+  "australia":   "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=160&fit=crop&auto=format&q=80",
+  "canada":      "https://images.unsplash.com/photo-1517935706615-2717063c2225?w=400&h=160&fit=crop&auto=format&q=80",
+  "uk":          "https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=400&h=160&fit=crop&auto=format&q=80",
+  "usa":         "https://images.unsplash.com/photo-1501466044931-62695aada8e9?w=400&h=160&fit=crop&auto=format&q=80",
+  "new-zealand": "https://images.unsplash.com/photo-1507699622108-4be3abd695ad?w=400&h=160&fit=crop&auto=format&q=80",
+  "germany":     "https://images.unsplash.com/photo-1467269204594-9661b134dd2b?w=400&h=160&fit=crop&auto=format&q=80",
+  "japan":       "https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=400&h=160&fit=crop&auto=format&q=80",
+  "ireland":     "https://images.unsplash.com/photo-1590089415225-401ed6f9db8e?w=400&h=160&fit=crop&auto=format&q=80",
+};
+const BLOG_IMAGES: Record<string, string> = {
+  "Guide":        "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=600&h=200&fit=crop&auto=format&q=80",
+  "Test Prep":    "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=600&h=200&fit=crop&auto=format&q=80",
+  "Visa Updates": "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=600&h=200&fit=crop&auto=format&q=80",
+};
+
 /* ── Data ── */
 const TRUST = [
   { icon: Users,       value: "2,000+", label: "Students Placed"     },
@@ -188,8 +205,8 @@ export default function HomePage() {
           <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: "1.25rem" }} className="dest-grid">
             {destinations.map((d) => (
               <Link key={d.slug} href={`/study-destinations/${d.slug}`} style={{ textDecoration: "none", display: "flex", flexDirection: "column", borderRadius: "1rem", overflow: "hidden", border: "1px solid var(--border)" }}>
-                {/* Gradient banner */}
-                <div style={{ height: 120, background: `linear-gradient(135deg, ${d.color} 0%, ${d.color2} 100%)`, display: "flex", alignItems: "center", justifyContent: "center", fontSize: "3.5rem", flexShrink: 0 }}>
+                {/* Image banner */}
+                <div style={{ height: 120, background: `linear-gradient(135deg, ${d.color}CC 0%, ${d.color2}CC 100%), url(${DEST_IMAGES[d.slug]})`, backgroundSize: "cover", backgroundPosition: "center", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "3.5rem", flexShrink: 0 }}>
                   {d.flag}
                 </div>
                 {/* Content */}
@@ -388,8 +405,7 @@ export default function HomePage() {
             {blogPosts.map((post) => (
               <div key={post.slug} style={{ background: "var(--card)", border: "1px solid var(--border)", borderRadius: "1rem", overflow: "hidden", display: "flex", flexDirection: "column" }}>
                 <div style={{ height: 3, background: "linear-gradient(90deg, var(--primary), rgba(21,101,192,0.3))" }} />
-                <div style={{ height: 160, background: "linear-gradient(135deg, var(--primary) 0%, #1E88E5 100%)", display: "flex", alignItems: "center", justifyContent: "center", position: "relative" }}>
-                  <BookOpen style={{ width: 48, height: 48, color: "#fff", opacity: 0.15 }} />
+                <div style={{ height: 160, background: `linear-gradient(135deg, rgba(21,101,192,0.72) 0%, rgba(30,136,229,0.65) 100%), url(${BLOG_IMAGES[post.category] ?? BLOG_IMAGES["Guide"]})`, backgroundSize: "cover", backgroundPosition: "center", display: "flex", alignItems: "center", justifyContent: "center", position: "relative" }}>
                   <span style={{ position: "absolute", top: "1rem", left: "1rem", fontSize: "0.7rem", fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.08em", color: "#fff", padding: "0.3rem 0.75rem", borderRadius: 999, background: "rgba(255,255,255,0.18)" }}>{post.category}</span>
                 </div>
                 <div style={{ padding: "1.5rem", display: "flex", flexDirection: "column", flex: 1 }}>
