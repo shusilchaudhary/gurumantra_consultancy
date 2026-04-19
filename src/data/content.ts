@@ -1,0 +1,110 @@
+export const testimonials = [
+  {
+    name: "Suman Adhikari",
+    destination: "Australia",
+    university: "University of Melbourne",
+    quote: "Gurumantra Education Consultancy transformed my study abroad dream into reality. From IELTS preparation to visa approval in just 6 weeks — their step-by-step guidance was incredible. Now I am pursuing my Master's in Data Science at one of the world's best universities.",
+    program: "MSc Data Science",
+    year: "2025",
+  },
+  {
+    name: "Priya Shrestha",
+    destination: "Canada",
+    university: "University of British Columbia",
+    quote: "I was confused about choosing between Canada and Australia. The counselors at Gurumantra Education Consultancy helped me understand the PR pathway in Canada and picked the perfect program. My visa was approved on the first attempt!",
+    program: "MBA International Business",
+    year: "2025",
+  },
+  {
+    name: "Rajesh Tamang",
+    destination: "UK",
+    university: "University of Leeds",
+    quote: "The 1-year Master's in the UK saved me both time and money. Gurumantra Education Consultancy even helped me secure a GREAT Scholarship worth £10,000. I completed my degree and now work in London on the Graduate Route visa.",
+    program: "MSc Project Management",
+    year: "2024",
+  },
+  {
+    name: "Anisha Gurung",
+    destination: "Germany",
+    university: "TU Munich",
+    quote: "Studying in Germany with zero tuition fees seemed too good to be true, but Gurumantra Education Consultancy made it happen. They guided me through the blocked account, APS, and visa process. I now study Mechanical Engineering at TUM!",
+    program: "MSc Mechanical Engineering",
+    year: "2025",
+  },
+  {
+    name: "Bikash Rai",
+    destination: "Japan",
+    university: "Osaka University",
+    quote: "Gurumantra Education Consultancy helped me win the MEXT Scholarship covering everything — tuition, living expenses, and return flights. Their guidance on the research plan was the key to my success.",
+    program: "PhD Computer Science",
+    year: "2025",
+  },
+  {
+    name: "Sabina Maharjan",
+    destination: "USA",
+    university: "Arizona State University",
+    quote: "The US visa interview was my biggest fear. Gurumantra Education Consultancy conducted 5 mock interviews and prepared me for every possible question. I walked into the embassy with confidence and got approved on the spot!",
+    program: "BSc Computer Science",
+    year: "2025",
+  },
+];
+
+export const services = [
+  {
+    title: "Career Counselling",
+    description: "One-on-one sessions with experienced counselors who understand Nepal's education landscape and global opportunities. We help you choose the right country, university, and program aligned with your career goals and budget.",
+    icon: "GraduationCap",
+  },
+  {
+    title: "University Admission",
+    description: "We manage your entire application — from shortlisting universities to crafting compelling SOPs and securing offer letters. Our direct partnerships with 200+ universities worldwide ensure faster processing.",
+    icon: "School",
+  },
+  {
+    title: "Visa Assistance",
+    description: "Our 98% visa success rate speaks for itself. We prepare watertight applications with proper documentation, financial proof structuring, and thorough interview preparation tailored to each country's requirements.",
+    icon: "FileCheck",
+  },
+  {
+    title: "Test Preparation",
+    description: "Expert coaching for IELTS, PTE, TOEFL, SAT, GRE, and JLPT. Small batch sizes, experienced trainers, and focused practice tests to help you achieve your target score on the first attempt.",
+    icon: "BookOpen",
+  },
+  {
+    title: "Scholarship Guidance",
+    description: "We identify and help you apply for merit-based, need-based, and government scholarships. From Chevening to MEXT to Australia Awards — we have helped students secure over NPR 5 Crore in scholarships collectively.",
+    icon: "Award",
+  },
+  {
+    title: "Pre-Departure Support",
+    description: "Comprehensive briefings covering airport procedures, accommodation setup, banking, phone plans, cultural tips, and connecting you with Nepali student communities at your destination city.",
+    icon: "Plane",
+  },
+];
+
+export const blogPosts = [
+  {
+    slug: "complete-guide-studying-abroad-nepal-2026",
+    title: "The Complete Guide to Studying Abroad from Nepal in 2026",
+    excerpt: "Everything you need to know about studying abroad from Nepal — from choosing a country to landing your first job overseas. Updated for 2026 intakes with the latest visa rules, costs, and scholarship opportunities.",
+    date: "2026-03-15",
+    readTime: "12 min read",
+    category: "Guide",
+  },
+  {
+    slug: "ielts-vs-pte-which-english-test-nepali-students-2026",
+    title: "IELTS vs PTE: Which English Test Should Nepali Students Choose in 2026?",
+    excerpt: "A detailed comparison of IELTS and PTE Academic for Nepali students — acceptance rates, difficulty level, scoring patterns, computer vs paper, and which test gives you the best chance at your dream university.",
+    date: "2026-03-10",
+    readTime: "8 min read",
+    category: "Test Prep",
+  },
+  {
+    slug: "australia-student-visa-changes-2026-nepal",
+    title: "Australia Student Visa Changes 2026: What Nepali Students Must Know",
+    excerpt: "The latest updates to Australia's student visa (Subclass 500) requirements — the new Genuine Student test, increased financial requirements, and how to strengthen your application in the new system.",
+    date: "2026-03-01",
+    readTime: "10 min read",
+    category: "Visa Updates",
+  },
+];

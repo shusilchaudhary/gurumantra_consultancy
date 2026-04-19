@@ -1,26 +1,255 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
+@theme {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-border: var(--border);
+  
+  --font-sans: var(--font-dm-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-body: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  
+  --radius-lg: 1rem;
+  --radius-xl: 1.5rem;
+  --radius-2xl: 2rem;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* ─── Brand Palette (from logo: golden amber + royal blue) ─── */
+:root {
+  --background: #FAFBFD;
+  --foreground: #0B1D33;
+  --primary: #1565C0;
+  --primary-foreground: #FFFFFF;
+  --accent: #E8A317;
+  --accent-foreground: #FFFFFF;
+  --muted: #EEF2F7;
+  --muted-foreground: #5A6A7E;
+  --card: #FFFFFF;
+  --card-foreground: #0B1D33;
+  --border: #D6DFEA;
+
+  /* Extended palette */
+  --primary-light: #E3F0FF;
+  --primary-dark: #0D47A1;
+  --accent-light: #FFF3D6;
+  --accent-dark: #B07A0A;
+  --gold-gradient: linear-gradient(135deg, #E8A317 0%, #F5C542 50%, #FFD966 100%);
+  --blue-gradient: linear-gradient(135deg, #0D47A1 0%, #1565C0 50%, #1E88E5 100%);
+}
+
+.dark {
+  --background: #060E1A;
+  --foreground: #E4EAF2;
+  --primary: #1E88E5;
+  --primary-foreground: #FFFFFF;
+  --accent: #F5C542;
+  --accent-foreground: #0B1D33;
+  --muted: #0D1A2E;
+  --muted-foreground: #8899AA;
+  --card: #0C1829;
+  --card-foreground: #E4EAF2;
+  --border: #1B3050;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-body), ui-sans-serif, system-ui, sans-serif;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.7;
+  font-size: 1rem;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-sans), system-ui, sans-serif;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.container-main {
+  width: 100%;
+  max-width: 1280px;
+  margin-inline: auto;
+  padding-inline: clamp(1.25rem, 5vw, 5rem);
+}
+
+/* ─── Section spacing utilities ─── */
+.section-py {
+  padding-top: clamp(4rem, 8vw, 7rem);
+  padding-bottom: clamp(4rem, 8vw, 7rem);
+}
+
+.section-py-sm {
+  padding-top: clamp(3rem, 6vw, 5rem);
+  padding-bottom: clamp(3rem, 6vw, 5rem);
+}
+
+/* ─── Section header block ─── */
+.section-header {
+  margin-bottom: clamp(2.5rem, 5vw, 4rem);
+}
+
+.section-label {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 12%, transparent);
+  padding: 0.35rem 1rem;
+  border-radius: 999px;
+  margin-bottom: 1rem;
+}
+
+.section-title {
+  font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  margin-bottom: 1.25rem;
+}
+
+.section-desc {
+  font-size: 1rem;
+  color: var(--muted-foreground);
+  line-height: 1.75;
+  max-width: 42rem;
+  margin-inline: auto;
+}
+
+/* ─── Brand Gradients ─── */
+.gradient-text-gold {
+  background: var(--gold-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gradient-text-blue {
+  background: var(--blue-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Legacy: keep old class working */
+.gradient-text {
+  background: var(--gold-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ─── Glass & Shadow Effects ─── */
+.glass-card {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  box-shadow: 0 8px 32px rgba(11, 29, 51, 0.06);
+}
+
+.dark .glass-card {
+  background: rgba(12, 24, 41, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+}
+
+.premium-shadow {
+  box-shadow:
+    0 1px 3px rgba(11, 29, 51, 0.04),
+    0 6px 16px rgba(11, 29, 51, 0.06),
+    0 24px 48px rgba(11, 29, 51, 0.04);
+}
+
+.dark .premium-shadow {
+  box-shadow:
+    0 1px 3px rgba(0, 0, 0, 0.15),
+    0 6px 16px rgba(0, 0, 0, 0.2),
+    0 24px 48px rgba(0, 0, 0, 0.15);
+}
+
+/* ─── Animations ─── */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-15px); }
+}
+
+@keyframes float-slow {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-20px) rotate(2deg); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 20px rgba(232, 163, 23, 0.2); }
+  50% { box-shadow: 0 0 40px rgba(232, 163, 23, 0.4); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+/* ─── Navbar link underline hover ─── */
+.nav-link {
+  border-bottom: 2px solid transparent;
+  transition: color .15s, border-color .15s;
+}
+.nav-link:hover {
+  border-bottom-color: var(--primary);
+}
+
+/* ─── Line clamp utilities ─── */
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* ─── Footer dark background ─── */
+footer.bg-foreground {
+  background: #0B1D33;
+}
+
+/* ─── Announcement bar ─── */
+.announcement-bar {
+  background: var(--accent);
+  color: #fff;
+}
+
+/* ─── Hero section ─── */
+.hero-overlay {
+  background: linear-gradient(135deg, rgba(21,101,192,0.92) 0%, rgba(21,101,192,0.72) 50%, rgba(13,71,161,0.88) 100%);
 }

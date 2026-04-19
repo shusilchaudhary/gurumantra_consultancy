@@ -1,17 +1,26 @@
 {
-  "name": "pathsala-consultancy",
+  "name": "gurumantra-education-consultancy",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "postinstall": "node -e \"const fs=require('fs'),src='node_modules/lightningcss-win32-x64-msvc/lightningcss.win32-x64-msvc.node',dst='node_modules/lightningcss/lightningcss.win32-x64-msvc.node';if(fs.existsSync(src)&&!fs.existsSync(dst)){fs.copyFileSync(src,dst);console.log('lightningcss win32 binary copied OK');}else{console.log('lightningcss win32 binary already in place or src missing');}\""
   },
   "dependencies": {
+    "@hookform/resolvers": "^5.2.2",
+    "clsx": "^2.1.1",
+    "framer-motion": "^12.38.0",
+    "lightningcss": "^1.32.0",
+    "lucide-react": "^0.577.0",
     "next": "16.2.1",
+    "next-themes": "^0.4.6",
     "react": "19.2.4",
-    "react-dom": "19.2.4"
+    "react-dom": "19.2.4",
+    "react-hook-form": "^7.72.0",
+    "zod": "^4.3.6"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
@@ -21,6 +30,9 @@
     "eslint": "^9",
     "eslint-config-next": "16.2.1",
     "tailwindcss": "^4",
-    "typescript": "^5"
+    "typescript": "5.9.3"
+  },
+  "optionalDependencies": {
+    "lightningcss-win32-x64-msvc": "^1.32.0"
   }
 }

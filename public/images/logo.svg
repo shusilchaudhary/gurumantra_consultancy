@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 420" fill="none">
+  <!-- Mountain / Triangle -->
+  <polygon points="200,40 320,200 80,200" fill="#E8A317"/>
+  <!-- PeF Text on triangle -->
+  <text x="200" y="168" text-anchor="middle" font-family="Arial, sans-serif" font-weight="bold" font-size="42" fill="#FFFFFF">PeF</text>
+  <!-- Open Book Shape -->
+  <path d="M100,220 Q150,260 200,230 Q250,260 300,220 L300,280 Q250,310 200,280 Q150,310 100,280 Z" fill="#1565C0"/>
+  <!-- Book center line -->
+  <line x1="200" y1="230" x2="200" y2="280" stroke="#0D47A1" stroke-width="2"/>
+  <!-- Devanagari Text: पाठशाला -->
+  <text x="200" y="370" text-anchor="middle" font-family="'Noto Sans Devanagari', Arial, sans-serif" font-weight="bold" font-size="56" fill="#1565C0">पाठशाला</text>
+</svg>
