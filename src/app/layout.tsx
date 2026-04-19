@@ -1,22 +1,9 @@
 import type { Metadata } from "next";
-import { DM_Sans, Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/layout/navbar";
 import Footer from "@/components/layout/footer";
 import WhatsAppButton from "@/components/layout/whatsapp-button";
 import Providers from "@/components/providers";
-
-const dmSans = DM_Sans({
-  variable: "--font-dm-sans",
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800"],
-});
-
-const inter = Inter({
-  variable: "--font-inter",
-  subsets: ["latin"],
-  weight: ["400", "500", "600"],
-});
 
 export const metadata: Metadata = {
   title: {
@@ -54,7 +41,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" suppressHydrationWarning data-scroll-behavior="smooth" className={`${dmSans.variable} ${inter.variable}`}>
+    <html lang="en" suppressHydrationWarning data-scroll-behavior="smooth">
       <body className="min-h-screen flex flex-col antialiased">
         <Providers>
           <Navbar />

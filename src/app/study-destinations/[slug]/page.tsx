@@ -20,9 +20,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-/* shared table style helpers */
-const TH = "px-5 py-3 text-left text-xs font-semibold uppercase tracking-wider text-white bg-primary";
-const TD = "px-5 py-3.5 text-sm";
+const thStyle: React.CSSProperties = {
+  padding: "0.75rem 1.25rem", textAlign: "left",
+  fontSize: "0.7rem", fontWeight: 800, textTransform: "uppercase",
+  letterSpacing: "0.08em", color: "#fff", background: "var(--primary)",
+};
+const tdStyle: React.CSSProperties = { padding: "0.875rem 1.25rem", fontSize: "0.875rem" };
 
 export default async function CountryPage({ params }: Props) {
   const { slug } = await params;
@@ -31,73 +34,83 @@ export default async function CountryPage({ params }: Props) {
 
   return (
     <>
-      {/* ── Hero ── */}
-      <section className="bg-primary text-white relative overflow-hidden" style={{ paddingTop: "5rem", paddingBottom: "5rem" }}>
-        <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
-          <div className="absolute -top-40 -left-40 w-96 h-96 rounded-full bg-accent opacity-[0.08]" style={{ filter: "blur(100px)" }} />
-          <div className="absolute -bottom-20 -right-20 w-[500px] h-[500px] rounded-full bg-accent opacity-[0.06]" style={{ filter: "blur(120px)" }} />
+      {/* ══════ HERO ══════ */}
+      <section style={{
+        background: "var(--primary)", color: "#fff",
+        paddingTop: "5rem", paddingBottom: "5rem",
+        position: "relative", overflow: "hidden",
+      }}>
+        <div aria-hidden="true" style={{ position: "absolute", inset: 0, overflow: "hidden", pointerEvents: "none" }}>
+          <div style={{ position: "absolute", top: "-10rem", left: "-10rem", width: "24rem", height: "24rem", borderRadius: "50%", background: "var(--accent)", opacity: 0.08, filter: "blur(100px)" }} />
+          <div style={{ position: "absolute", bottom: "-5rem", right: "-5rem", width: "32rem", height: "32rem", borderRadius: "50%", background: "var(--accent)", opacity: 0.06, filter: "blur(120px)" }} />
         </div>
-        <div className="container-main relative z-10">
-          <Link
-            href="/study-destinations"
-            className="inline-flex items-center gap-1.5 text-xs font-semibold mb-7 hover:gap-2.5 transition-all"
-            style={{ color: "rgba(255,255,255,0.70)" }}
-          >
-            <ArrowLeft className="w-3.5 h-3.5" /> All Destinations
+        <div className="container-main" style={{ position: "relative", zIndex: 10 }}>
+          <Link href="/study-destinations" style={{
+            display: "inline-flex", alignItems: "center", gap: "0.375rem",
+            fontSize: "0.78rem", fontWeight: 700, color: "rgba(255,255,255,0.72)",
+            textDecoration: "none", marginBottom: "1.75rem",
+          }}>
+            <ArrowLeft style={{ width: 14, height: 14 }} /> All Destinations
           </Link>
-          <div className="max-w-3xl">
-            <span className="text-5xl mb-4 block" role="img" aria-label={country.name}>{country.flag}</span>
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight mb-5 leading-snug">
+          <div style={{ maxWidth: 720 }}>
+            <span style={{ fontSize: "3rem", display: "block", marginBottom: "1rem" }} role="img" aria-label={country.name}>{country.flag}</span>
+            <h1 style={{ fontSize: "clamp(1.8rem, 4vw, 3rem)", fontWeight: 900, letterSpacing: "-0.03em", lineHeight: 1.15, marginBottom: "1.25rem" }}>
               {country.heroTitle}
             </h1>
-            <p className="text-lg leading-relaxed" style={{ color: "rgba(255,255,255,0.80)" }}>
+            <p style={{ fontSize: "1.05rem", lineHeight: 1.8, color: "rgba(255,255,255,0.82)" }}>
               {country.heroDescription}
             </p>
           </div>
         </div>
       </section>
 
-      {/* ── Page body ── */}
-      <div className="bg-background">
-        <div className="container-main section-py">
-          <div className="flex flex-col gap-16">
+      {/* ══════ BODY ══════ */}
+      <div style={{ background: "var(--background)" }}>
+        <div className="container-main" style={{ paddingTop: "3.5rem", paddingBottom: "3.5rem" }}>
+          <div style={{ display: "flex", flexDirection: "column", gap: "4rem" }}>
 
             {/* ── Why Study ── */}
-            <section aria-labelledby="why-heading">
-              <h2 id="why-heading" className="section-title mb-8">Why Study in {country.name}?</h2>
-              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            <section>
+              <h2 style={{ fontSize: "clamp(1.25rem, 2.5vw, 1.75rem)", fontWeight: 900, color: "var(--foreground)", letterSpacing: "-0.02em", marginBottom: "1.5rem" }}>
+                Why Study in {country.name}?
+              </h2>
+              <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "1rem" }} className="why-study-grid">
                 {country.whyStudy.map((reason) => (
-                  <div key={reason} className="flex items-start gap-3 bg-card border border-border rounded-xl p-5">
-                    <CheckCircle className="w-5 h-5 text-accent shrink-0 mt-0.5" aria-hidden="true" />
-                    <span className="text-sm text-foreground leading-relaxed">{reason}</span>
+                  <div key={reason} style={{
+                    display: "flex", alignItems: "flex-start", gap: "0.75rem",
+                    background: "var(--card)", border: "1px solid var(--border)",
+                    borderRadius: "0.875rem", padding: "1.25rem",
+                  }}>
+                    <CheckCircle style={{ width: 18, height: 18, color: "var(--accent)", flexShrink: 0, marginTop: 2 }} aria-hidden="true" />
+                    <span style={{ fontSize: "0.875rem", color: "var(--foreground)", lineHeight: 1.7 }}>{reason}</span>
                   </div>
                 ))}
               </div>
             </section>
 
             {/* ── Eligibility ── */}
-            <section aria-labelledby="eligibility-heading">
-              <h2 id="eligibility-heading" className="section-title mb-8">Eligibility Requirements</h2>
-              <div className="bg-card border border-border rounded-2xl overflow-hidden">
-                <div className="overflow-x-auto">
-                  <table className="w-full" role="table">
+            <section>
+              <h2 style={{ fontSize: "clamp(1.25rem, 2.5vw, 1.75rem)", fontWeight: 900, color: "var(--foreground)", letterSpacing: "-0.02em", marginBottom: "1.5rem" }}>
+                Eligibility Requirements
+              </h2>
+              <div style={{ background: "var(--card)", border: "1px solid var(--border)", borderRadius: "1rem", overflow: "hidden" }}>
+                <div style={{ overflowX: "auto" }}>
+                  <table style={{ width: "100%", borderCollapse: "collapse", fontSize: "0.875rem" }} role="table">
                     <thead>
                       <tr>
-                        <th className={TH}>Level</th>
-                        <th className={TH}>Min GPA</th>
-                        <th className={TH}>IELTS</th>
-                        <th className={TH}>PTE</th>
-                        <th className={TH}>TOEFL</th>
+                        {["Level", "Min GPA", "IELTS", "PTE", "TOEFL"].map((h) => (
+                          <th key={h} style={thStyle}>{h}</th>
+                        ))}
                       </tr>
                     </thead>
-                    <tbody className="divide-y divide-border">
+                    <tbody>
                       {country.eligibility.map((e, i) => (
-                        <tr key={e.level} className={i % 2 === 0 ? "" : "bg-muted/40"}>
-                          <td className={`${TD} font-semibold text-foreground`}>{e.level}</td>
-                          <td className={TD}>{e.gpa}</td>
-                          <td className={TD}>{e.ielts}</td>
-                          <td className={TD}>{e.pte}</td>
-                          <td className={TD}>{e.toefl}</td>
+                        <tr key={e.level} style={{ borderTop: "1px solid var(--border)", background: i % 2 === 0 ? "transparent" : "var(--muted)" }}>
+                          <td style={{ ...tdStyle, fontWeight: 600, color: "var(--foreground)" }}>{e.level}</td>
+                          <td style={{ ...tdStyle, color: "var(--muted-foreground)" }}>{e.gpa}</td>
+                          <td style={{ ...tdStyle, color: "var(--muted-foreground)" }}>{e.ielts}</td>
+                          <td style={{ ...tdStyle, color: "var(--muted-foreground)" }}>{e.pte}</td>
+                          <td style={{ ...tdStyle, color: "var(--muted-foreground)" }}>{e.toefl}</td>
                         </tr>
                       ))}
                     </tbody>
@@ -107,26 +120,26 @@ export default async function CountryPage({ params }: Props) {
             </section>
 
             {/* ── Costs ── */}
-            <section aria-labelledby="costs-heading">
-              <h2 id="costs-heading" className="section-title mb-8">
+            <section>
+              <h2 style={{ fontSize: "clamp(1.25rem, 2.5vw, 1.75rem)", fontWeight: 900, color: "var(--foreground)", letterSpacing: "-0.02em", marginBottom: "1.5rem" }}>
                 Cost of Studying in {country.name} (NPR + {country.currency})
               </h2>
-              <div className="bg-card border border-border rounded-2xl overflow-hidden">
-                <div className="overflow-x-auto">
-                  <table className="w-full" role="table">
+              <div style={{ background: "var(--card)", border: "1px solid var(--border)", borderRadius: "1rem", overflow: "hidden" }}>
+                <div style={{ overflowX: "auto" }}>
+                  <table style={{ width: "100%", borderCollapse: "collapse", fontSize: "0.875rem" }} role="table">
                     <thead>
                       <tr>
-                        <th className={TH}>Expense</th>
-                        <th className={TH}>NPR</th>
-                        <th className={TH}>{country.currency}</th>
+                        {["Expense", "NPR", country.currency].map((h) => (
+                          <th key={h} style={thStyle}>{h}</th>
+                        ))}
                       </tr>
                     </thead>
-                    <tbody className="divide-y divide-border">
+                    <tbody>
                       {country.costs.map((c, i) => (
-                        <tr key={c.item} className={i % 2 === 0 ? "" : "bg-muted/40"}>
-                          <td className={`${TD} font-medium text-foreground`}>{c.item}</td>
-                          <td className={TD}>{c.costNPR}</td>
-                          <td className={TD}>{c.costUSD}</td>
+                        <tr key={c.item} style={{ borderTop: "1px solid var(--border)", background: i % 2 === 0 ? "transparent" : "var(--muted)" }}>
+                          <td style={{ ...tdStyle, fontWeight: 600, color: "var(--foreground)" }}>{c.item}</td>
+                          <td style={{ ...tdStyle, color: "var(--muted-foreground)" }}>{c.costNPR}</td>
+                          <td style={{ ...tdStyle, color: "var(--muted-foreground)" }}>{c.costUSD}</td>
                         </tr>
                       ))}
                     </tbody>
@@ -136,17 +149,27 @@ export default async function CountryPage({ params }: Props) {
             </section>
 
             {/* ── Universities ── */}
-            <section aria-labelledby="unis-heading">
-              <h2 id="unis-heading" className="section-title mb-8">Top Universities for Nepali Students</h2>
-              <div className="grid sm:grid-cols-2 gap-4">
+            <section>
+              <h2 style={{ fontSize: "clamp(1.25rem, 2.5vw, 1.75rem)", fontWeight: 900, color: "var(--foreground)", letterSpacing: "-0.02em", marginBottom: "1.5rem" }}>
+                Top Universities for Nepali Students
+              </h2>
+              <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: "1rem" }} className="unis-grid">
                 {country.topUniversities.map((uni, i) => (
-                  <div key={uni.name} className="flex items-start gap-4 bg-card border border-border rounded-xl p-5">
-                    <span className="w-9 h-9 rounded-lg bg-primary/10 flex items-center justify-center font-black text-primary text-sm shrink-0">
+                  <div key={uni.name} style={{
+                    display: "flex", alignItems: "flex-start", gap: "1rem",
+                    background: "var(--card)", border: "1px solid var(--border)",
+                    borderRadius: "0.875rem", padding: "1.25rem",
+                  }}>
+                    <span style={{
+                      width: 36, height: 36, borderRadius: "0.625rem", flexShrink: 0,
+                      background: "rgba(21,101,192,0.10)", display: "flex", alignItems: "center",
+                      justifyContent: "center", fontWeight: 900, color: "var(--primary)", fontSize: "0.875rem",
+                    }}>
                       {i + 1}
                     </span>
                     <div>
-                      <h3 className="font-semibold text-sm text-foreground">{uni.name}</h3>
-                      <p className="text-xs text-muted-foreground mt-0.5">{uni.ranking} · {uni.location}</p>
+                      <h3 style={{ fontWeight: 700, fontSize: "0.875rem", color: "var(--foreground)" }}>{uni.name}</h3>
+                      <p style={{ fontSize: "0.75rem", color: "var(--muted-foreground)", marginTop: 2 }}>{uni.ranking} · {uni.location}</p>
                     </div>
                   </div>
                 ))}
@@ -154,61 +177,70 @@ export default async function CountryPage({ params }: Props) {
             </section>
 
             {/* ── Visa Steps ── */}
-            <section aria-labelledby="visa-heading">
-              <h2 id="visa-heading" className="section-title mb-8">Student Visa — Step-by-Step Guide</h2>
-
-              <ol className="flex flex-col gap-5 mb-7">
+            <section>
+              <h2 style={{ fontSize: "clamp(1.25rem, 2.5vw, 1.75rem)", fontWeight: 900, color: "var(--foreground)", letterSpacing: "-0.02em", marginBottom: "1.5rem" }}>
+                Student Visa — Step-by-Step Guide
+              </h2>
+              <ol style={{ display: "flex", flexDirection: "column", gap: "1.25rem", marginBottom: "1.75rem", listStyle: "none", padding: 0 }}>
                 {country.visaSteps.map((v) => (
-                  <li key={v.step} className="flex items-start gap-5">
-                    <div
-                      className="w-10 h-10 rounded-full flex items-center justify-center font-black text-sm text-white shrink-0"
-                      style={{ background: "var(--accent)" }}
-                      aria-label={`Step ${v.step}`}
-                    >
+                  <li key={v.step} style={{ display: "flex", alignItems: "flex-start", gap: "1.25rem" }}>
+                    <div style={{
+                      width: 40, height: 40, borderRadius: "50%", flexShrink: 0,
+                      display: "flex", alignItems: "center", justifyContent: "center",
+                      fontWeight: 900, fontSize: "0.875rem", color: "#fff",
+                      background: "var(--accent)",
+                    }} aria-label={`Step ${v.step}`}>
                       {v.step}
                     </div>
-                    <div className="pt-1">
-                      <h3 className="font-bold text-sm text-foreground mb-1">{v.title}</h3>
-                      <p className="text-sm text-muted-foreground leading-relaxed">{v.description}</p>
+                    <div style={{ paddingTop: "0.25rem" }}>
+                      <h3 style={{ fontWeight: 700, fontSize: "0.875rem", color: "var(--foreground)", marginBottom: "0.25rem" }}>{v.title}</h3>
+                      <p style={{ fontSize: "0.875rem", color: "var(--muted-foreground)", lineHeight: 1.7 }}>{v.description}</p>
                     </div>
                   </li>
                 ))}
               </ol>
 
-              <div className="grid sm:grid-cols-2 gap-5 bg-muted rounded-2xl p-6">
+              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1.25rem", background: "var(--muted)", borderRadius: "1rem", padding: "1.5rem" }} className="visa-info-grid">
                 <div>
-                  <h3 className="font-bold text-sm text-foreground mb-2 flex items-center gap-2">
-                    <Users className="w-4 h-4 text-primary" /> Work Rights During Study
+                  <h3 style={{ fontWeight: 700, fontSize: "0.875rem", color: "var(--foreground)", marginBottom: "0.5rem", display: "flex", alignItems: "center", gap: "0.5rem" }}>
+                    <Users style={{ width: 16, height: 16, color: "var(--primary)" }} /> Work Rights During Study
                   </h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed">{country.workRights}</p>
+                  <p style={{ fontSize: "0.875rem", color: "var(--muted-foreground)", lineHeight: 1.7 }}>{country.workRights}</p>
                 </div>
                 <div>
-                  <h3 className="font-bold text-sm text-foreground mb-2 flex items-center gap-2">
-                    <ArrowRight className="w-4 h-4 text-primary" /> Post-Study Visa
+                  <h3 style={{ fontWeight: 700, fontSize: "0.875rem", color: "var(--foreground)", marginBottom: "0.5rem", display: "flex", alignItems: "center", gap: "0.5rem" }}>
+                    <ArrowRight style={{ width: 16, height: 16, color: "var(--primary)" }} /> Post-Study Visa
                   </h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed">{country.postStudyVisa}</p>
+                  <p style={{ fontSize: "0.875rem", color: "var(--muted-foreground)", lineHeight: 1.7 }}>{country.postStudyVisa}</p>
                 </div>
               </div>
             </section>
 
             {/* ── Intakes ── */}
-            <section aria-labelledby="intakes-heading">
-              <h2 id="intakes-heading" className="section-title mb-8">{country.name} Intake Calendar 2026</h2>
-              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            <section>
+              <h2 style={{ fontSize: "clamp(1.25rem, 2.5vw, 1.75rem)", fontWeight: 900, color: "var(--foreground)", letterSpacing: "-0.02em", marginBottom: "1.5rem" }}>
+                {country.name} Intake Calendar 2026
+              </h2>
+              <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "1rem" }} className="intakes-grid">
                 {country.intakes.map((intake) => (
-                  <div
-                    key={intake.intake}
-                    className={`rounded-2xl p-6 border ${intake.popular ? "border-accent bg-accent/5" : "border-border bg-card"}`}
-                  >
+                  <div key={intake.intake} style={{
+                    borderRadius: "1rem", padding: "1.5rem",
+                    border: intake.popular ? "1.5px solid var(--accent)" : "1px solid var(--border)",
+                    background: intake.popular ? "rgba(232,163,23,0.05)" : "var(--card)",
+                  }}>
                     {intake.popular && (
-                      <span className="inline-flex items-center gap-1 text-xs font-bold text-accent mb-3">
-                        <Star className="w-3 h-3 fill-accent" aria-hidden="true" /> Most Popular
+                      <span style={{ display: "inline-flex", alignItems: "center", gap: "0.25rem", fontSize: "0.75rem", fontWeight: 700, color: "var(--accent)", marginBottom: "0.75rem" }}>
+                        <Star style={{ width: 12, height: 12, fill: "var(--accent)", color: "var(--accent)" }} aria-hidden="true" /> Most Popular
                       </span>
                     )}
-                    <h3 className="font-bold text-base text-foreground mb-3">{intake.intake}</h3>
-                    <div className="flex flex-col gap-1.5 text-xs text-muted-foreground">
-                      <span className="flex items-center gap-1.5"><Calendar className="w-3.5 h-3.5" /> Months: {intake.months}</span>
-                      <span className="flex items-center gap-1.5"><ArrowRight className="w-3.5 h-3.5" /> Deadline: {intake.deadline}</span>
+                    <h3 style={{ fontWeight: 800, fontSize: "1rem", color: "var(--foreground)", marginBottom: "0.75rem" }}>{intake.intake}</h3>
+                    <div style={{ display: "flex", flexDirection: "column", gap: "0.375rem" }}>
+                      <span style={{ display: "flex", alignItems: "center", gap: "0.375rem", fontSize: "0.78rem", color: "var(--muted-foreground)" }}>
+                        <Calendar style={{ width: 13, height: 13 }} /> Months: {intake.months}
+                      </span>
+                      <span style={{ display: "flex", alignItems: "center", gap: "0.375rem", fontSize: "0.78rem", color: "var(--muted-foreground)" }}>
+                        <ArrowRight style={{ width: 13, height: 13 }} /> Deadline: {intake.deadline}
+                      </span>
                     </div>
                   </div>
                 ))}
@@ -216,21 +248,30 @@ export default async function CountryPage({ params }: Props) {
             </section>
 
             {/* ── Scholarships ── */}
-            <section aria-labelledby="schol-heading">
-              <h2 id="schol-heading" className="section-title mb-8">
+            <section>
+              <h2 style={{ fontSize: "clamp(1.25rem, 2.5vw, 1.75rem)", fontWeight: 900, color: "var(--foreground)", letterSpacing: "-0.02em", marginBottom: "1.5rem" }}>
                 Scholarships for Nepali Students in {country.name}
               </h2>
-              <div className="flex flex-col gap-4">
+              <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
                 {country.scholarships.map((s) => (
-                  <div key={s.name} className="bg-card border border-border rounded-xl p-5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
-                    <div className="flex items-start gap-3">
-                      <Award className="w-5 h-5 text-accent shrink-0 mt-0.5" aria-hidden="true" />
+                  <div key={s.name} style={{
+                    background: "var(--card)", border: "1px solid var(--border)",
+                    borderRadius: "0.875rem", padding: "1.25rem",
+                    display: "flex", alignItems: "flex-start", justifyContent: "space-between",
+                    gap: "1rem", flexWrap: "wrap",
+                  }}>
+                    <div style={{ display: "flex", alignItems: "flex-start", gap: "0.75rem" }}>
+                      <Award style={{ width: 18, height: 18, color: "var(--accent)", flexShrink: 0, marginTop: 2 }} aria-hidden="true" />
                       <div>
-                        <h3 className="font-semibold text-sm text-foreground">{s.name}</h3>
-                        <p className="text-xs text-muted-foreground mt-0.5 leading-relaxed">{s.eligibility}</p>
+                        <h3 style={{ fontWeight: 700, fontSize: "0.875rem", color: "var(--foreground)" }}>{s.name}</h3>
+                        <p style={{ fontSize: "0.78rem", color: "var(--muted-foreground)", marginTop: 2, lineHeight: 1.6 }}>{s.eligibility}</p>
                       </div>
                     </div>
-                    <span className="inline-flex px-3 py-1.5 rounded-full text-xs font-black text-white bg-accent shrink-0 self-start sm:self-center">
+                    <span style={{
+                      display: "inline-flex", padding: "0.25rem 0.875rem", borderRadius: 999,
+                      fontSize: "0.78rem", fontWeight: 800, color: "#fff", background: "var(--accent)",
+                      flexShrink: 0, alignSelf: "flex-start",
+                    }}>
                       {s.amount}
                     </span>
                   </div>
@@ -239,19 +280,30 @@ export default async function CountryPage({ params }: Props) {
             </section>
 
             {/* ── FAQs ── */}
-            <section aria-labelledby="faq-heading">
-              <h2 id="faq-heading" className="section-title mb-8">Frequently Asked Questions</h2>
-              <div className="flex flex-col gap-3">
+            <section>
+              <h2 style={{ fontSize: "clamp(1.25rem, 2.5vw, 1.75rem)", fontWeight: 900, color: "var(--foreground)", letterSpacing: "-0.02em", marginBottom: "1.5rem" }}>
+                Frequently Asked Questions
+              </h2>
+              <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}>
                 {country.faqs.map((faq) => (
-                  <details
-                    key={faq.question}
-                    className="bg-card border border-border rounded-xl group open:shadow-sm transition-all"
-                  >
-                    <summary className="px-6 py-4 font-semibold text-sm cursor-pointer list-none flex items-center justify-between text-foreground hover:text-primary transition-colors">
+                  <details key={faq.question} style={{
+                    background: "var(--card)", border: "1px solid var(--border)",
+                    borderRadius: "0.875rem", overflow: "hidden",
+                  }}>
+                    <summary style={{
+                      padding: "1rem 1.5rem", fontWeight: 600, fontSize: "0.9rem",
+                      cursor: "pointer", listStyle: "none",
+                      display: "flex", alignItems: "center", justifyContent: "space-between",
+                      color: "var(--foreground)",
+                    }}>
                       {faq.question}
-                      <span className="text-xl leading-none text-muted-foreground group-open:text-primary transition-colors select-none" aria-hidden="true">+</span>
+                      <span style={{ fontSize: "1.25rem", lineHeight: 1, color: "var(--muted-foreground)" }} aria-hidden="true">+</span>
                     </summary>
-                    <div className="px-6 pb-5 text-sm text-muted-foreground leading-relaxed border-t border-border pt-4 mt-0">
+                    <div style={{
+                      padding: "1rem 1.5rem 1.25rem",
+                      fontSize: "0.875rem", color: "var(--muted-foreground)", lineHeight: 1.75,
+                      borderTop: "1px solid var(--border)",
+                    }}>
                       {faq.answer}
                     </div>
                   </details>
@@ -260,27 +312,19 @@ export default async function CountryPage({ params }: Props) {
             </section>
 
             {/* ── CTA ── */}
-            <section className="bg-primary rounded-2xl p-10 lg:p-14 text-center" aria-labelledby="cta-heading">
+            <section style={{ background: "var(--primary)", borderRadius: "1.25rem", padding: "3.5rem 2.5rem", textAlign: "center" }}>
               <span className="section-label" style={{ background: "rgba(232,163,23,0.18)", color: "#F5C542" }}>Get Started</span>
-              <h2 id="cta-heading" className="section-title text-white mt-3">
+              <h2 style={{ marginTop: "0.75rem", marginBottom: "1rem", fontSize: "clamp(1.5rem, 3vw, 2.25rem)", fontWeight: 900, color: "#fff", letterSpacing: "-0.02em" }}>
                 Ready to Study in {country.name}?
               </h2>
-              <p className="text-base leading-relaxed mb-10 max-w-xl mx-auto" style={{ color: "rgba(255,255,255,0.78)" }}>
+              <p style={{ fontSize: "1rem", color: "rgba(255,255,255,0.80)", lineHeight: 1.75, marginBottom: "2rem", maxWidth: "50ch", marginInline: "auto" }}>
                 Talk to our {country.name} specialist counselor for personalised guidance — absolutely free.
               </p>
-              <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <Link
-                  href="/book-consultation"
-                  className="inline-flex items-center gap-2 font-bold rounded-xl text-sm px-8 py-4 shadow-lg hover:opacity-90 hover:scale-105 transition-all"
-                  style={{ background: "#E8A317", color: "#fff" }}
-                >
-                  Book Free Consultation <ArrowRight className="w-4 h-4" />
+              <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: "0.875rem" }}>
+                <Link href="/book-consultation" style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem", padding: "0.9rem 2rem", borderRadius: "0.875rem", background: "#E8A317", color: "#fff", fontWeight: 700, fontSize: "0.9rem", textDecoration: "none", boxShadow: "0 4px 20px rgba(232,163,23,0.45)" }}>
+                  Book Free Consultation <ArrowRight style={{ width: 16, height: 16 }} />
                 </Link>
-                <Link
-                  href="/study-destinations"
-                  className="inline-flex items-center gap-2 font-semibold rounded-xl text-sm px-8 py-4 border-2 text-white hover:bg-white/10 transition-all"
-                  style={{ borderColor: "rgba(255,255,255,0.30)" }}
-                >
+                <Link href="/study-destinations" style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem", padding: "0.9rem 2rem", borderRadius: "0.875rem", border: "1.5px solid rgba(255,255,255,0.30)", color: "#fff", fontWeight: 600, fontSize: "0.9rem", textDecoration: "none", background: "rgba(255,255,255,0.08)" }}>
                   Other Destinations
                 </Link>
               </div>
@@ -305,6 +349,19 @@ export default async function CountryPage({ params }: Props) {
           }),
         }}
       />
+
+      <style>{`
+        @media (max-width: 900px) {
+          .why-study-grid { grid-template-columns: 1fr 1fr !important; }
+          .intakes-grid { grid-template-columns: 1fr 1fr !important; }
+        }
+        @media (max-width: 600px) {
+          .why-study-grid { grid-template-columns: 1fr !important; }
+          .unis-grid { grid-template-columns: 1fr !important; }
+          .intakes-grid { grid-template-columns: 1fr !important; }
+          .visa-info-grid { grid-template-columns: 1fr !important; }
+        }
+      `}</style>
     </>
   );
 }

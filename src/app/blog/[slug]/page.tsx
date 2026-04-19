@@ -2,7 +2,7 @@ import { blogPosts } from "@/data/content";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeft, ArrowRight, Clock, Tag } from "lucide-react";
+import { ArrowLeft, ArrowRight, Clock } from "lucide-react";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -55,6 +55,10 @@ This comprehensive guide covers everything from choosing the right country to la
 **How Gurumantra Helps**: Our experienced counselors stay updated on every policy change. We help you craft a compelling GS statement, structure your finances correctly, and prepare a complete application that meets the latest requirements.`,
 };
 
+const CATEGORY_COLORS: Record<string, string> = {
+  "Guide": "#1565C0", "Test Prep": "#7B1FA2", "Visa Updates": "#2E7D32",
+};
+
 export default async function BlogPostPage({ params }: Props) {
   const { slug } = await params;
   const post = blogPosts.find((p) => p.slug === slug);
@@ -62,102 +66,100 @@ export default async function BlogPostPage({ params }: Props) {
 
   const raw = blogContent[slug] ?? "";
   const paragraphs = raw.split("\n\n").filter(Boolean);
-
-  const CATEGORY_COLORS: Record<string, string> = {
-    "Guide": "#1565C0", "Test Prep": "#7B1FA2", "Visa Updates": "#2E7D32",
-  };
   const catColor = CATEGORY_COLORS[post.category] ?? "#1565C0";
 
   return (
     <>
-      {/* ── Hero ── */}
-      <section className="bg-primary text-white relative overflow-hidden" style={{ paddingTop: "4rem", paddingBottom: "4rem" }}>
-        <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
-          <div className="absolute -top-40 -left-40 w-96 h-96 rounded-full bg-accent opacity-[0.08]" style={{ filter: "blur(100px)" }} />
+      {/* ══════ HERO ══════ */}
+      <section style={{
+        background: "var(--primary)", color: "#fff",
+        paddingTop: "4rem", paddingBottom: "4rem",
+        position: "relative", overflow: "hidden",
+      }}>
+        <div aria-hidden="true" style={{ position: "absolute", inset: 0, overflow: "hidden", pointerEvents: "none" }}>
+          <div style={{ position: "absolute", top: "-10rem", left: "-10rem", width: "24rem", height: "24rem", borderRadius: "50%", background: "var(--accent)", opacity: 0.08, filter: "blur(100px)" }} />
         </div>
-        <div className="container-main max-w-3xl relative z-10">
-          <Link
-            href="/blog"
-            className="inline-flex items-center gap-1.5 text-xs font-semibold mb-6 transition-all hover:gap-2.5"
-            style={{ color: "rgba(255,255,255,0.70)" }}
-          >
-            <ArrowLeft className="w-3.5 h-3.5" aria-hidden="true" /> Back to Blog
+        <div className="container-main" style={{ maxWidth: 720, position: "relative", zIndex: 10 }}>
+          <Link href="/blog" style={{
+            display: "inline-flex", alignItems: "center", gap: "0.375rem",
+            fontSize: "0.78rem", fontWeight: 700, color: "rgba(255,255,255,0.72)",
+            textDecoration: "none", marginBottom: "1.5rem",
+          }}>
+            <ArrowLeft style={{ width: 14, height: 14 }} /> Back to Blog
           </Link>
 
-          <div className="flex flex-wrap items-center gap-3 mb-5">
-            <span
-              className="text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full text-white"
-              style={{ background: catColor }}
-            >
+          <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", gap: "0.75rem", marginBottom: "1.25rem" }}>
+            <span style={{ fontSize: "0.7rem", fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.1em", padding: "0.3rem 0.875rem", borderRadius: 999, color: "#fff", background: catColor }}>
               {post.category}
             </span>
-            <span className="flex items-center gap-1 text-xs" style={{ color: "rgba(255,255,255,0.65)" }}>
-              <Clock className="w-3 h-3" aria-hidden="true" /> {post.readTime}
+            <span style={{ display: "flex", alignItems: "center", gap: "0.25rem", fontSize: "0.78rem", color: "rgba(255,255,255,0.68)" }}>
+              <Clock style={{ width: 12, height: 12 }} /> {post.readTime}
             </span>
-            <span className="text-xs" style={{ color: "rgba(255,255,255,0.65)" }}>{post.date}</span>
+            <span style={{ fontSize: "0.78rem", color: "rgba(255,255,255,0.68)" }}>{post.date}</span>
           </div>
 
-          <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight leading-snug">
+          <h1 style={{ fontSize: "clamp(1.6rem, 4vw, 2.5rem)", fontWeight: 900, letterSpacing: "-0.02em", lineHeight: 1.2 }}>
             {post.title}
           </h1>
         </div>
       </section>
 
-      {/* ── Article ── */}
-      <article className="bg-background section-py">
-        <div className="container-main max-w-3xl">
+      {/* ══════ ARTICLE ══════ */}
+      <div style={{ background: "var(--background)" }}>
+        <div className="container-main" style={{ maxWidth: 720, paddingTop: "3rem", paddingBottom: "3rem" }}>
 
-          {/* Lead paragraph */}
-          <p className="text-base text-muted-foreground leading-relaxed mb-8 pb-8 border-b border-border font-medium">
+          {/* Lead */}
+          <p style={{
+            fontSize: "1.05rem", color: "var(--muted-foreground)", lineHeight: 1.8,
+            marginBottom: "2rem", paddingBottom: "2rem",
+            borderBottom: "1px solid var(--border)", fontWeight: 500,
+          }}>
             {post.excerpt}
           </p>
 
           {/* Body */}
-          <div className="flex flex-col gap-5">
+          <div style={{ display: "flex", flexDirection: "column", gap: "1.5rem" }}>
             {paragraphs.map((para, i) => {
               if (para.startsWith("**") && para.includes("**:")) {
                 const colonIdx = para.indexOf("**:");
                 const heading = para.slice(2, colonIdx);
                 const body = para.slice(colonIdx + 3).trim();
                 return (
-                  <div key={i} className="flex flex-col gap-1.5">
-                    <h2 className="text-base font-bold text-foreground">{heading}</h2>
-                    <p className="text-sm text-muted-foreground leading-relaxed">{body}</p>
+                  <div key={i}>
+                    <h2 style={{
+                      fontSize: "1rem", fontWeight: 800, color: "var(--foreground)",
+                      marginBottom: "0.5rem",
+                      paddingLeft: "0.875rem",
+                      borderLeft: `3px solid ${catColor}`,
+                    }}>{heading}</h2>
+                    <p style={{ fontSize: "0.9rem", color: "var(--muted-foreground)", lineHeight: 1.8 }}>{body}</p>
                   </div>
                 );
               }
               return (
-                <p key={i} className="text-sm text-muted-foreground leading-relaxed">{para}</p>
+                <p key={i} style={{ fontSize: "0.9rem", color: "var(--muted-foreground)", lineHeight: 1.8 }}>{para}</p>
               );
             })}
           </div>
 
           {/* In-article CTA */}
-          <div className="mt-14 bg-primary rounded-2xl p-8 lg:p-10 text-center">
+          <div style={{ marginTop: "3.5rem", background: "var(--primary)", borderRadius: "1.25rem", padding: "2.5rem", textAlign: "center" }}>
             <span className="section-label" style={{ background: "rgba(232,163,23,0.18)", color: "#F5C542" }}>Free Guidance</span>
-            <h2 className="text-xl font-extrabold text-white mt-3 mb-3">Have Questions?</h2>
-            <p className="text-sm leading-relaxed mb-7" style={{ color: "rgba(255,255,255,0.78)" }}>
+            <h2 style={{ marginTop: "0.75rem", marginBottom: "0.75rem", fontSize: "1.375rem", fontWeight: 900, color: "#fff" }}>Have Questions?</h2>
+            <p style={{ fontSize: "0.9rem", color: "rgba(255,255,255,0.80)", lineHeight: 1.75, marginBottom: "1.75rem" }}>
               Our expert counselors can help you navigate every step — from test prep to visa approval.
             </p>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
-              <Link
-                href="/book-consultation"
-                className="inline-flex items-center gap-2 font-bold rounded-xl text-sm px-7 py-3.5 shadow-lg hover:opacity-90 hover:scale-105 transition-all"
-                style={{ background: "#E8A317", color: "#fff" }}
-              >
-                Book Free Consultation <ArrowRight className="w-4 h-4" />
+            <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: "0.75rem" }}>
+              <Link href="/book-consultation" style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem", padding: "0.875rem 1.75rem", borderRadius: "0.875rem", background: "#E8A317", color: "#fff", fontWeight: 700, fontSize: "0.875rem", textDecoration: "none", boxShadow: "0 4px 16px rgba(232,163,23,0.40)" }}>
+                Book Free Consultation <ArrowRight style={{ width: 15, height: 15 }} />
               </Link>
-              <Link
-                href="/blog"
-                className="inline-flex items-center gap-2 font-semibold rounded-xl text-sm px-7 py-3.5 border-2 text-white hover:bg-white/10 transition-all"
-                style={{ borderColor: "rgba(255,255,255,0.30)" }}
-              >
+              <Link href="/blog" style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem", padding: "0.875rem 1.75rem", borderRadius: "0.875rem", border: "1.5px solid rgba(255,255,255,0.28)", color: "#fff", fontWeight: 600, fontSize: "0.875rem", textDecoration: "none", background: "rgba(255,255,255,0.08)" }}>
                 More Articles
               </Link>
             </div>
           </div>
         </div>
-      </article>
+      </div>
     </>
   );
 }

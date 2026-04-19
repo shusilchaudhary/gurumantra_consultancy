@@ -8,137 +8,144 @@ export const metadata: Metadata = {
   description: "Comprehensive list of scholarships for Nepali students studying in Australia, Canada, UK, USA, Germany, Japan, New Zealand, and Ireland. Updated for 2026 intakes.",
 };
 
+const HERO_STATS = [
+  { value: "NPR 5 Cr+", label: "Scholarships Won"  },
+  { value: "30+",        label: "Scholarship Types" },
+  { value: "8",          label: "Countries Covered" },
+];
+
 export default function ScholarshipsPage() {
   return (
     <>
-      {/* ── Hero ── */}
-      <section className="bg-primary text-white relative overflow-hidden" style={{ paddingTop: "5rem", paddingBottom: "5rem" }}>
-        <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
-          <div className="absolute -top-40 -left-40 w-96 h-96 rounded-full bg-accent opacity-[0.08]" style={{ filter: "blur(100px)" }} />
-          <div className="absolute -bottom-20 -right-20 w-[500px] h-[500px] rounded-full bg-accent opacity-[0.06]" style={{ filter: "blur(120px)" }} />
+      {/* ══════ HERO ══════ */}
+      <section style={{
+        background: "var(--primary)", color: "#fff",
+        paddingTop: "5rem", paddingBottom: "5rem",
+        position: "relative", overflow: "hidden",
+      }}>
+        <div aria-hidden="true" style={{ position: "absolute", inset: 0, overflow: "hidden", pointerEvents: "none" }}>
+          <div style={{ position: "absolute", top: "-10rem", left: "-10rem", width: "24rem", height: "24rem", borderRadius: "50%", background: "var(--accent)", opacity: 0.08, filter: "blur(100px)" }} />
+          <div style={{ position: "absolute", bottom: "-5rem", right: "-5rem", width: "32rem", height: "32rem", borderRadius: "50%", background: "var(--accent)", opacity: 0.06, filter: "blur(120px)" }} />
         </div>
-        <div className="container-main max-w-3xl text-center relative z-10">
+        <div className="container-main" style={{ maxWidth: 720, textAlign: "center", position: "relative", zIndex: 10 }}>
           <span className="section-label" style={{ background: "rgba(232,163,23,0.18)", color: "#F5C542" }}>2026 Scholarships</span>
-          <h1 className="mt-3 mb-5 text-4xl sm:text-5xl lg:text-[3.25rem] font-extrabold tracking-tight leading-[1.12]">
+          <h1 style={{ marginTop: "0.75rem", marginBottom: "1.25rem", fontSize: "clamp(2rem, 5vw, 3.25rem)", fontWeight: 900, letterSpacing: "-0.03em", lineHeight: 1.1 }}>
             Scholarships for Nepali Students
           </h1>
-          <p className="text-lg leading-relaxed" style={{ color: "rgba(255,255,255,0.80)" }}>
-            Explore merit-based, need-based, and government scholarships across 8 countries. We&apos;ve helped students secure over <strong className="text-white">NPR 5 Crore</strong> in collective scholarship funding.
+          <p style={{ fontSize: "1.1rem", lineHeight: 1.75, color: "rgba(255,255,255,0.82)", marginBottom: "2rem" }}>
+            Explore merit-based, need-based, and government scholarships across 8 countries. We&apos;ve helped students secure over{" "}
+            <strong style={{ color: "#fff" }}>NPR 5 Crore</strong> in collective scholarship funding.
           </p>
-
-          <div className="grid grid-cols-3 gap-4 mt-10 max-w-lg mx-auto">
-            {[["NPR 5 Cr+", "Scholarships Won"], ["30+", "Scholarship Types"], ["8", "Countries Covered"]].map(([v, l]) => (
-              <div key={l} className="rounded-xl py-3 px-2 text-center" style={{ background: "rgba(255,255,255,0.10)", border: "1px solid rgba(255,255,255,0.15)" }}>
-                <div className="text-xl font-black text-white">{v}</div>
-                <div className="text-xs mt-0.5" style={{ color: "rgba(255,255,255,0.70)" }}>{l}</div>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "0.75rem", maxWidth: 480, marginInline: "auto" }}>
+            {HERO_STATS.map(({ value, label }) => (
+              <div key={label} style={{ borderRadius: "0.875rem", padding: "0.875rem 0.5rem", textAlign: "center", background: "rgba(255,255,255,0.10)", border: "1px solid rgba(255,255,255,0.18)" }}>
+                <div style={{ fontSize: "1.375rem", fontWeight: 900, color: "#fff" }}>{value}</div>
+                <div style={{ fontSize: "0.72rem", color: "rgba(255,255,255,0.72)", marginTop: 3 }}>{label}</div>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ── Scholarship Tables ── */}
-      <section className="bg-background section-py">
-        <div className="container-main">
+      {/* ══════ SCHOLARSHIP TABLES ══════ */}
+      <div style={{ background: "var(--background)" }}>
+        <div className="container-main" style={{ paddingTop: "3.5rem", paddingBottom: "3.5rem" }}>
 
-          <div className="text-center section-header">
+          <div style={{ textAlign: "center", marginBottom: "2.5rem" }}>
             <span className="section-label">By Country</span>
-            <h2 className="section-title">Scholarships Available in 2026</h2>
-            <p className="section-desc">Click any destination for the full guide including eligibility criteria, application tips, and deadlines.</p>
+            <h2 style={{ marginTop: "0.5rem", fontSize: "clamp(1.5rem, 3vw, 2.25rem)", fontWeight: 900, color: "var(--foreground)", letterSpacing: "-0.02em" }}>
+              Scholarships Available in 2026
+            </h2>
+            <p style={{ marginTop: "0.75rem", fontSize: "1rem", color: "var(--muted-foreground)", lineHeight: 1.75, maxWidth: "54ch", marginInline: "auto" }}>
+              Click any destination for the full guide including eligibility criteria, application tips, and deadlines.
+            </p>
           </div>
 
-          <div className="flex flex-col gap-12">
+          <div style={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
             {countries.map((country) => (
-              <div key={country.slug} className="bg-card border border-border rounded-2xl overflow-hidden">
+              <div key={country.slug} style={{ background: "var(--card)", border: "1px solid var(--border)", borderRadius: "1rem", overflow: "hidden" }}>
 
                 {/* Country header */}
-                <div className="flex items-center justify-between gap-4 px-7 py-5 bg-muted border-b border-border">
-                  <div className="flex items-center gap-3">
-                    <span className="text-3xl" aria-hidden="true">{country.flag}</span>
+                <div style={{
+                  display: "flex", alignItems: "center", justifyContent: "space-between",
+                  gap: "1rem", padding: "1.25rem 1.75rem",
+                  background: "var(--muted)", borderBottom: "1px solid var(--border)",
+                  flexWrap: "wrap",
+                }}>
+                  <div style={{ display: "flex", alignItems: "center", gap: "0.875rem" }}>
+                    <span style={{ fontSize: "2rem" }} aria-hidden="true">{country.flag}</span>
                     <div>
-                      <h2 className="text-lg font-extrabold text-foreground">{country.name} Scholarships</h2>
-                      <p className="text-xs text-muted-foreground mt-0.5">{country.scholarships.length} scholarships listed</p>
+                      <h2 style={{ fontSize: "1.05rem", fontWeight: 800, color: "var(--foreground)" }}>{country.name} Scholarships</h2>
+                      <p style={{ fontSize: "0.72rem", color: "var(--muted-foreground)", marginTop: 2 }}>{country.scholarships.length} scholarships listed</p>
                     </div>
                   </div>
-                  <Link
-                    href={`/study-destinations/${country.slug}`}
-                    className="hidden sm:inline-flex items-center gap-1.5 text-xs font-semibold text-primary hover:underline whitespace-nowrap"
-                  >
-                    Full {country.name} Guide <ArrowRight className="w-3.5 h-3.5" />
+                  <Link href={`/study-destinations/${country.slug}`} style={{
+                    display: "inline-flex", alignItems: "center", gap: "0.375rem",
+                    fontSize: "0.78rem", fontWeight: 700, color: "var(--primary)", textDecoration: "none",
+                  }}>
+                    Full {country.name} Guide <ArrowRight style={{ width: 14, height: 14 }} />
                   </Link>
                 </div>
 
                 {/* Table */}
-                <div className="overflow-x-auto">
-                  <table className="w-full text-sm" role="table">
+                <div style={{ overflowX: "auto" }}>
+                  <table style={{ width: "100%", borderCollapse: "collapse", fontSize: "0.875rem" }}>
                     <thead>
-                      <tr className="border-b border-border">
-                        <th className="px-7 py-3 text-left text-xs font-semibold text-muted-foreground uppercase tracking-wider">Scholarship</th>
-                        <th className="px-7 py-3 text-left text-xs font-semibold text-muted-foreground uppercase tracking-wider">Amount</th>
-                        <th className="px-7 py-3 text-left text-xs font-semibold text-muted-foreground uppercase tracking-wider hidden sm:table-cell">Eligibility</th>
+                      <tr style={{ borderBottom: "1px solid var(--border)" }}>
+                        <th style={{ padding: "0.75rem 1.75rem", textAlign: "left", fontSize: "0.7rem", fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.08em", color: "var(--muted-foreground)" }}>Scholarship</th>
+                        <th style={{ padding: "0.75rem 1.75rem", textAlign: "left", fontSize: "0.7rem", fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.08em", color: "var(--muted-foreground)" }}>Amount</th>
+                        <th style={{ padding: "0.75rem 1.75rem", textAlign: "left", fontSize: "0.7rem", fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.08em", color: "var(--muted-foreground)" }}>Eligibility</th>
                       </tr>
                     </thead>
-                    <tbody className="divide-y divide-border">
+                    <tbody>
                       {country.scholarships.map((s, i) => (
-                        <tr key={s.name} className={`transition-colors hover:bg-muted/60 ${i % 2 === 0 ? "" : "bg-muted/30"}`}>
-                          <td className="px-7 py-4">
-                            <div className="flex items-start gap-2.5">
-                              <Award className="w-4 h-4 text-accent shrink-0 mt-0.5" aria-hidden="true" />
-                              <span className="font-medium text-foreground">{s.name}</span>
+                        <tr key={s.name} style={{ borderBottom: "1px solid var(--border)", background: i % 2 === 0 ? "transparent" : "var(--muted)" }}>
+                          <td style={{ padding: "1rem 1.75rem" }}>
+                            <div style={{ display: "flex", alignItems: "flex-start", gap: "0.625rem" }}>
+                              <Award style={{ width: 15, height: 15, color: "var(--accent)", flexShrink: 0, marginTop: 2 }} />
+                              <span style={{ fontWeight: 600, color: "var(--foreground)" }}>{s.name}</span>
                             </div>
                           </td>
-                          <td className="px-7 py-4">
-                            <span className="inline-flex px-2.5 py-1 rounded-full text-xs font-bold text-white bg-accent">
+                          <td style={{ padding: "1rem 1.75rem" }}>
+                            <span style={{ display: "inline-flex", padding: "0.25rem 0.75rem", borderRadius: 999, fontSize: "0.75rem", fontWeight: 800, color: "#fff", background: "var(--accent)" }}>
                               {s.amount}
                             </span>
                           </td>
-                          <td className="px-7 py-4 text-muted-foreground hidden sm:table-cell">{s.eligibility}</td>
+                          <td style={{ padding: "1rem 1.75rem", color: "var(--muted-foreground)", fontSize: "0.85rem" }}>{s.eligibility}</td>
                         </tr>
                       ))}
                     </tbody>
                   </table>
                 </div>
 
-                {/* Mobile link */}
-                <div className="sm:hidden px-7 py-4 border-t border-border">
-                  <Link href={`/study-destinations/${country.slug}`} className="inline-flex items-center gap-1.5 text-xs font-semibold text-primary">
-                    Full {country.name} Guide <ArrowRight className="w-3.5 h-3.5" />
-                  </Link>
-                </div>
               </div>
             ))}
           </div>
         </div>
-      </section>
+      </div>
 
-      {/* ── CTA ── */}
-      <section className="bg-primary section-py">
-        <div className="container-main text-center">
-          <div className="max-w-2xl mx-auto">
+      {/* ══════ CTA ══════ */}
+      <div style={{ background: "var(--muted)", borderTop: "1px solid var(--border)" }}>
+        <div className="container-main" style={{ paddingTop: "3rem", paddingBottom: "3rem" }}>
+          <div style={{ background: "var(--primary)", borderRadius: "1.25rem", padding: "3rem 2.5rem", textAlign: "center" }}>
             <span className="section-label" style={{ background: "rgba(232,163,23,0.18)", color: "#F5C542" }}>Free Scholarship Help</span>
-            <h2 className="section-title text-white mt-3">Need Help Finding the Right Scholarship?</h2>
-            <p className="text-base leading-relaxed mb-10" style={{ color: "rgba(255,255,255,0.78)" }}>
+            <h2 style={{ marginTop: "0.75rem", marginBottom: "1rem", fontSize: "clamp(1.5rem, 3vw, 2.25rem)", fontWeight: 900, color: "#fff", letterSpacing: "-0.02em" }}>
+              Need Help Finding the Right Scholarship?
+            </h2>
+            <p style={{ fontSize: "1rem", color: "rgba(255,255,255,0.80)", lineHeight: 1.75, marginBottom: "2rem", maxWidth: "50ch", marginInline: "auto" }}>
               Our counselors identify the best opportunities for your profile and help you prepare winning applications — completely free.
             </p>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <Link
-                href="/book-consultation"
-                className="inline-flex items-center gap-2 font-bold rounded-xl text-sm px-8 py-4 shadow-lg hover:opacity-90 hover:scale-105 transition-all"
-                style={{ background: "#E8A317", color: "#fff" }}
-              >
-                Book Free Consultation <ArrowRight className="w-4 h-4" />
+            <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: "0.875rem" }}>
+              <Link href="/book-consultation" style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem", padding: "0.9rem 2rem", borderRadius: "0.875rem", background: "#E8A317", color: "#fff", fontWeight: 700, fontSize: "0.9rem", textDecoration: "none", boxShadow: "0 4px 20px rgba(232,163,23,0.45)" }}>
+                Book Free Consultation <ArrowRight style={{ width: 16, height: 16 }} />
               </Link>
-              <Link
-                href="/study-destinations"
-                className="inline-flex items-center gap-2 font-semibold rounded-xl text-sm px-8 py-4 border-2 text-white hover:bg-white/10 transition-all"
-                style={{ borderColor: "rgba(255,255,255,0.30)" }}
-              >
+              <Link href="/study-destinations" style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem", padding: "0.9rem 2rem", borderRadius: "0.875rem", border: "1.5px solid rgba(255,255,255,0.30)", color: "#fff", fontWeight: 600, fontSize: "0.9rem", textDecoration: "none", background: "rgba(255,255,255,0.08)" }}>
                 Explore Destinations
               </Link>
             </div>
           </div>
         </div>
-      </section>
+      </div>
     </>
   );
 }

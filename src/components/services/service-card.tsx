@@ -11,87 +11,68 @@ export interface ServiceCardProps {
 
 export function ServiceCard({ icon: Icon, title, tagline, features, href }: ServiceCardProps) {
   return (
-    <article
-      className="group relative flex flex-col h-full bg-card border border-border rounded-2xl overflow-hidden
-                 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:border-primary/25"
-    >
-      {/* ── Top accent bar ── */}
-      <div
-        aria-hidden="true"
-        className="h-[3px] w-full shrink-0 bg-gradient-to-r from-primary via-primary/70 to-primary/30
-                   group-hover:from-accent group-hover:via-accent/70 group-hover:to-accent/30 transition-all duration-500"
-      />
+    <article style={{
+      display: "flex", flexDirection: "column", height: "100%",
+      background: "var(--card)", border: "1px solid var(--border)",
+      borderRadius: "1rem", overflow: "hidden",
+    }}>
+      {/* Top accent bar */}
+      <div aria-hidden="true" style={{ height: 3, background: "linear-gradient(90deg, var(--primary), rgba(21,101,192,0.3))", flexShrink: 0 }} />
 
-      {/* ── Card body ── */}
-      <div className="flex flex-col flex-1 p-7 gap-0">
+      {/* Card body */}
+      <div style={{ display: "flex", flexDirection: "column", flex: 1, padding: "1.75rem", gap: 0 }}>
 
         {/* Icon + Title */}
-        <div className="flex items-start gap-4 mb-5">
-          <div
-            aria-hidden="true"
-            className="w-12 h-12 rounded-xl flex items-center justify-center shrink-0
-                       bg-[#E3F0FF] group-hover:bg-primary transition-colors duration-300"
-          >
-            <Icon
-              className="w-[22px] h-[22px] text-primary group-hover:text-white transition-colors duration-300"
-              strokeWidth={1.75}
-            />
+        <div style={{ display: "flex", alignItems: "flex-start", gap: "1rem", marginBottom: "1.25rem" }}>
+          <div aria-hidden="true" style={{
+            width: 48, height: 48, borderRadius: "0.75rem", flexShrink: 0,
+            background: "#E3F0FF", display: "flex", alignItems: "center", justifyContent: "center",
+          }}>
+            <Icon style={{ width: 22, height: 22, color: "var(--primary)" }} strokeWidth={1.75} />
           </div>
-
-          <h3 className="text-[1.05rem] font-bold text-foreground leading-snug mt-1">
+          <h3 style={{ fontSize: "1.05rem", fontWeight: 700, color: "var(--foreground)", lineHeight: 1.4, marginTop: 4 }}>
             {title}
           </h3>
         </div>
 
         {/* Tagline */}
-        <p className="text-[0.8125rem] font-medium text-foreground/75 leading-relaxed
-                      border-l-[3px] border-primary/30 pl-3 mb-5">
+        <p style={{
+          fontSize: "0.8125rem", fontWeight: 500, color: "var(--muted-foreground)", lineHeight: 1.7,
+          borderLeft: "3px solid rgba(21,101,192,0.30)", paddingLeft: "0.75rem", marginBottom: "1.25rem",
+        }}>
           {tagline}
         </p>
 
         {/* Divider */}
-        <hr className="border-border mb-5" />
+        <hr style={{ border: "none", borderTop: "1px solid var(--border)", marginBottom: "1.25rem" }} />
 
         {/* Feature list */}
-        <ul className="flex flex-col gap-[0.6rem] mb-7" role="list">
+        <ul style={{ display: "flex", flexDirection: "column", gap: "0.6rem", marginBottom: "1.75rem", listStyle: "none", padding: 0 }} role="list">
           {features.map((feat) => (
-            <li key={feat} className="flex items-start gap-3">
-              {/* Custom check circle */}
-              <span
-                aria-hidden="true"
-                className="mt-[2px] w-[18px] h-[18px] rounded-full shrink-0 flex items-center justify-center bg-[#E3F0FF]"
-              >
+            <li key={feat} style={{ display: "flex", alignItems: "flex-start", gap: "0.75rem" }}>
+              <span aria-hidden="true" style={{
+                marginTop: 2, width: 18, height: 18, borderRadius: "50%", flexShrink: 0,
+                display: "flex", alignItems: "center", justifyContent: "center", background: "#E3F0FF",
+              }}>
                 <svg width="9" height="9" viewBox="0 0 9 9" fill="none" aria-hidden="true">
-                  <path
-                    d="M1.5 4.5l2 2L7.5 2"
-                    stroke="var(--primary)"
-                    strokeWidth="1.6"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
+                  <path d="M1.5 4.5l2 2L7.5 2" stroke="var(--primary)" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
               </span>
-              <span className="text-[0.8125rem] text-muted-foreground leading-snug">{feat}</span>
+              <span style={{ fontSize: "0.8125rem", color: "var(--muted-foreground)", lineHeight: 1.5 }}>{feat}</span>
             </li>
           ))}
         </ul>
 
-        {/* CTA — pinned to bottom via mt-auto */}
-        <div className="mt-auto pt-5 border-t border-border">
-          <Link
-            href={href}
-            aria-label={`Get started with ${title}`}
-            className="inline-flex items-center gap-2 px-5 py-[0.6rem] rounded-full
-                       text-[0.8125rem] font-semibold text-white bg-primary
-                       hover:bg-primary/90 hover:shadow-md active:scale-95
-                       transition-all duration-200 focus-visible:outline-none
-                       focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 group/btn"
-          >
+        {/* CTA pinned to bottom */}
+        <div style={{ marginTop: "auto", paddingTop: "1.25rem", borderTop: "1px solid var(--border)" }}>
+          <Link href={href} aria-label={`Get started with ${title}`} style={{
+            display: "inline-flex", alignItems: "center", gap: "0.5rem",
+            padding: "0.6rem 1.25rem", borderRadius: 999,
+            fontSize: "0.8125rem", fontWeight: 600, color: "#fff",
+            background: "var(--primary)", textDecoration: "none",
+          }}>
             Get started
-            <ArrowRight
-              className="w-3.5 h-3.5 transition-transform duration-200 group-hover/btn:translate-x-0.5"
-              aria-hidden="true"
-            />
+            <ArrowRight style={{ width: 14, height: 14 }} aria-hidden="true" />
           </Link>
         </div>
 

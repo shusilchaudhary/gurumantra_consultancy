@@ -1,792 +1,460 @@
 "use client";
 import { useState } from "react";
-import { motion } from "framer-motion";
 import Link from "next/link";
-import Image from "next/image";
 import {
-  ArrowRight, GraduationCap, Globe, Award, Users, CheckCircle,
-  Star, ChevronRight, BookOpen, FileCheck, School, Plane,
-  Phone, MapPin, Clock, ChevronDown,
+  ArrowRight, GraduationCap, Globe, Users, CheckCircle,
+  Star, ChevronRight, BookOpen, FileCheck, School, Award, Plane,
+  Phone, MapPin, Clock, ChevronDown, Shield,
 } from "lucide-react";
 import { testimonials, services, blogPosts } from "@/data/content";
 
-/* ─── Data ─── */
-const stats = [
-  { value: "2,000+", label: "Students Placed", icon: Users },
-  { value: "98%", label: "Visa Success Rate", icon: CheckCircle },
-  { value: "200+", label: "Partner Universities", icon: School },
-  { value: "8+", label: "Study Destinations", icon: Globe },
+/* ── Data ── */
+const TRUST = [
+  { icon: Users,       value: "2,000+", label: "Students Placed"     },
+  { icon: Shield,      value: "98%",    label: "Visa Success Rate"    },
+  { icon: School,      value: "200+",   label: "Partner Universities" },
+  { icon: CheckCircle, value: "15+",    label: "Years Experience"     },
 ];
 
 const destinations = [
-  {
-    name: "Australia",
-    slug: "australia",
-    flag: "🇦🇺",
-    tagline: "Top-ranked universities & post-study work rights",
-    image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=600&q=80",
-  },
-  {
-    name: "Canada",
-    slug: "canada",
-    flag: "🇨🇦",
-    tagline: "Clear PR pathway & world-class education",
-    image: "https://images.unsplash.com/photo-1517935706615-2717063c2225?auto=format&fit=crop&w=600&q=80",
-  },
-  {
-    name: "United Kingdom",
-    slug: "uk",
-    flag: "🇬🇧",
-    tagline: "1-year Master's & Graduate Route visa",
-    image: "https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?auto=format&fit=crop&w=600&q=80",
-  },
-  {
-    name: "United States",
-    slug: "usa",
-    flag: "🇺🇸",
-    tagline: "World-class research universities & OPT",
-    image: "https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?auto=format&fit=crop&w=600&q=80",
-  },
-  {
-    name: "New Zealand",
-    slug: "new-zealand",
-    flag: "🇳🇿",
-    tagline: "Safe, scenic & affordable education",
-    image: "https://images.unsplash.com/photo-1507699622108-4be3abd695ad?auto=format&fit=crop&w=600&q=80",
-  },
-  {
-    name: "Germany",
-    slug: "germany",
-    flag: "🇩🇪",
-    tagline: "Tuition-free public universities",
-    image: "https://images.unsplash.com/photo-1467269204594-9661b134dd2b?auto=format&fit=crop&w=600&q=80",
-  },
-  {
-    name: "Japan",
-    slug: "japan",
-    flag: "🇯🇵",
-    tagline: "MEXT scholarships & tech innovation hub",
-    image: "https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?auto=format&fit=crop&w=600&q=80",
-  },
-  {
-    name: "Ireland",
-    slug: "ireland",
-    flag: "🇮🇪",
-    tagline: "Tech HQ of Europe & fast visa processing",
-    image: "https://images.unsplash.com/photo-1564959130747-897fb406b9af?auto=format&fit=crop&w=600&q=80",
-  },
+  { name: "Australia",      slug: "australia",   flag: "🇦🇺", tagline: "Top-ranked universities & post-study work rights",  color: "#1565C0", color2: "#0D47A1" },
+  { name: "Canada",         slug: "canada",      flag: "🇨🇦", tagline: "Clear PR pathway & world-class education",          color: "#B71C1C", color2: "#7F0000" },
+  { name: "United Kingdom", slug: "uk",          flag: "🇬🇧", tagline: "1-year Master's & Graduate Route visa",             color: "#4A148C", color2: "#1A0050" },
+  { name: "United States",  slug: "usa",         flag: "🇺🇸", tagline: "World-class research universities & OPT",           color: "#1B5E20", color2: "#003300" },
+  { name: "New Zealand",    slug: "new-zealand", flag: "🇳🇿", tagline: "Safe, scenic & affordable education",               color: "#006064", color2: "#00363a" },
+  { name: "Germany",        slug: "germany",     flag: "🇩🇪", tagline: "Tuition-free public universities",                 color: "#E65100", color2: "#8D3100" },
+  { name: "Japan",          slug: "japan",       flag: "🇯🇵", tagline: "MEXT scholarships & tech innovation hub",          color: "#880E4F", color2: "#4a0028" },
+  { name: "Ireland",        slug: "ireland",     flag: "🇮🇪", tagline: "Tech HQ of Europe & fast visa processing",         color: "#2E7D32", color2: "#005005" },
 ];
 
 const whyUs = [
-  { title: "Expert Counseling", desc: "One-on-one guidance from certified counselors with 10+ years of experience." },
-  { title: "98% Visa Success", desc: "Watertight applications with thorough document prep and interview coaching." },
-  { title: "200+ Universities", desc: "Direct partnerships with universities in 8 countries for faster admissions." },
+  { title: "Expert Counseling",   desc: "One-on-one guidance from certified counselors with 10+ years of experience." },
+  { title: "98% Visa Success",    desc: "Watertight applications with thorough document prep and interview coaching."  },
+  { title: "200+ Universities",   desc: "Direct partnerships with universities in 8 countries for faster admissions."  },
   { title: "Scholarship Support", desc: "We've helped students secure over NPR 5 Crore in scholarships collectively." },
-  { title: "End-to-End Service", desc: "From IELTS coaching to pre-departure briefings — everything under one roof." },
+  { title: "End-to-End Service",  desc: "From IELTS coaching to pre-departure briefings — everything under one roof." },
 ];
 
-const iconMap: Record<string, React.ElementType> = {
+const STEPS = [
+  { n: "01", title: "Free Consultation",   desc: "Discuss your goals, budget & dream destination with our experts."        },
+  { n: "02", title: "University Selection",desc: "We shortlist universities & craft compelling applications for you."        },
+  { n: "03", title: "Test Preparation",    desc: "IELTS, PTE, TOEFL coaching to hit your target score."                    },
+  { n: "04", title: "Visa Application",    desc: "Document prep, financial structuring & interview coaching."               },
+  { n: "05", title: "Pre-Departure",       desc: "Airport briefing, accommodation & student community connections."         },
+];
+
+const ICON_MAP: Record<string, React.ElementType> = {
   GraduationCap, BookOpen, FileCheck, School, Award, Plane,
 };
 
-const fadeUp = { hidden: { opacity: 0, y: 30 }, visible: { opacity: 1, y: 0 } };
+const INPUT: React.CSSProperties = {
+  width: "100%", padding: "0.65rem 1rem", borderRadius: "0.75rem",
+  border: "1px solid var(--border)", background: "var(--background)",
+  color: "var(--foreground)", fontSize: "0.875rem", outline: "none",
+  boxSizing: "border-box",
+};
 
-/* ─── Consultation Form ─── */
+/* ── Consultation form (client component stays inside "use client" page) ── */
 function ConsultationForm() {
   const [submitted, setSubmitted] = useState(false);
   const [form, setForm] = useState({ name: "", email: "", phone: "", destination: "", message: "" });
 
-  function handleSubmit(e: React.SyntheticEvent) {
-    e.preventDefault();
-    setSubmitted(true);
-  }
-
   if (submitted) {
     return (
-      <div className="flex flex-col items-center justify-center h-full py-16 text-center">
-        <div className="w-16 h-16 rounded-full bg-green-100 flex items-center justify-center mb-4">
-          <CheckCircle className="w-8 h-8 text-green-600" />
+      <div style={{ display: "flex", flexDirection: "column", alignItems: "center", padding: "3rem 0", textAlign: "center" }}>
+        <div style={{ width: 56, height: 56, borderRadius: "50%", background: "#dcfce7", display: "flex", alignItems: "center", justifyContent: "center", marginBottom: "1rem" }}>
+          <CheckCircle style={{ width: 28, height: 28, color: "#16a34a" }} />
         </div>
-        <h3 className="text-xl font-bold text-foreground mb-2">Thank You!</h3>
-        <p className="text-muted-foreground text-sm max-w-xs">
-          We&apos;ve received your enquiry. Our counselor will contact you within 24 hours.
-        </p>
+        <h3 style={{ fontSize: "1.1rem", fontWeight: 800, color: "var(--foreground)", marginBottom: "0.5rem" }}>Thank You!</h3>
+        <p style={{ fontSize: "0.875rem", color: "var(--muted-foreground)", maxWidth: "28ch" }}>Our counselor will contact you within 24 hours.</p>
       </div>
     );
   }
 
   return (
-    <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+    <form onSubmit={(e) => { e.preventDefault(); setSubmitted(true); }} style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
+      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1rem" }} className="form-row">
         <div>
-          <label className="block text-sm font-medium text-foreground mb-1.5">Full Name *</label>
-          <input
-            required
-            type="text"
-            placeholder="Your full name"
-            value={form.name}
-            onChange={(e) => setForm({ ...form, name: e.target.value })}
-            className="w-full px-4 py-2.5 rounded-xl border border-border bg-background text-foreground text-sm placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition-all"
-          />
+          <label style={{ display: "block", fontSize: "0.8rem", fontWeight: 600, color: "var(--foreground)", marginBottom: "0.375rem" }}>Full Name *</label>
+          <input required type="text" placeholder="Your full name" value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} style={INPUT} />
         </div>
         <div>
-          <label className="block text-sm font-medium text-foreground mb-1.5">Email Address *</label>
-          <input
-            required
-            type="email"
-            placeholder="you@email.com"
-            value={form.email}
-            onChange={(e) => setForm({ ...form, email: e.target.value })}
-            className="w-full px-4 py-2.5 rounded-xl border border-border bg-background text-foreground text-sm placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition-all"
-          />
+          <label style={{ display: "block", fontSize: "0.8rem", fontWeight: 600, color: "var(--foreground)", marginBottom: "0.375rem" }}>Email Address *</label>
+          <input required type="email" placeholder="you@email.com" value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} style={INPUT} />
         </div>
       </div>
       <div>
-        <label className="block text-sm font-medium text-foreground mb-1.5">Phone Number *</label>
-        <input
-          required
-          type="tel"
-          placeholder="+977 98XXXXXXXX"
-          value={form.phone}
-          onChange={(e) => setForm({ ...form, phone: e.target.value })}
-          className="w-full px-4 py-2.5 rounded-xl border border-border bg-background text-foreground text-sm placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition-all"
-        />
+        <label style={{ display: "block", fontSize: "0.8rem", fontWeight: 600, color: "var(--foreground)", marginBottom: "0.375rem" }}>Phone Number *</label>
+        <input required type="tel" placeholder="+977 98XXXXXXXX" value={form.phone} onChange={(e) => setForm({ ...form, phone: e.target.value })} style={INPUT} />
       </div>
       <div>
-        <label className="block text-sm font-medium text-foreground mb-1.5">Preferred Destination</label>
-        <div className="relative">
-          <select
-            value={form.destination}
-            onChange={(e) => setForm({ ...form, destination: e.target.value })}
-            className="w-full px-4 py-2.5 rounded-xl border border-border bg-background text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition-all appearance-none"
-          >
+        <label style={{ display: "block", fontSize: "0.8rem", fontWeight: 600, color: "var(--foreground)", marginBottom: "0.375rem" }}>Preferred Destination</label>
+        <div style={{ position: "relative" }}>
+          <select value={form.destination} onChange={(e) => setForm({ ...form, destination: e.target.value })} style={{ ...INPUT, appearance: "none" as const }}>
             <option value="">Select destination...</option>
-            {destinations.map((d) => (
-              <option key={d.slug} value={d.name}>{d.flag} {d.name}</option>
-            ))}
+            {destinations.map((d) => <option key={d.slug} value={d.name}>{d.flag} {d.name}</option>)}
             <option value="Not decided">Not decided yet</option>
           </select>
-          <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground pointer-events-none" />
+          <ChevronDown style={{ position: "absolute", right: "0.75rem", top: "50%", transform: "translateY(-50%)", width: 15, height: 15, color: "var(--muted-foreground)", pointerEvents: "none" }} />
         </div>
       </div>
       <div>
-        <label className="block text-sm font-medium text-foreground mb-1.5">Your Message</label>
-        <textarea
-          rows={3}
-          placeholder="Tell us about your education goals, current qualifications, budget..."
-          value={form.message}
-          onChange={(e) => setForm({ ...form, message: e.target.value })}
-          className="w-full px-4 py-2.5 rounded-xl border border-border bg-background text-foreground text-sm placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition-all resize-none"
-        />
+        <label style={{ display: "block", fontSize: "0.8rem", fontWeight: 600, color: "var(--foreground)", marginBottom: "0.375rem" }}>Your Message</label>
+        <textarea rows={3} placeholder="Tell us about your goals, qualifications, budget..." value={form.message} onChange={(e) => setForm({ ...form, message: e.target.value })} style={{ ...INPUT, resize: "none" }} />
       </div>
-      <button
-        type="submit"
-        className="w-full bg-primary text-white py-4 rounded-xl font-bold text-sm hover:bg-primary/90 transition-colors shadow-lg hover:shadow-xl"
-      >
+      <button type="submit" style={{ width: "100%", padding: "0.9rem", borderRadius: "0.875rem", background: "var(--primary)", color: "#fff", fontWeight: 700, fontSize: "0.9rem", border: "none", cursor: "pointer", boxShadow: "0 4px 16px rgba(21,101,192,0.30)" }}>
         Get Free Consultation →
       </button>
-      <p className="text-xs text-muted-foreground text-center">
-        100% free. No obligation. We respond within 24 hours.
-      </p>
+      <p style={{ fontSize: "0.75rem", color: "var(--muted-foreground)", textAlign: "center" }}>100% free. No obligation. We respond within 24 hours.</p>
     </form>
   );
 }
 
-/* ─── Page ─── */
+/* ── Page ── */
 export default function HomePage() {
   return (
-    <div className="flex flex-col">
-
-      {/* ════════════════════════════════════════════
-          HERO
-      ════════════════════════════════════════════ */}
-      <section className="relative overflow-hidden" style={{ minHeight: "92vh" }}>
-        {/* Background Image */}
-        <Image
-          src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1920&q=80"
-          alt="Students celebrating graduation"
-          fill
-          className="object-cover object-center"
-          priority
-        />
-        {/* Gradient overlay */}
-        <div
-          className="absolute inset-0"
-          style={{
-            background: "linear-gradient(135deg, rgba(21,101,192,0.92) 0%, rgba(21,101,192,0.75) 50%, rgba(13,71,161,0.88) 100%)",
-          }}
-        />
-
-        {/* Decorative blobs */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <motion.div
-            animate={{ scale: [1, 1.15, 1], opacity: [0.15, 0.25, 0.15] }}
-            transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-            style={{ position: "absolute", top: "-8rem", right: "10%", width: "24rem", height: "24rem", background: "#E8A317", borderRadius: "50%", filter: "blur(80px)" }}
-          />
+    <>
+      {/* ══════ HERO ══════ */}
+      <section style={{ background: "var(--primary)", color: "#fff", paddingTop: "5rem", paddingBottom: "5rem", position: "relative", overflow: "hidden" }}>
+        <div aria-hidden="true" style={{ position: "absolute", inset: 0, overflow: "hidden", pointerEvents: "none" }}>
+          <div style={{ position: "absolute", top: "-10rem", left: "-10rem", width: "24rem", height: "24rem", borderRadius: "50%", background: "var(--accent)", opacity: 0.08, filter: "blur(100px)" }} />
+          <div style={{ position: "absolute", bottom: "-5rem", right: "-5rem", width: "32rem", height: "32rem", borderRadius: "50%", background: "var(--accent)", opacity: 0.06, filter: "blur(120px)" }} />
         </div>
-
-        <div className="relative container-main flex flex-col justify-center" style={{ minHeight: "92vh", paddingTop: "5rem", paddingBottom: "8rem", zIndex: 10 }}>
-          <motion.div
-            initial="hidden"
-            animate="visible"
-            variants={fadeUp}
-            transition={{ duration: 0.7 }}
-            className="max-w-3xl"
-          >
-            {/* Badge */}
-            <div
-              className="inline-flex items-center gap-2 text-white text-sm font-medium rounded-full mb-8"
-              style={{ background: "rgba(255,255,255,0.12)", border: "1px solid rgba(255,255,255,0.25)", backdropFilter: "blur(12px)", padding: "0.5rem 1.25rem" }}
-            >
-              <span style={{ width: 8, height: 8, borderRadius: "50%", background: "#E8A317", display: "inline-block" }} />
-              Nepal&apos;s Most Trusted Study Abroad Partner Since 2010
-            </div>
-
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-[1.1] mb-6 tracking-tight">
-              Your Dream University
-              <span className="block mt-2" style={{ color: "#F5C542" }}>
-                Awaits — We Guide the Way
-              </span>
-            </h1>
-
-            <p className="text-lg lg:text-xl text-white/85 mb-10 max-w-2xl leading-relaxed font-light">
-              Over 2,000 Nepali students placed in top universities across 8 countries.
-              Expert counseling, IELTS prep, visa assistance &amp; full scholarship support.
-            </p>
-
-            <div className="flex flex-wrap items-center gap-4">
-              <Link
-                href="/book-consultation"
-                className="group inline-flex items-center gap-3 font-bold rounded-2xl text-white hover:scale-105 transition-all text-base shadow-xl"
-                style={{ padding: "0.875rem 2rem", background: "#E8A317" }}
-              >
-                Book Free Consultation
-                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-              </Link>
-              <Link
-                href="/study-destinations"
-                className="inline-flex items-center gap-3 rounded-2xl text-white hover:bg-white/10 transition-colors text-base font-medium"
-                style={{ padding: "0.875rem 2rem", border: "2px solid rgba(255,255,255,0.3)", backdropFilter: "blur(4px)" }}
-              >
-                Explore Destinations
-                <Globe className="w-5 h-5" />
-              </Link>
-            </div>
-
-            {/* Quick stats strip */}
-            <div className="mt-14 grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-2xl">
-              {stats.map((s) => (
-                <div key={s.label} className="text-center" style={{ background: "rgba(255,255,255,0.08)", border: "1px solid rgba(255,255,255,0.15)", borderRadius: "1rem", padding: "0.875rem 0.5rem", backdropFilter: "blur(8px)" }}>
-                  <div className="text-2xl font-black text-white mb-0.5">{s.value}</div>
-                  <div className="text-xs text-white/75 font-medium">{s.label}</div>
-                </div>
-              ))}
-            </div>
-          </motion.div>
+        <div className="container-main" style={{ maxWidth: 760, textAlign: "center", position: "relative", zIndex: 10 }}>
+          <span className="section-label" style={{ background: "rgba(232,163,23,0.18)", color: "#F5C542" }}>Nepal&apos;s Most Trusted Since 2010</span>
+          <h1 style={{ marginTop: "0.75rem", marginBottom: "1.25rem", fontSize: "clamp(2rem, 5vw, 3.25rem)", fontWeight: 900, letterSpacing: "-0.03em", lineHeight: 1.1 }}>
+            Your Dream University<br />
+            <span style={{ color: "#F5C542" }}>Awaits — We Guide the Way</span>
+          </h1>
+          <p style={{ fontSize: "1.1rem", lineHeight: 1.75, color: "rgba(255,255,255,0.82)", marginBottom: "2rem" }}>
+            Over 2,000 Nepali students placed in top universities across 8 countries.
+            Expert counseling, IELTS prep, visa assistance &amp; full scholarship support.
+          </p>
+          <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: "0.875rem" }}>
+            <Link href="/book-consultation" style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem", padding: "0.9rem 2rem", borderRadius: "0.875rem", background: "#E8A317", color: "#fff", fontWeight: 700, fontSize: "0.9rem", textDecoration: "none", boxShadow: "0 4px 20px rgba(232,163,23,0.45)" }}>
+              Book Free Consultation <ArrowRight style={{ width: 16, height: 16 }} />
+            </Link>
+            <Link href="/study-destinations" style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem", padding: "0.9rem 2rem", borderRadius: "0.875rem", border: "1.5px solid rgba(255,255,255,0.30)", color: "#fff", fontWeight: 600, fontSize: "0.9rem", textDecoration: "none", background: "rgba(255,255,255,0.08)" }}>
+              Explore Destinations <Globe style={{ width: 16, height: 16 }} />
+            </Link>
+          </div>
         </div>
       </section>
 
-      {/* ════════════════════════════════════════════
-          ANNOUNCEMENT BAR
-      ════════════════════════════════════════════ */}
-      <div className="bg-accent text-white py-3">
-        <div className="container-main flex flex-col sm:flex-row items-center justify-between gap-2 text-sm font-medium">
-          <div className="flex items-center gap-2">
-            <Clock className="w-4 h-4 shrink-0" />
-            <span>
-              <strong>July 2026 Intake</strong> applications are now open — Australia, Canada &amp; UK.
-            </span>
+      {/* ══════ TRUST STATS BAR ══════ */}
+      <div style={{ background: "#0D47A1", borderBottom: "1px solid rgba(255,255,255,0.08)" }}>
+        <div className="container-main">
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)" }} className="trust-grid">
+            {TRUST.map(({ icon: Icon, value, label }, i) => (
+              <div key={label} style={{ display: "flex", alignItems: "center", gap: "0.75rem", padding: "1.25rem 1.5rem", borderRight: i < TRUST.length - 1 ? "1px solid rgba(255,255,255,0.10)" : "none" }}>
+                <div style={{ width: 36, height: 36, borderRadius: "0.625rem", flexShrink: 0, background: "rgba(232,163,23,0.18)", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                  <Icon style={{ width: 16, height: 16, color: "#F5C542" }} />
+                </div>
+                <div>
+                  <div style={{ fontSize: "1.25rem", fontWeight: 900, color: "#fff", lineHeight: 1 }}>{value}</div>
+                  <div style={{ fontSize: "0.72rem", color: "rgba(255,255,255,0.65)", marginTop: 2 }}>{label}</div>
+                </div>
+              </div>
+            ))}
           </div>
-          <Link href="/book-consultation" className="flex items-center gap-1 font-bold text-white underline underline-offset-2 whitespace-nowrap hover:no-underline transition-all">
-            Apply Now <ChevronRight className="w-4 h-4" />
+        </div>
+      </div>
+
+      {/* ══════ ANNOUNCEMENT BAR ══════ */}
+      <div style={{ background: "var(--accent)", borderBottom: "1px solid rgba(0,0,0,0.08)" }}>
+        <div className="container-main" style={{ paddingTop: "0.75rem", paddingBottom: "0.75rem", display: "flex", alignItems: "center", justifyContent: "space-between", gap: "1rem", flexWrap: "wrap" }}>
+          <span style={{ fontSize: "0.875rem", fontWeight: 600, color: "#fff" }}>
+            <strong>July 2026 Intake</strong> applications are now open — Australia, Canada &amp; UK.
+          </span>
+          <Link href="/book-consultation" style={{ display: "inline-flex", alignItems: "center", gap: "0.25rem", fontSize: "0.875rem", fontWeight: 700, color: "#fff", textDecoration: "underline", whiteSpace: "nowrap" }}>
+            Apply Now <ChevronRight style={{ width: 14, height: 14 }} />
           </Link>
         </div>
       </div>
 
-      {/* ════════════════════════════════════════════
-          STUDY DESTINATIONS
-      ════════════════════════════════════════════ */}
-      <section className="bg-background section-py">
-        <div className="container-main">
-          <motion.div
-            initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}
-            className="text-center section-header"
-          >
+      {/* ══════ STUDY DESTINATIONS ══════ */}
+      <div style={{ background: "var(--background)", borderBottom: "1px solid var(--border)" }}>
+        <div className="container-main" style={{ paddingTop: "3.5rem", paddingBottom: "3.5rem" }}>
+          <div style={{ textAlign: "center", marginBottom: "2.5rem" }}>
             <span className="section-label">Study Destinations</span>
-            <h2 className="section-title">
+            <h2 style={{ marginTop: "0.5rem", fontSize: "clamp(1.5rem, 3vw, 2.25rem)", fontWeight: 900, color: "var(--foreground)", letterSpacing: "-0.02em" }}>
               Choose Where You Want to Study
             </h2>
-            <p className="section-desc">
+            <p style={{ marginTop: "0.75rem", fontSize: "1rem", color: "var(--muted-foreground)", lineHeight: 1.75, maxWidth: "54ch", marginInline: "auto" }}>
               Explore detailed guides for 8 top study destinations — eligibility, costs, visa steps, and scholarship opportunities.
             </p>
-          </motion.div>
+          </div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-5 lg:gap-7">
-            {destinations.map((d, i) => (
-              <motion.div
-                key={d.slug}
-                initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}
-                transition={{ delay: i * 0.06 }}
-              >
-                <Link
-                  href={`/study-destinations/${d.slug}`}
-                  className="group block relative overflow-hidden rounded-2xl shadow-md hover:shadow-xl transition-all duration-300"
-                  style={{ aspectRatio: "4/5" }}
-                >
-                  <Image
-                    src={d.image}
-                    alt={`Study in ${d.name}`}
-                    fill
-                    className="object-cover group-hover:scale-110 transition-transform duration-500"
-                    sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
-                  />
-                  {/* Gradient overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
-                  {/* Hover overlay */}
-                  <div className="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-
-                  <div className="absolute bottom-0 left-0 right-0 p-4">
-                    <div className="text-2xl mb-1.5">{d.flag}</div>
-                    <h3 className="text-white font-bold text-lg leading-tight mb-1">{d.name}</h3>
-                    <p className="text-white/75 text-xs leading-snug mb-3 line-clamp-2">{d.tagline}</p>
-                    <div className="inline-flex items-center gap-1 text-accent text-xs font-bold">
-                      Explore <ChevronRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
-                    </div>
-                  </div>
-                </Link>
-              </motion.div>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: "1.25rem" }} className="dest-grid">
+            {destinations.map((d) => (
+              <Link key={d.slug} href={`/study-destinations/${d.slug}`} style={{ textDecoration: "none", display: "flex", flexDirection: "column", borderRadius: "1rem", overflow: "hidden", border: "1px solid var(--border)" }}>
+                {/* Gradient banner */}
+                <div style={{ height: 120, background: `linear-gradient(135deg, ${d.color} 0%, ${d.color2} 100%)`, display: "flex", alignItems: "center", justifyContent: "center", fontSize: "3.5rem", flexShrink: 0 }}>
+                  {d.flag}
+                </div>
+                {/* Content */}
+                <div style={{ background: "var(--card)", padding: "1.25rem", display: "flex", flexDirection: "column", flex: 1 }}>
+                  <h3 style={{ color: "var(--foreground)", fontWeight: 800, fontSize: "0.95rem", marginBottom: "0.375rem" }}>{d.name}</h3>
+                  <p style={{ color: "var(--muted-foreground)", fontSize: "0.78rem", lineHeight: 1.6, flex: 1, marginBottom: "0.875rem" }}>{d.tagline}</p>
+                  <span style={{ display: "inline-flex", alignItems: "center", gap: "0.25rem", color: d.color, fontSize: "0.78rem", fontWeight: 700 }}>
+                    Explore <ChevronRight style={{ width: 13, height: 13 }} />
+                  </span>
+                </div>
+              </Link>
             ))}
           </div>
 
-          <div className="text-center mt-14">
-            <Link
-              href="/study-destinations"
-              className="inline-flex items-center gap-2 border-2 border-primary text-primary font-bold px-8 py-3.5 rounded-full hover:bg-primary hover:text-white transition-all text-sm"
-            >
-              View All Destinations <ArrowRight className="w-4 h-4" />
+          <div style={{ textAlign: "center", marginTop: "2.5rem" }}>
+            <Link href="/study-destinations" style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem", padding: "0.875rem 2rem", borderRadius: 999, border: "2px solid var(--primary)", color: "var(--primary)", fontWeight: 700, fontSize: "0.875rem", textDecoration: "none" }}>
+              View All Destinations <ArrowRight style={{ width: 15, height: 15 }} />
             </Link>
           </div>
         </div>
-      </section>
+      </div>
 
-      {/* ════════════════════════════════════════════
-          STATS BAND
-      ════════════════════════════════════════════ */}
-      <section style={{ background: "var(--primary)" }} className="section-py-sm">
-        <div className="container-main">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-10 text-center">
-            {stats.map((s, i) => (
-              <motion.div
-                key={s.label}
-                initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}
-                transition={{ delay: i * 0.1 }}
-              >
-                <div className="w-12 h-12 mx-auto rounded-xl flex items-center justify-center mb-3" style={{ background: "rgba(255,255,255,0.12)" }}>
-                  <s.icon className="w-6 h-6 text-white" />
-                </div>
-                <div className="text-4xl font-black text-white mb-1">{s.value}</div>
-                <div className="text-sm font-medium" style={{ color: "rgba(255,255,255,0.75)" }}>{s.label}</div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ════════════════════════════════════════════
-          OUR SERVICES
-      ════════════════════════════════════════════ */}
-      <section className="bg-muted section-py">
-        <div className="container-main">
-          <motion.div
-            initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}
-            className="text-center section-header"
-          >
+      {/* ══════ OUR SERVICES ══════ */}
+      <div style={{ background: "var(--muted)", borderBottom: "1px solid var(--border)" }}>
+        <div className="container-main" style={{ paddingTop: "3.5rem", paddingBottom: "3.5rem" }}>
+          <div style={{ textAlign: "center", marginBottom: "2.5rem" }}>
             <span className="section-label">Our Services</span>
-            <h2 className="section-title">
+            <h2 style={{ marginTop: "0.5rem", fontSize: "clamp(1.5rem, 3vw, 2.25rem)", fontWeight: 900, color: "var(--foreground)", letterSpacing: "-0.02em" }}>
               Everything You Need Under One Roof
             </h2>
-            <p className="section-desc">
-              From your first consultation to landing in your dream country — we handle every step of the process.
+            <p style={{ marginTop: "0.75rem", fontSize: "1rem", color: "var(--muted-foreground)", lineHeight: 1.75, maxWidth: "54ch", marginInline: "auto" }}>
+              From your first consultation to landing in your dream country — we handle every step.
             </p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-7 lg:gap-8">
-            {services.map((svc, i) => {
-              const Icon = iconMap[svc.icon] || GraduationCap;
+          </div>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "1.5rem" }} className="services-grid">
+            {services.map((svc) => {
+              const Icon = ICON_MAP[svc.icon] || GraduationCap;
               return (
-                <motion.div
-                  key={svc.title}
-                  initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}
-                  transition={{ delay: i * 0.08 }}
-                  className="group bg-card border border-border rounded-2xl p-8 hover:shadow-xl hover:-translate-y-1 hover:border-primary/30 transition-all duration-300"
-                >
-                  <div
-                    className="w-14 h-14 rounded-2xl flex items-center justify-center mb-5 group-hover:bg-primary transition-colors duration-300"
-                    style={{ background: "var(--primary-light, #E3F0FF)" }}
-                  >
-                    <Icon className="w-7 h-7 text-primary group-hover:text-white transition-colors duration-300" />
+                <div key={svc.title} style={{ background: "var(--card)", border: "1px solid var(--border)", borderRadius: "1rem", padding: "1.75rem", display: "flex", flexDirection: "column" }}>
+                  <div style={{ height: 3, background: "linear-gradient(90deg, var(--primary), rgba(21,101,192,0.3))", borderRadius: "2px 2px 0 0", margin: "-1.75rem -1.75rem 1.5rem" }} />
+                  <div style={{ width: 48, height: 48, borderRadius: "0.875rem", background: "#E3F0FF", display: "flex", alignItems: "center", justifyContent: "center", marginBottom: "1rem" }}>
+                    <Icon style={{ width: 22, height: 22, color: "var(--primary)" }} />
                   </div>
-                  <h3 className="font-bold text-xl text-foreground mb-3">{svc.title}</h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed">{svc.description}</p>
-                  <Link
-                    href="/services"
-                    className="inline-flex items-center gap-1.5 text-primary text-sm font-semibold mt-5 hover:gap-2.5 transition-all"
-                  >
-                    Learn more <ChevronRight className="w-4 h-4" />
+                  <h3 style={{ fontWeight: 800, fontSize: "1rem", color: "var(--foreground)", marginBottom: "0.5rem" }}>{svc.title}</h3>
+                  <p style={{ fontSize: "0.85rem", color: "var(--muted-foreground)", lineHeight: 1.75, flex: 1 }}>{svc.description}</p>
+                  <Link href="/services" style={{ display: "inline-flex", alignItems: "center", gap: "0.375rem", color: "var(--primary)", fontSize: "0.85rem", fontWeight: 700, textDecoration: "none", marginTop: "1.25rem" }}>
+                    Learn more <ChevronRight style={{ width: 14, height: 14 }} />
                   </Link>
-                </motion.div>
+                </div>
               );
             })}
           </div>
         </div>
-      </section>
+      </div>
 
-      {/* ════════════════════════════════════════════
-          HOW IT WORKS
-      ════════════════════════════════════════════ */}
-      <section className="bg-background section-py">
-        <div className="container-main">
-          <motion.div
-            initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}
-            className="text-center section-header"
-          >
+      {/* ══════ HOW IT WORKS ══════ */}
+      <div style={{ background: "var(--background)", borderBottom: "1px solid var(--border)" }}>
+        <div className="container-main" style={{ paddingTop: "3.5rem", paddingBottom: "3.5rem" }}>
+          <div style={{ textAlign: "center", marginBottom: "2.5rem" }}>
             <span className="section-label">How It Works</span>
-            <h2 className="section-title">
+            <h2 style={{ marginTop: "0.5rem", fontSize: "clamp(1.5rem, 3vw, 2.25rem)", fontWeight: 900, color: "var(--foreground)", letterSpacing: "-0.02em" }}>
               Your Journey to Study Abroad
             </h2>
-            <p className="section-desc">
+            <p style={{ marginTop: "0.75rem", fontSize: "1rem", color: "var(--muted-foreground)", lineHeight: 1.75, maxWidth: "54ch", marginInline: "auto" }}>
               A simple 5-step process — from your first consultation to landing at your dream university.
             </p>
-          </motion.div>
-
-          <div className="relative">
-            {/* Connector line */}
-            <div
-              className="hidden lg:block absolute top-10 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-border to-transparent"
-              style={{ marginLeft: "10%", marginRight: "10%" }}
-            />
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8">
-              {[
-                { step: 1, title: "Free Consultation", desc: "Discuss your goals, budget & dream destination with our experts." },
-                { step: 2, title: "University Selection", desc: "We shortlist universities & craft compelling applications for you." },
-                { step: 3, title: "Test Preparation", desc: "IELTS, PTE, TOEFL coaching to hit your target score." },
-                { step: 4, title: "Visa Application", desc: "Document prep, financial structuring & interview coaching." },
-                { step: 5, title: "Pre-Departure", desc: "Airport briefing, accommodation & student community connections." },
-              ].map((s, i) => (
-                <motion.div
-                  key={s.step}
-                  initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}
-                  transition={{ delay: i * 0.12 }}
-                  className="flex flex-col items-center text-center"
-                >
-                  <div
-                    className="w-20 h-20 rounded-full flex items-center justify-center text-2xl font-black text-white mb-5 shadow-lg relative z-10"
-                    style={{ background: "var(--primary)" }}
-                  >
-                    {s.step}
-                  </div>
-                  <h3 className="font-bold text-base text-foreground mb-2">{s.title}</h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed">{s.desc}</p>
-                </motion.div>
-              ))}
-            </div>
           </div>
-
-          <div className="text-center mt-12">
-            <Link
-              href="/book-consultation"
-              className="inline-flex items-center gap-2 bg-primary text-white font-bold px-8 py-3.5 rounded-full hover:bg-primary/90 transition-all shadow-lg hover:shadow-xl text-sm"
-            >
-              Start Your Journey Today <ArrowRight className="w-4 h-4" />
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(5, 1fr)", gap: "1.25rem" }} className="steps-grid">
+            {STEPS.map(({ n, title, desc }) => (
+              <div key={n} style={{ background: "var(--card)", border: "1px solid var(--border)", borderRadius: "1rem", padding: "1.5rem", position: "relative", overflow: "hidden" }}>
+                <div style={{ fontSize: "3rem", fontWeight: 900, lineHeight: 1, marginBottom: "0.75rem", color: "transparent", WebkitTextStroke: "2px var(--primary)", opacity: 0.15, userSelect: "none" }} aria-hidden="true">{n}</div>
+                <h3 style={{ fontSize: "0.9rem", fontWeight: 800, color: "var(--foreground)", marginBottom: "0.5rem" }}>{title}</h3>
+                <p style={{ fontSize: "0.82rem", color: "var(--muted-foreground)", lineHeight: 1.65 }}>{desc}</p>
+              </div>
+            ))}
+          </div>
+          <div style={{ textAlign: "center", marginTop: "2.5rem" }}>
+            <Link href="/book-consultation" style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem", padding: "0.875rem 2rem", borderRadius: 999, background: "var(--primary)", color: "#fff", fontWeight: 700, fontSize: "0.875rem", textDecoration: "none", boxShadow: "0 4px 16px rgba(21,101,192,0.30)" }}>
+              Start Your Journey Today <ArrowRight style={{ width: 15, height: 15 }} />
             </Link>
           </div>
         </div>
-      </section>
+      </div>
 
-      {/* ════════════════════════════════════════════
-          TESTIMONIALS
-      ════════════════════════════════════════════ */}
-      <section style={{ background: "var(--primary)" }} className="section-py">
-        <div className="container-main">
-          <motion.div
-            initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}
-            className="text-center section-header"
-          >
-            <span className="inline-block text-xs font-bold uppercase tracking-widest mb-4 px-4 py-1.5 rounded-full" style={{ background: "rgba(232,163,23,0.2)", color: "#F5C542", letterSpacing: "0.12em" }}>
-              Student Stories
-            </span>
-            <h2 className="section-title text-white">
+      {/* ══════ TESTIMONIALS ══════ */}
+      <div style={{ background: "var(--primary)", borderBottom: "1px solid rgba(255,255,255,0.08)" }}>
+        <div className="container-main" style={{ paddingTop: "3.5rem", paddingBottom: "3.5rem" }}>
+          <div style={{ textAlign: "center", marginBottom: "2.5rem" }}>
+            <span className="section-label" style={{ background: "rgba(232,163,23,0.18)", color: "#F5C542" }}>Student Stories</span>
+            <h2 style={{ marginTop: "0.5rem", fontSize: "clamp(1.5rem, 3vw, 2.25rem)", fontWeight: 900, color: "#fff", letterSpacing: "-0.02em" }}>
               Real Students. Real Success.
             </h2>
-            <p className="section-desc" style={{ color: "rgba(255,255,255,0.75)" }}>
+            <p style={{ marginTop: "0.75rem", fontSize: "1rem", color: "rgba(255,255,255,0.75)", lineHeight: 1.75, maxWidth: "54ch", marginInline: "auto" }}>
               Hear from the 2,000+ Nepali students who achieved their study abroad dreams with Gurumantra.
             </p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7 lg:gap-8">
-            {testimonials.slice(0, 3).map((t, i) => (
-              <motion.div
-                key={t.name}
-                initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}
-                transition={{ delay: i * 0.1 }}
-                className="rounded-2xl p-8 flex flex-col gap-5"
-                style={{ background: "rgba(255,255,255,0.07)", border: "1px solid rgba(255,255,255,0.12)" }}
-              >
-                <div className="flex gap-1">
+          </div>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "1.5rem" }} className="testi-grid">
+            {testimonials.slice(0, 3).map((t) => (
+              <div key={t.name} style={{ borderRadius: "1rem", padding: "1.75rem", display: "flex", flexDirection: "column", gap: "1rem", background: "rgba(255,255,255,0.07)", border: "1px solid rgba(255,255,255,0.12)" }}>
+                <div style={{ display: "flex", gap: 3 }}>
                   {Array.from({ length: 5 }).map((_, j) => (
-                    <Star key={j} className="w-4 h-4 fill-amber-400 text-amber-400" />
+                    <Star key={j} style={{ width: 14, height: 14, fill: "#FBBF24", color: "#FBBF24" }} />
                   ))}
                 </div>
-                <p className="text-sm leading-relaxed italic flex-1" style={{ color: "rgba(255,255,255,0.88)" }}>
-                  &ldquo;{t.quote}&rdquo;
-                </p>
+                <p style={{ fontSize: "0.875rem", lineHeight: 1.8, fontStyle: "italic", color: "rgba(255,255,255,0.88)", flex: 1 }}>&ldquo;{t.quote}&rdquo;</p>
                 <div style={{ borderTop: "1px solid rgba(255,255,255,0.12)", paddingTop: "1rem" }}>
-                  <div className="font-bold text-white">{t.name}</div>
-                  <div className="text-xs mt-0.5" style={{ color: "#F5C542" }}>
-                    {t.program} — {t.university}
-                  </div>
+                  <div style={{ fontWeight: 700, color: "#fff", fontSize: "0.875rem" }}>{t.name}</div>
+                  <div style={{ fontSize: "0.75rem", color: "#F5C542", marginTop: 2 }}>{t.program} — {t.university}</div>
                 </div>
-              </motion.div>
+              </div>
             ))}
           </div>
-
-          <div className="text-center mt-10">
-            <Link
-              href="/success-stories"
-              className="inline-flex items-center gap-2 border-2 border-white/30 text-white font-bold px-8 py-4 rounded-full hover:bg-white/10 transition-all text-sm"
-            >
-              Read All Success Stories <ArrowRight className="w-4 h-4" />
+          <div style={{ textAlign: "center", marginTop: "2rem" }}>
+            <Link href="/success-stories" style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem", padding: "0.875rem 2rem", borderRadius: 999, border: "1.5px solid rgba(255,255,255,0.30)", color: "#fff", fontWeight: 700, fontSize: "0.875rem", textDecoration: "none", background: "rgba(255,255,255,0.08)" }}>
+              Read All Success Stories <ArrowRight style={{ width: 15, height: 15 }} />
             </Link>
           </div>
         </div>
-      </section>
+      </div>
 
-      {/* ════════════════════════════════════════════
-          CONSULTATION FORM + WHY US
-      ════════════════════════════════════════════ */}
-      <section className="bg-muted section-py">
-        <div className="container-main">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 lg:gap-20 items-start">
-            {/* Left: Why Choose Us */}
-            <motion.div
-              initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}
-            >
-              <span className="inline-block text-xs font-bold uppercase tracking-widest text-accent mb-4 px-4 py-1.5 rounded-full bg-accent/10">
-                Why Choose Us
-              </span>
-              <h2 className="text-3xl lg:text-4xl font-extrabold text-foreground mb-4 tracking-tight">
-                Nepal&apos;s Most Trusted <br />
-                <span className="text-primary">Study Abroad Partner</span>
+      {/* ══════ WHY US + FORM ══════ */}
+      <div style={{ background: "var(--muted)", borderBottom: "1px solid var(--border)" }}>
+        <div className="container-main" style={{ paddingTop: "3.5rem", paddingBottom: "3.5rem" }}>
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "3.5rem", alignItems: "start" }} className="why-form-grid">
+
+            {/* Left */}
+            <div>
+              <span className="section-label">Why Choose Us</span>
+              <h2 style={{ marginTop: "0.75rem", marginBottom: "0.75rem", fontSize: "clamp(1.375rem, 2.5vw, 2rem)", fontWeight: 900, color: "var(--foreground)", letterSpacing: "-0.02em" }}>
+                Nepal&apos;s Most Trusted <span style={{ color: "var(--primary)" }}>Study Abroad Partner</span>
               </h2>
-              <p className="text-muted-foreground leading-relaxed mb-8">
-                With over 15 years of experience and 2,000+ successful students, we provide
-                the most comprehensive study abroad support in Nepal.
+              <p style={{ fontSize: "0.9rem", color: "var(--muted-foreground)", lineHeight: 1.75, marginBottom: "1.75rem" }}>
+                With over 15 years of experience and 2,000+ successful students, we provide the most comprehensive study abroad support in Nepal.
               </p>
-
-              <div className="flex flex-col gap-6 mb-10">
-                {whyUs.map((w, i) => (
-                  <motion.div
-                    key={w.title}
-                    initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}
-                    transition={{ delay: i * 0.1 }}
-                    className="flex items-start gap-4"
-                  >
-                    <div className="w-9 h-9 rounded-xl bg-primary flex items-center justify-center shrink-0 mt-0.5">
-                      <CheckCircle className="w-4.5 h-4.5 text-white" />
+              <div style={{ display: "flex", flexDirection: "column", gap: "1rem", marginBottom: "1.75rem" }}>
+                {whyUs.map((w) => (
+                  <div key={w.title} style={{ display: "flex", alignItems: "flex-start", gap: "0.875rem" }}>
+                    <div style={{ width: 34, height: 34, borderRadius: "0.625rem", background: "var(--primary)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                      <CheckCircle style={{ width: 16, height: 16, color: "#fff" }} />
                     </div>
                     <div>
-                      <h4 className="font-bold text-foreground mb-0.5">{w.title}</h4>
-                      <p className="text-sm text-muted-foreground leading-relaxed">{w.desc}</p>
+                      <h4 style={{ fontWeight: 700, fontSize: "0.9rem", color: "var(--foreground)", marginBottom: "0.2rem" }}>{w.title}</h4>
+                      <p style={{ fontSize: "0.82rem", color: "var(--muted-foreground)", lineHeight: 1.7 }}>{w.desc}</p>
                     </div>
-                  </motion.div>
+                  </div>
                 ))}
               </div>
+              {/* Contact card */}
+              <div style={{ background: "var(--card)", border: "1px solid var(--border)", borderRadius: "1rem", padding: "1.25rem", display: "flex", flexDirection: "column", gap: "0.875rem" }}>
+                {[
+                  { icon: <Phone style={{ width: 14, height: 14, color: "var(--primary)" }} />, label: "Call Us",      value: "+977-9802356302",                                     href: "tel:+9779802356302" },
+                  { icon: <MapPin style={{ width: 14, height: 14, color: "var(--primary)" }} />, label: "Visit Us",    value: "Chabahil Central Complex, 3rd Floor, Kathmandu" },
+                  { icon: <Clock style={{ width: 14, height: 14, color: "var(--primary)" }} />,  label: "Hours",       value: "Sun – Fri  9:00 AM – 6:00 PM" },
+                ].map(({ icon, label, value, href }) => (
+                  <div key={label} style={{ display: "flex", alignItems: "flex-start", gap: "0.75rem" }}>
+                    <div style={{ width: 30, height: 30, borderRadius: "0.5rem", background: "#E3F0FF", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                      {icon}
+                    </div>
+                    <div>
+                      <div style={{ fontWeight: 600, fontSize: "0.78rem", color: "var(--foreground)" }}>{label}</div>
+                      {href
+                        ? <a href={href} style={{ fontSize: "0.82rem", color: "var(--primary)", textDecoration: "none" }}>{value}</a>
+                        : <span style={{ fontSize: "0.82rem", color: "var(--muted-foreground)" }}>{value}</span>
+                      }
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
 
-              {/* Contact info */}
-              <div className="flex flex-col gap-3 p-5 rounded-2xl border border-border bg-card">
-                <div className="flex items-center gap-3 text-sm text-muted-foreground">
-                  <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center shrink-0">
-                    <Phone className="w-4 h-4 text-primary" />
-                  </div>
-                  <div>
-                    <div className="font-semibold text-foreground">Call Us Directly</div>
-                    <a href="tel:+9779802356302" className="text-primary hover:underline">+977-9802356302</a>
-                  </div>
+            {/* Right: Form */}
+            <div style={{ background: "var(--card)", border: "1px solid var(--border)", borderRadius: "1.25rem", padding: "2.25rem", boxShadow: "0 8px 32px rgba(0,0,0,0.07)" }}>
+              <h3 style={{ fontSize: "1.25rem", fontWeight: 900, color: "var(--foreground)", marginBottom: "0.375rem" }}>Get a Free Consultation</h3>
+              <p style={{ fontSize: "0.85rem", color: "var(--muted-foreground)", marginBottom: "1.5rem" }}>
+                One of our expert counselors will get back to you within 24 hours.
+              </p>
+              <ConsultationForm />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* ══════ BLOG ══════ */}
+      <div style={{ background: "var(--background)", borderBottom: "1px solid var(--border)" }}>
+        <div className="container-main" style={{ paddingTop: "3.5rem", paddingBottom: "3.5rem" }}>
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: "1rem", flexWrap: "wrap", marginBottom: "2.5rem" }}>
+            <div>
+              <span className="section-label">Latest Updates</span>
+              <h2 style={{ marginTop: "0.5rem", fontSize: "clamp(1.375rem, 3vw, 2rem)", fontWeight: 900, color: "var(--foreground)", letterSpacing: "-0.02em" }}>News &amp; Guides</h2>
+            </div>
+            <Link href="/blog" style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem", padding: "0.75rem 1.5rem", borderRadius: 999, border: "1.5px solid rgba(21,101,192,0.30)", color: "var(--primary)", fontWeight: 600, fontSize: "0.875rem", textDecoration: "none", whiteSpace: "nowrap" }}>
+              View All Articles <ArrowRight style={{ width: 14, height: 14 }} />
+            </Link>
+          </div>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "1.5rem" }} className="blog-home-grid">
+            {blogPosts.map((post) => (
+              <div key={post.slug} style={{ background: "var(--card)", border: "1px solid var(--border)", borderRadius: "1rem", overflow: "hidden", display: "flex", flexDirection: "column" }}>
+                <div style={{ height: 3, background: "linear-gradient(90deg, var(--primary), rgba(21,101,192,0.3))" }} />
+                <div style={{ height: 160, background: "linear-gradient(135deg, var(--primary) 0%, #1E88E5 100%)", display: "flex", alignItems: "center", justifyContent: "center", position: "relative" }}>
+                  <BookOpen style={{ width: 48, height: 48, color: "#fff", opacity: 0.15 }} />
+                  <span style={{ position: "absolute", top: "1rem", left: "1rem", fontSize: "0.7rem", fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.08em", color: "#fff", padding: "0.3rem 0.75rem", borderRadius: 999, background: "rgba(255,255,255,0.18)" }}>{post.category}</span>
                 </div>
-                <div className="flex items-center gap-3 text-sm text-muted-foreground">
-                  <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center shrink-0">
-                    <MapPin className="w-4 h-4 text-primary" />
+                <div style={{ padding: "1.5rem", display: "flex", flexDirection: "column", flex: 1 }}>
+                  <div style={{ display: "flex", alignItems: "center", gap: "0.5rem", fontSize: "0.75rem", color: "var(--muted-foreground)", marginBottom: "0.75rem" }}>
+                    <span>{post.date}</span><span style={{ opacity: 0.4 }}>•</span><span>{post.readTime}</span>
                   </div>
-                  <div>
-                    <div className="font-semibold text-foreground">Visit Our Office</div>
-                    <span>Chabahil Central Complex, 3rd Floor, Kathmandu, Nepal</span>
-                  </div>
-                </div>
-                <div className="flex items-center gap-3 text-sm text-muted-foreground">
-                  <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center shrink-0">
-                    <Clock className="w-4 h-4 text-primary" />
-                  </div>
-                  <div>
-                    <div className="font-semibold text-foreground">Office Hours</div>
-                    <span>Mon–Fri 9:00 AM–6:00 PM &nbsp;|&nbsp; Sat 10:00 AM–4:00 PM</span>
+                  <h3 style={{ fontWeight: 800, fontSize: "0.95rem", color: "var(--foreground)", lineHeight: 1.45, marginBottom: "0.75rem", display: "-webkit-box", WebkitLineClamp: 2, WebkitBoxOrient: "vertical", overflow: "hidden" }}>{post.title}</h3>
+                  <p style={{ fontSize: "0.82rem", color: "var(--muted-foreground)", lineHeight: 1.7, flex: 1, marginBottom: "1.25rem", display: "-webkit-box", WebkitLineClamp: 3, WebkitBoxOrient: "vertical", overflow: "hidden" }}>{post.excerpt}</p>
+                  <div style={{ borderTop: "1px solid var(--border)", paddingTop: "1rem" }}>
+                    <Link href={`/blog/${post.slug}`} style={{ display: "inline-flex", alignItems: "center", gap: "0.375rem", color: "var(--primary)", fontSize: "0.82rem", fontWeight: 700, textDecoration: "none" }}>
+                      Read Article <ArrowRight style={{ width: 13, height: 13 }} />
+                    </Link>
                   </div>
                 </div>
               </div>
-            </motion.div>
-
-            {/* Right: Form */}
-            <motion.div
-              initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}
-              transition={{ delay: 0.2 }}
-              className="bg-card border border-border rounded-3xl p-10 shadow-xl"
-            >
-              <h3 className="text-2xl font-extrabold text-foreground mb-2">
-                Get a Free Consultation
-              </h3>
-              <p className="text-sm text-muted-foreground mb-6">
-                Fill in the form and one of our expert counselors will get back to you within 24 hours.
-              </p>
-              <ConsultationForm />
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* ════════════════════════════════════════════
-          BLOG / LATEST NEWS
-      ════════════════════════════════════════════ */}
-      <section className="bg-background section-py">
-        <div className="container-main">
-          <motion.div
-            initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}
-            className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 section-header"
-          >
-            <div>
-              <span className="inline-block text-xs font-bold uppercase tracking-widest text-accent mb-3 px-4 py-1.5 rounded-full bg-accent/10">
-                Latest Updates
-              </span>
-              <h2 className="text-3xl lg:text-4xl font-extrabold text-foreground tracking-tight">
-                News &amp; Guides
-              </h2>
-            </div>
-            <Link
-              href="/blog"
-              className="inline-flex items-center gap-2 text-primary font-semibold text-sm border border-primary/30 px-6 py-3.5 rounded-full hover:bg-primary hover:text-white transition-all whitespace-nowrap"
-            >
-              View All Articles <ArrowRight className="w-4 h-4" />
-            </Link>
-          </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-7 lg:gap-8">
-            {blogPosts.map((post, i) => (
-              <motion.div
-                key={post.slug}
-                initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}
-                transition={{ delay: i * 0.1 }}
-                className="group bg-card border border-border rounded-2xl overflow-hidden hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
-              >
-                {/* Blog image placeholder */}
-                <div
-                  className="h-48 relative overflow-hidden"
-                  style={{ background: `linear-gradient(135deg, var(--primary) 0%, #1E88E5 100%)` }}
-                >
-                  <div className="absolute inset-0 flex items-center justify-center opacity-20">
-                    <BookOpen className="w-24 h-24 text-white" />
-                  </div>
-                  <div className="absolute top-4 left-4">
-                    <span className="text-xs font-bold uppercase tracking-wider text-white px-3 py-1 rounded-full" style={{ background: "rgba(255,255,255,0.2)", backdropFilter: "blur(8px)" }}>
-                      {post.category}
-                    </span>
-                  </div>
-                </div>
-                <div className="p-6">
-                  <div className="flex items-center gap-3 text-xs text-muted-foreground mb-3">
-                    <span>{post.date}</span>
-                    <span>•</span>
-                    <span>{post.readTime}</span>
-                  </div>
-                  <h3 className="font-bold text-foreground text-base leading-snug mb-3 group-hover:text-primary transition-colors line-clamp-2">
-                    {post.title}
-                  </h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed line-clamp-3 mb-4">
-                    {post.excerpt}
-                  </p>
-                  <Link
-                    href={`/blog/${post.slug}`}
-                    className="inline-flex items-center gap-1.5 text-primary text-sm font-semibold hover:gap-2.5 transition-all"
-                  >
-                    Read More <ChevronRight className="w-4 h-4" />
-                  </Link>
-                </div>
-              </motion.div>
             ))}
           </div>
         </div>
-      </section>
+      </div>
 
-      {/* ════════════════════════════════════════════
-          CTA BANNER
-      ════════════════════════════════════════════ */}
-      <section className="relative overflow-hidden section-py">
-        <Image
-          src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=1920&q=80"
-          alt="Graduates celebrating"
-          fill
-          className="object-cover object-center"
-        />
-        <div className="absolute inset-0" style={{ background: "linear-gradient(135deg, rgba(13,71,161,0.94) 0%, rgba(21,101,192,0.88) 100%)" }} />
-
-        <div className="relative container-main text-center" style={{ zIndex: 10 }}>
-          <motion.div
-            initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}
-            className="max-w-3xl mx-auto"
-          >
-            <div className="w-16 h-16 mx-auto rounded-2xl bg-white/10 flex items-center justify-center mb-6 border border-white/20">
-              <GraduationCap className="w-8 h-8 text-white" />
-            </div>
-            <h2 className="text-3xl lg:text-5xl font-extrabold text-white mb-5 tracking-tight">
+      {/* ══════ CTA ══════ */}
+      <div style={{ background: "var(--muted)" }}>
+        <div className="container-main" style={{ paddingTop: "3rem", paddingBottom: "3rem" }}>
+          <div style={{ background: "var(--primary)", borderRadius: "1.25rem", padding: "3rem 2.5rem", textAlign: "center" }}>
+            <span className="section-label" style={{ background: "rgba(232,163,23,0.18)", color: "#F5C542" }}>Get Started Today</span>
+            <h2 style={{ marginTop: "0.75rem", marginBottom: "1rem", fontSize: "clamp(1.5rem, 3vw, 2.25rem)", fontWeight: 900, color: "#fff", letterSpacing: "-0.02em" }}>
               Your Global Future Starts Today
             </h2>
-            <p className="text-lg text-white/80 max-w-xl mx-auto mb-10 leading-relaxed">
+            <p style={{ fontSize: "1rem", color: "rgba(255,255,255,0.80)", lineHeight: 1.75, marginBottom: "2rem", maxWidth: "50ch", marginInline: "auto" }}>
               Join 2,000+ Nepali students who trusted Gurumantra to take them from Kathmandu to the world&apos;s best universities.
             </p>
-            <div className="flex flex-wrap items-center justify-center gap-4">
-              <Link
-                href="/book-consultation"
-                className="inline-flex items-center gap-3 font-bold rounded-2xl text-white hover:scale-105 transition-all shadow-xl text-base"
-                style={{ padding: "1rem 2.25rem", background: "#E8A317" }}
-              >
-                Book Free Consultation <ArrowRight className="w-5 h-5" />
+            <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: "0.875rem" }}>
+              <Link href="/book-consultation" style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem", padding: "0.9rem 2rem", borderRadius: "0.875rem", background: "#E8A317", color: "#fff", fontWeight: 700, fontSize: "0.9rem", textDecoration: "none", boxShadow: "0 4px 20px rgba(232,163,23,0.45)" }}>
+                Book Free Consultation <ArrowRight style={{ width: 16, height: 16 }} />
               </Link>
-              <a
-                href="tel:+9779802356302"
-                className="inline-flex items-center gap-3 rounded-2xl text-white font-bold hover:bg-white/10 transition-colors text-base"
-                style={{ padding: "1rem 2.25rem", border: "2px solid rgba(255,255,255,0.3)" }}
-              >
-                <Phone className="w-5 h-5" /> Call Us Now
+              <a href="tel:+9779802356302" style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem", padding: "0.9rem 2rem", borderRadius: "0.875rem", border: "1.5px solid rgba(255,255,255,0.30)", color: "#fff", fontWeight: 600, fontSize: "0.9rem", textDecoration: "none", background: "rgba(255,255,255,0.08)" }}>
+                <Phone style={{ width: 16, height: 16 }} /> Call Us Now
               </a>
             </div>
-          </motion.div>
+          </div>
         </div>
-      </section>
+      </div>
 
-      {/* JSON-LD Structured Data */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "EducationalOrganization",
-            name: "Gurumantra Education Consultancy",
-            url: "https://gurumantra.com.np",
-            description: "Nepal's premium study abroad consultancy with 2,000+ students placed worldwide.",
-            address: { "@type": "PostalAddress", streetAddress: "Chabahil Central Complex, 3rd Floor", addressLocality: "Kathmandu", addressCountry: "NP" },
-            telephone: "+977-9802356302",
-            areaServed: "Nepal",
-          }),
-        }}
-      />
-    </div>
+
+      <style>{`
+        @media (max-width: 1024px) {
+          .dest-grid      { grid-template-columns: repeat(2, 1fr) !important; }
+          .steps-grid     { grid-template-columns: repeat(3, 1fr) !important; }
+          .why-form-grid  { grid-template-columns: 1fr !important; }
+        }
+        @media (max-width: 768px) {
+          .services-grid  { grid-template-columns: 1fr 1fr !important; }
+          .testi-grid     { grid-template-columns: 1fr !important; }
+          .blog-home-grid { grid-template-columns: 1fr 1fr !important; }
+          .steps-grid     { grid-template-columns: 1fr 1fr !important; }
+          .trust-grid     { grid-template-columns: 1fr 1fr !important; }
+        }
+        @media (max-width: 540px) {
+          .dest-grid      { grid-template-columns: 1fr 1fr !important; }
+          .services-grid  { grid-template-columns: 1fr !important; }
+          .blog-home-grid { grid-template-columns: 1fr !important; }
+          .steps-grid     { grid-template-columns: 1fr !important; }
+          .form-row       { grid-template-columns: 1fr !important; }
+        }
+      `}</style>
+    </>
   );
 }

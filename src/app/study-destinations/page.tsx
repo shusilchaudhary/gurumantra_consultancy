@@ -1,293 +1,190 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import Image from "next/image";
 import { ChevronRight, ArrowRight, CheckCircle } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Study Destinations — Study Abroad from Nepal 2026",
-  description: "Explore 8 top study destinations for Nepali students: Australia, Canada, UK, USA, New Zealand, Germany, Japan, Ireland. Detailed guides with costs, visa steps, scholarships.",
+  description: "Explore 8 top study destinations for Nepali students: Australia, Canada, UK, USA, New Zealand, Germany, Japan, Ireland.",
 };
 
 const destinations = [
-  {
-    name: "Australia",
-    slug: "australia",
-    flag: "🇦🇺",
-    tagline: "World-class universities & up to 4 years post-study work rights",
-    image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=800&q=80",
-    highlights: ["7 top-100 universities", "48 hrs/fortnight work", "2–4 yr post-study visa"],
-    badge: "Most Popular",
-    badgeColor: "#E8A317",
-  },
-  {
-    name: "Canada",
-    slug: "canada",
-    flag: "🇨🇦",
-    tagline: "Clear PR pathway, co-op programs & affordable world-class education",
-    image: "https://images.unsplash.com/photo-1517935706615-2717063c2225?auto=format&fit=crop&w=800&q=80",
-    highlights: ["3-year PGWP", "Express Entry PR", "Affordable tuition"],
-    badge: "PR Friendly",
-    badgeColor: "#1565C0",
-  },
-  {
-    name: "United Kingdom",
-    slug: "uk",
-    flag: "🇬🇧",
-    tagline: "1-year Master's, globally respected degrees & Graduate Route visa",
-    image: "https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?auto=format&fit=crop&w=800&q=80",
-    highlights: ["1-year Master's", "2-yr Graduate Route", "Top 10 global unis"],
-    badge: "Fast Degree",
-    badgeColor: "#7B1FA2",
-  },
-  {
-    name: "United States",
-    slug: "usa",
-    flag: "🇺🇸",
-    tagline: "Best universities globally, OPT work rights & research opportunities",
-    image: "https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?auto=format&fit=crop&w=800&q=80",
-    highlights: ["50+ top-200 unis", "3-yr STEM OPT", "Flexible curriculum"],
-    badge: "Top Research",
-    badgeColor: "#1565C0",
-  },
-  {
-    name: "New Zealand",
-    slug: "new-zealand",
-    flag: "🇳🇿",
-    tagline: "Safe, scenic & English-speaking with strong student support",
-    image: "https://images.unsplash.com/photo-1507699622108-4be3abd695ad?auto=format&fit=crop&w=800&q=80",
-    highlights: ["#2 safest country", "3-yr work visa", "Affordable living"],
-    badge: "Safe & Scenic",
-    badgeColor: "#2E7D32",
-  },
-  {
-    name: "Germany",
-    slug: "germany",
-    flag: "🇩🇪",
-    tagline: "Tuition-free public universities, strong engineering sector & EU access",
-    image: "https://images.unsplash.com/photo-1467269204594-9661b134dd2b?auto=format&fit=crop&w=800&q=80",
-    highlights: ["Zero tuition (public)", "18-mo job seeker visa", "EU Blue Card"],
-    badge: "Tuition Free",
-    badgeColor: "#E8A317",
-  },
-  {
-    name: "Japan",
-    slug: "japan",
-    flag: "🇯🇵",
-    tagline: "MEXT scholarships, tech innovation & affordable national universities",
-    image: "https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?auto=format&fit=crop&w=800&q=80",
-    highlights: ["MEXT full scholarship", "~NPR 5L/yr tuition", "100K+ Nepalis"],
-    badge: "Scholarship",
-    badgeColor: "#C62828",
-  },
-  {
-    name: "Ireland",
-    slug: "ireland",
-    flag: "🇮🇪",
-    tagline: "English-speaking EU country, tech hub & 2-year Stay Back visa",
-    image: "https://images.unsplash.com/photo-1564959130747-897fb406b9af?auto=format&fit=crop&w=800&q=80",
-    highlights: ["Google/Meta/Apple HQ", "2-yr Stay Back", "EU job market"],
-    badge: "Tech Hub",
-    badgeColor: "#2E7D32",
-  },
+  { name: "Australia",      slug: "australia",   flag: "🇦🇺", tagline: "World-class universities & up to 4 years post-study work rights",      color: "#1565C0", color2: "#0D47A1", highlights: ["7 top-100 universities", "48 hrs/fortnight work", "2–4 yr post-study visa"], badge: "Most Popular",  badgeColor: "#E8A317" },
+  { name: "Canada",         slug: "canada",      flag: "🇨🇦", tagline: "Clear PR pathway, co-op programs & affordable world-class education",    color: "#B71C1C", color2: "#7F0000", highlights: ["3-year PGWP", "Express Entry PR", "Affordable tuition"],                    badge: "PR Friendly",  badgeColor: "#1565C0" },
+  { name: "United Kingdom", slug: "uk",          flag: "🇬🇧", tagline: "1-year Master's, globally respected degrees & Graduate Route visa",      color: "#4A148C", color2: "#1A0050", highlights: ["1-year Master's", "2-yr Graduate Route", "Top 10 global unis"],            badge: "Fast Degree",  badgeColor: "#7B1FA2" },
+  { name: "United States",  slug: "usa",         flag: "🇺🇸", tagline: "Best universities globally, OPT work rights & research opportunities",   color: "#1B5E20", color2: "#003300", highlights: ["50+ top-200 unis", "3-yr STEM OPT", "Flexible curriculum"],               badge: "Top Research", badgeColor: "#1565C0" },
+  { name: "New Zealand",    slug: "new-zealand", flag: "🇳🇿", tagline: "Safe, scenic & English-speaking with strong student support",             color: "#006064", color2: "#00363a", highlights: ["#2 safest country", "3-yr work visa", "Affordable living"],               badge: "Safe & Scenic",badgeColor: "#2E7D32" },
+  { name: "Germany",        slug: "germany",     flag: "🇩🇪", tagline: "Tuition-free public universities, strong engineering sector & EU access", color: "#E65100", color2: "#8D3100", highlights: ["Zero tuition (public)", "18-mo job seeker visa", "EU Blue Card"],         badge: "Tuition Free", badgeColor: "#E8A317" },
+  { name: "Japan",          slug: "japan",       flag: "🇯🇵", tagline: "MEXT scholarships, tech innovation & affordable national universities",   color: "#880E4F", color2: "#4a0028", highlights: ["MEXT full scholarship", "~NPR 5L/yr tuition", "100K+ Nepalis"],           badge: "Scholarship",  badgeColor: "#C62828" },
+  { name: "Ireland",        slug: "ireland",     flag: "🇮🇪", tagline: "English-speaking EU country, tech hub & 2-year Stay Back visa",           color: "#2E7D32", color2: "#005005", highlights: ["Google/Meta/Apple HQ", "2-yr Stay Back", "EU job market"],               badge: "Tech Hub",     badgeColor: "#2E7D32" },
 ];
 
 const quickFacts = [
-  { value: "8", label: "Study Destinations" },
-  { value: "200+", label: "Partner Universities" },
-  { value: "2,000+", label: "Students Placed" },
-  { value: "98%", label: "Visa Success Rate" },
+  { value: "8",      label: "Study Destinations"   },
+  { value: "200+",   label: "Partner Universities" },
+  { value: "2,000+", label: "Students Placed"      },
+  { value: "98%",    label: "Visa Success Rate"    },
+];
+
+const whyPoints = [
+  "Direct partnerships with 200+ universities — faster offer letters",
+  "Country-specific visa expertise with 98% success rate",
+  "Scholarship mapping for every destination",
+  "Real student success stories from each country",
+];
+
+const whyStats = [
+  { value: "2,000+", label: "Students Placed", sub: "Since 2010"         },
+  { value: "98%",    label: "Visa Success",    sub: "First attempt"      },
+  { value: "200+",   label: "Universities",    sub: "Across 8 countries" },
+  { value: "Free",   label: "Consultation",    sub: "No obligation"      },
 ];
 
 export default function StudyDestinationsPage() {
   return (
     <>
-      {/* ── Hero ── */}
-      <section className="bg-primary text-white relative overflow-hidden" style={{ paddingTop: "5rem", paddingBottom: "5rem" }}>
-        <div className="absolute inset-0 pointer-events-none overflow-hidden">
-          <div className="absolute -top-32 -left-32 w-80 h-80 rounded-full opacity-10" style={{ background: "#E8A317", filter: "blur(90px)" }} />
-          <div className="absolute -bottom-20 -right-20 w-[480px] h-[480px] rounded-full opacity-10" style={{ background: "#E8A317", filter: "blur(120px)" }} />
+      {/* ══════ HERO ══════ */}
+      <section style={{
+        background: "var(--primary)", color: "#fff",
+        paddingTop: "5rem", paddingBottom: "5rem",
+        position: "relative", overflow: "hidden",
+      }}>
+        <div aria-hidden="true" style={{ position: "absolute", inset: 0, overflow: "hidden", pointerEvents: "none" }}>
+          <div style={{ position: "absolute", top: "-8rem", left: "-8rem", width: "20rem", height: "20rem", borderRadius: "50%", background: "var(--accent)", opacity: 0.1, filter: "blur(90px)" }} />
+          <div style={{ position: "absolute", bottom: "-5rem", right: "-5rem", width: "30rem", height: "30rem", borderRadius: "50%", background: "var(--accent)", opacity: 0.1, filter: "blur(120px)" }} />
         </div>
-        <div className="container-main max-w-3xl text-center relative z-10">
-          <span className="section-label" style={{ background: "rgba(232,163,23,0.2)", color: "#F5C542" }}>
-            2026 Intake Open
-          </span>
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight mt-3 mb-5">
+        <div className="container-main" style={{ maxWidth: 720, textAlign: "center", position: "relative", zIndex: 10 }}>
+          <span className="section-label" style={{ background: "rgba(232,163,23,0.20)", color: "#F5C542" }}>2026 Intake Open</span>
+          <h1 style={{ marginTop: "0.75rem", marginBottom: "1.25rem", fontSize: "clamp(2rem, 5vw, 3.25rem)", fontWeight: 900, letterSpacing: "-0.03em", lineHeight: 1.1 }}>
             Choose Your Study Destination
           </h1>
-          <p className="text-lg leading-relaxed" style={{ color: "rgba(255,255,255,0.80)" }}>
+          <p style={{ fontSize: "1.1rem", lineHeight: 1.75, color: "rgba(255,255,255,0.82)", marginBottom: "2rem" }}>
             Comprehensive guides for 8 top countries — eligibility, costs in NPR, visa steps, scholarships, and 2026 intake calendars.
           </p>
-
-          {/* Quick facts strip */}
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mt-10 max-w-2xl mx-auto">
-            {quickFacts.map((f) => (
-              <div key={f.label} className="rounded-xl py-3 px-2 text-center" style={{ background: "rgba(255,255,255,0.10)", border: "1px solid rgba(255,255,255,0.15)" }}>
-                <div className="text-2xl font-black text-white">{f.value}</div>
-                <div className="text-xs mt-0.5" style={{ color: "rgba(255,255,255,0.70)" }}>{f.label}</div>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: "0.75rem", maxWidth: 560, marginInline: "auto" }} className="facts-grid">
+            {quickFacts.map(({ value, label }) => (
+              <div key={label} style={{ borderRadius: "0.875rem", padding: "0.875rem 0.5rem", textAlign: "center", background: "rgba(255,255,255,0.10)", border: "1px solid rgba(255,255,255,0.18)" }}>
+                <div style={{ fontSize: "1.375rem", fontWeight: 900, color: "#fff" }}>{value}</div>
+                <div style={{ fontSize: "0.68rem", color: "rgba(255,255,255,0.72)", marginTop: 3 }}>{label}</div>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ── Destinations Grid ── */}
-      <section className="bg-background section-py">
-        <div className="container-main">
+      {/* ══════ DESTINATIONS GRID ══════ */}
+      <div style={{ background: "var(--background)" }}>
+        <div className="container-main" style={{ paddingTop: "3.5rem", paddingBottom: "3.5rem" }}>
 
-          <div className="text-center section-header">
+          <div style={{ textAlign: "center", marginBottom: "2.5rem" }}>
             <span className="section-label">All Destinations</span>
-            <h2 className="section-title">Where Do You Want to Study?</h2>
-            <p className="section-desc">
+            <h2 style={{ marginTop: "0.5rem", fontSize: "clamp(1.5rem, 3vw, 2.25rem)", fontWeight: 900, color: "var(--foreground)", letterSpacing: "-0.02em" }}>
+              Where Do You Want to Study?
+            </h2>
+            <p style={{ marginTop: "0.75rem", fontSize: "1rem", color: "var(--muted-foreground)", lineHeight: 1.75, maxWidth: "54ch", marginInline: "auto" }}>
               Click any destination to explore detailed guides — intakes, tuition costs, living expenses, visa requirements, and top universities.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-7">
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: "1.25rem" }} className="dest-grid">
             {destinations.map((d) => (
-              <Link
-                key={d.slug}
-                href={`/study-destinations/${d.slug}`}
-                className="group relative block rounded-2xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-300 hover:-translate-y-1"
-                style={{ aspectRatio: "3/4" }}
-              >
-                {/* Photo */}
-                <Image
-                  src={d.image}
-                  alt={`Study in ${d.name}`}
-                  fill
-                  className="object-cover group-hover:scale-105 transition-transform duration-500"
-                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                />
-
-                {/* Dark gradient overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-black/10" />
-
-                {/* Badge */}
-                <div className="absolute top-3 left-3">
-                  <span
-                    className="text-white text-xs font-bold px-2.5 py-1 rounded-full"
-                    style={{ background: d.badgeColor }}
-                  >
+              <Link key={d.slug} href={`/study-destinations/${d.slug}`} style={{ textDecoration: "none", display: "flex", flexDirection: "column", borderRadius: "1rem", overflow: "hidden", border: "1px solid var(--border)" }}>
+                {/* Gradient banner */}
+                <div style={{ background: `linear-gradient(135deg, ${d.color} 0%, ${d.color2} 100%)`, padding: "1.75rem 1.25rem 1.25rem", position: "relative", flexShrink: 0 }}>
+                  <span style={{ position: "absolute", top: "0.75rem", right: "0.75rem", fontSize: "0.68rem", fontWeight: 800, color: "#fff", padding: "0.2rem 0.6rem", borderRadius: 999, background: d.badgeColor }}>
                     {d.badge}
                   </span>
+                  <div style={{ fontSize: "3rem", marginBottom: "0.5rem" }}>{d.flag}</div>
+                  <h2 style={{ fontSize: "1rem", fontWeight: 800, color: "#fff", lineHeight: 1.2 }}>{d.name}</h2>
                 </div>
-
-                {/* Bottom content */}
-                <div className="absolute bottom-0 left-0 right-0 p-5">
-                  {/* Flag + Country */}
-                  <div className="flex items-center gap-2 mb-2">
-                    <span className="text-2xl">{d.flag}</span>
-                    <h2 className="text-white font-extrabold text-xl leading-tight">{d.name}</h2>
-                  </div>
-
-                  {/* Tagline */}
-                  <p className="text-xs leading-relaxed mb-3" style={{ color: "rgba(255,255,255,0.78)" }}>
-                    {d.tagline}
-                  </p>
-
-                  {/* Highlights */}
-                  <div className="flex flex-col gap-1.5 mb-4">
+                {/* Content */}
+                <div style={{ background: "var(--card)", padding: "1.25rem", display: "flex", flexDirection: "column", flex: 1 }}>
+                  <p style={{ fontSize: "0.78rem", color: "var(--muted-foreground)", lineHeight: 1.6, marginBottom: "0.875rem" }}>{d.tagline}</p>
+                  <div style={{ display: "flex", flexDirection: "column", gap: "0.375rem", flex: 1, marginBottom: "1rem" }}>
                     {d.highlights.map((h) => (
-                      <div key={h} className="flex items-center gap-2">
-                        <CheckCircle className="w-3 h-3 shrink-0" style={{ color: "#F5C542" }} />
-                        <span className="text-xs font-medium text-white/90">{h}</span>
+                      <div key={h} style={{ display: "flex", alignItems: "center", gap: "0.375rem" }}>
+                        <CheckCircle style={{ width: 12, height: 12, color: d.color, flexShrink: 0 }} />
+                        <span style={{ fontSize: "0.75rem", color: "var(--foreground)" }}>{h}</span>
                       </div>
                     ))}
                   </div>
-
-                  {/* CTA row */}
-                  <div className="flex items-center justify-between pt-3" style={{ borderTop: "1px solid rgba(255,255,255,0.20)" }}>
-                    <span className="text-xs font-bold text-white/80">Full Guide</span>
-                    <span className="w-7 h-7 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform" style={{ background: "#E8A317" }}>
-                      <ChevronRight className="w-4 h-4 text-white" />
-                    </span>
+                  <div style={{ borderTop: "1px solid var(--border)", paddingTop: "0.75rem", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+                    <span style={{ fontSize: "0.75rem", fontWeight: 700, color: d.color }}>Full Guide</span>
+                    <div style={{ width: 26, height: 26, borderRadius: "50%", background: "#E8A317", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                      <ChevronRight style={{ width: 13, height: 13, color: "#fff" }} />
+                    </div>
                   </div>
                 </div>
               </Link>
             ))}
           </div>
         </div>
-      </section>
+      </div>
 
-      {/* ── Why Choose With Us ── */}
-      <section className="bg-muted section-py">
-        <div className="container-main">
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+      {/* ══════ WHY GURUMANTRA ══════ */}
+      <div style={{ background: "var(--muted)", borderTop: "1px solid var(--border)", borderBottom: "1px solid var(--border)" }}>
+        <div className="container-main" style={{ paddingTop: "3.5rem", paddingBottom: "3.5rem" }}>
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "4rem", alignItems: "center" }} className="why-grid">
+
             <div>
               <span className="section-label">Why Gurumantra</span>
-              <h2 className="section-title mt-2">
+              <h2 style={{ marginTop: "0.5rem", marginBottom: "1rem", fontSize: "clamp(1.5rem, 3vw, 2.25rem)", fontWeight: 900, color: "var(--foreground)", letterSpacing: "-0.02em" }}>
                 We Know Every Destination Inside Out
               </h2>
-              <p className="text-muted-foreground leading-relaxed mb-8">
-                Our counselors have personally visited partner universities across all 8 countries. We don't just advise — we guide from firsthand knowledge.
+              <p style={{ fontSize: "0.95rem", color: "var(--muted-foreground)", lineHeight: 1.8, marginBottom: "1.75rem" }}>
+                Our counselors have personally visited partner universities across all 8 countries. We don&apos;t just advise — we guide from firsthand knowledge.
               </p>
-              <div className="flex flex-col gap-4">
-                {[
-                  "Direct partnerships with 200+ universities — faster offer letters",
-                  "Country-specific visa expertise with 98% success rate",
-                  "Scholarship mapping for every destination",
-                  "Real student success stories from each country",
-                ].map((item) => (
-                  <div key={item} className="flex items-start gap-3">
-                    <div className="w-6 h-6 rounded-full bg-primary flex items-center justify-center shrink-0 mt-0.5">
-                      <CheckCircle className="w-3.5 h-3.5 text-white" />
-                    </div>
-                    <p className="text-sm text-foreground leading-relaxed">{item}</p>
+              <div style={{ display: "flex", flexDirection: "column", gap: "0.875rem" }}>
+                {whyPoints.map((item) => (
+                  <div key={item} style={{ display: "flex", alignItems: "flex-start", gap: "0.75rem" }}>
+                    <span style={{ width: 22, height: 22, borderRadius: "50%", flexShrink: 0, marginTop: 2, background: "#EBF2FF", display: "flex", alignItems: "center", justifyContent: "center", border: "1.5px solid #BFDBFE" }}>
+                      <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 5l2.5 2.5 4-4.5" stroke="#1565C0" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" /></svg>
+                    </span>
+                    <p style={{ fontSize: "0.9rem", color: "var(--foreground)", lineHeight: 1.6 }}>{item}</p>
                   </div>
                 ))}
               </div>
             </div>
 
-            <div className="grid grid-cols-2 gap-4">
-              {[
-                { value: "2,000+", label: "Students Placed", sub: "Since 2010" },
-                { value: "98%", label: "Visa Success", sub: "First attempt" },
-                { value: "200+", label: "Universities", sub: "Across 8 countries" },
-                { value: "Free", label: "Consultation", sub: "No obligation" },
-              ].map((s) => (
-                <div key={s.label} className="bg-card border border-border rounded-2xl p-6 text-center hover:-translate-y-1 transition-transform">
-                  <div className="text-3xl font-black text-primary mb-1">{s.value}</div>
-                  <div className="font-semibold text-sm text-foreground">{s.label}</div>
-                  <div className="text-xs text-muted-foreground mt-0.5">{s.sub}</div>
+            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1rem" }}>
+              {whyStats.map(({ value, label, sub }) => (
+                <div key={label} style={{ background: "var(--card)", border: "1px solid var(--border)", borderRadius: "1rem", padding: "1.5rem", textAlign: "center" }}>
+                  <div style={{ fontSize: "1.875rem", fontWeight: 900, color: "var(--primary)", letterSpacing: "-0.02em", lineHeight: 1 }}>{value}</div>
+                  <div style={{ fontSize: "0.875rem", fontWeight: 700, color: "var(--foreground)", marginTop: "0.375rem" }}>{label}</div>
+                  <div style={{ fontSize: "0.72rem", color: "var(--muted-foreground)", marginTop: "0.2rem" }}>{sub}</div>
                 </div>
               ))}
             </div>
           </div>
         </div>
-      </section>
+      </div>
 
-      {/* ── CTA ── */}
-      <section className="bg-primary section-py">
-        <div className="container-main text-center">
-          <div className="max-w-2xl mx-auto">
-            <span className="section-label" style={{ background: "rgba(232,163,23,0.2)", color: "#F5C542" }}>
-              Free Consultation
-            </span>
-            <h2 className="section-title text-white mt-2">
+      {/* ══════ CTA ══════ */}
+      <div style={{ background: "var(--muted)" }}>
+        <div className="container-main" style={{ paddingTop: "3rem", paddingBottom: "3rem" }}>
+          <div style={{ background: "var(--primary)", borderRadius: "1.25rem", padding: "3rem 2.5rem", textAlign: "center" }}>
+            <span className="section-label" style={{ background: "rgba(232,163,23,0.20)", color: "#F5C542" }}>Free Consultation</span>
+            <h2 style={{ marginTop: "0.75rem", marginBottom: "1rem", fontSize: "clamp(1.5rem, 3vw, 2.25rem)", fontWeight: 900, color: "#fff", letterSpacing: "-0.02em" }}>
               Not Sure Which Country Is Right for You?
             </h2>
-            <p className="text-lg mb-10 leading-relaxed" style={{ color: "rgba(255,255,255,0.78)" }}>
+            <p style={{ fontSize: "1rem", color: "rgba(255,255,255,0.80)", lineHeight: 1.75, marginBottom: "2rem", maxWidth: "50ch", marginInline: "auto" }}>
               Our counselors will evaluate your profile, budget, and career goals — then recommend the perfect destination and program.
             </p>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <Link
-                href="/book-consultation"
-                className="inline-flex items-center gap-2 font-bold rounded-xl text-sm px-8 py-4 shadow-lg hover:opacity-90 hover:scale-105 transition-all"
-                style={{ background: "#E8A317", color: "#fff" }}
-              >
-                Book Free Consultation <ArrowRight className="w-4 h-4" />
+            <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: "0.875rem" }}>
+              <Link href="/book-consultation" style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem", padding: "0.9rem 2rem", borderRadius: "0.875rem", background: "#E8A317", color: "#fff", fontWeight: 700, fontSize: "0.9rem", textDecoration: "none", boxShadow: "0 4px 20px rgba(232,163,23,0.45)" }}>
+                Book Free Consultation <ArrowRight style={{ width: 16, height: 16 }} />
               </Link>
-              <Link
-                href="/scholarships"
-                className="inline-flex items-center gap-2 font-semibold rounded-xl text-sm px-8 py-4 border-2 text-white hover:bg-white/10 transition-all"
-                style={{ borderColor: "rgba(255,255,255,0.3)" }}
-              >
+              <Link href="/scholarships" style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem", padding: "0.9rem 2rem", borderRadius: "0.875rem", border: "1.5px solid rgba(255,255,255,0.30)", color: "#fff", fontWeight: 600, fontSize: "0.9rem", textDecoration: "none", background: "rgba(255,255,255,0.08)" }}>
                 View Scholarships
               </Link>
             </div>
           </div>
         </div>
-      </section>
+      </div>
+
+      <style>{`
+        @media (max-width: 900px)  { .dest-grid { grid-template-columns: 1fr 1fr !important; } .why-grid { grid-template-columns: 1fr !important; gap: 2rem !important; } }
+        @media (max-width: 600px)  { .dest-grid { grid-template-columns: 1fr !important; } .facts-grid { grid-template-columns: 1fr 1fr !important; } }
+      `}</style>
     </>
   );
 }
