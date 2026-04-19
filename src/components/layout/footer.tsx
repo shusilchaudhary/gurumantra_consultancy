@@ -70,17 +70,44 @@ export default function Footer() {
   return (
     <footer className="bg-foreground text-white mt-auto">
 
-      {/* ─── Newsletter / CTA Strip ─── */}
-      <div style={{ background: "var(--primary)", borderBottom: "1px solid rgba(255,255,255,0.1)" }}>
-        <div className="container-main py-5 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <div>
-            <p className="font-bold text-white text-base">Ready to Study Abroad?</p>
-            <p className="text-white/75 text-sm">Book a FREE consultation with our expert counselors today.</p>
+      {/* ─── CTA Strip ─── */}
+      <div style={{ background: "#0D47A1", borderBottom: "1px solid rgba(255,255,255,0.08)" }}>
+        <div className="container-main" style={{
+          paddingTop: "1.75rem", paddingBottom: "1.75rem",
+          display: "flex", alignItems: "center",
+          justifyContent: "space-between", gap: "1.5rem",
+          flexWrap: "wrap",
+        }}>
+          {/* Left */}
+          <div style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
+            <div style={{
+              width: 44, height: 44, borderRadius: "0.75rem", flexShrink: 0,
+              background: "rgba(255,255,255,0.12)",
+              display: "flex", alignItems: "center", justifyContent: "center",
+              fontSize: "1.25rem",
+            }}>
+              🎓
+            </div>
+            <div>
+              <p style={{ fontWeight: 800, color: "#fff", fontSize: "1rem", lineHeight: 1.2 }}>
+                Ready to Study Abroad?
+              </p>
+              <p style={{ color: "rgba(255,255,255,0.72)", fontSize: "0.85rem", marginTop: "0.2rem" }}>
+                Book a FREE consultation with our expert counselors today.
+              </p>
+            </div>
           </div>
+          {/* Right */}
           <Link
             href="/book-consultation"
-            className="inline-flex items-center gap-2 font-bold text-sm rounded-full px-8 py-4 whitespace-nowrap hover:scale-105 transition-all shadow-lg"
-            style={{ background: "#E8A317", color: "#ffffff" }}
+            style={{
+              display: "inline-flex", alignItems: "center", gap: "0.5rem",
+              padding: "0.875rem 1.75rem", borderRadius: 999,
+              background: "#E8A317", color: "#fff",
+              fontWeight: 700, fontSize: "0.875rem", textDecoration: "none",
+              whiteSpace: "nowrap", flexShrink: 0,
+              boxShadow: "0 4px 16px rgba(232,163,23,0.40)",
+            }}
           >
             Book Free Consultation <ArrowRight className="w-4 h-4" />
           </Link>
