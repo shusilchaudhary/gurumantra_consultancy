@@ -215,7 +215,7 @@ export default function AboutPage() {
                   }} aria-hidden="true" />
                   {/* Event */}
                   <p style={{
-                    fontSize: "0.9rem", color: "var(--muted-foreground)", lineHeight: 1.65,
+                    fontSize: "0.9rem", lineHeight: 1.65,
                     fontWeight: i === milestones.length - 1 ? 600 : 400,
                     color: i === milestones.length - 1 ? "var(--foreground)" : "var(--muted-foreground)",
                   } as React.CSSProperties}>

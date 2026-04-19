@@ -98,9 +98,9 @@ export default function ServicesPage() {
                 key={svc.title}
                 icon={ICON_MAP[svc.icon] ?? GraduationCap}
                 title={svc.title}
-                tagline={"tagline" in svc ? (svc.tagline as string) : svc.description.slice(0, 80)}
-                features={"features" in svc ? (svc.features as string[]) : []}
-                href={"href" in svc ? (svc.href as string) : "/book-consultation"}
+                tagline={svc.tagline}
+                features={svc.features}
+                href={svc.href}
               />
             ))}
           </div>
