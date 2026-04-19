@@ -132,28 +132,40 @@ export default function HomePage() {
   return (
     <>
       {/* ══════ HERO ══════ */}
-      <section style={{ background: `linear-gradient(rgba(21,101,192,0.82), rgba(13,71,161,0.90)), url(https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=1400&h=700&fit=crop&auto=format&q=80)`, backgroundSize: "cover", backgroundPosition: "center", color: "#fff", paddingTop: "5rem", paddingBottom: "5rem", position: "relative", overflow: "hidden" }}>
+      <section style={{ background: "linear-gradient(135deg, #1565C0 0%, #0D47A1 100%)", color: "#fff", paddingTop: "5rem", paddingBottom: "5rem", position: "relative", overflow: "hidden" }}>
         <div aria-hidden="true" style={{ position: "absolute", inset: 0, overflow: "hidden", pointerEvents: "none" }}>
           <div style={{ position: "absolute", top: "-10rem", left: "-10rem", width: "24rem", height: "24rem", borderRadius: "50%", background: "var(--accent)", opacity: 0.08, filter: "blur(100px)" }} />
           <div style={{ position: "absolute", bottom: "-5rem", right: "-5rem", width: "32rem", height: "32rem", borderRadius: "50%", background: "var(--accent)", opacity: 0.06, filter: "blur(120px)" }} />
         </div>
-        <div className="container-main" style={{ maxWidth: 760, textAlign: "center", position: "relative", zIndex: 10 }}>
-          <span className="section-label" style={{ background: "rgba(232,163,23,0.18)", color: "#F5C542" }}>Nepal&apos;s Most Trusted Since 2010</span>
-          <h1 style={{ marginTop: "0.75rem", marginBottom: "1.25rem", fontSize: "clamp(2rem, 5vw, 3.25rem)", fontWeight: 900, letterSpacing: "-0.03em", lineHeight: 1.1 }}>
-            Your Dream University<br />
-            <span style={{ color: "#F5C542" }}>Awaits — We Guide the Way</span>
-          </h1>
-          <p style={{ fontSize: "1.1rem", lineHeight: 1.75, color: "rgba(255,255,255,0.82)", marginBottom: "2rem" }}>
-            Over 2,000 Nepali students placed in top universities across 8 countries.
-            Expert counseling, IELTS prep, visa assistance &amp; full scholarship support.
-          </p>
-          <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: "0.875rem" }}>
-            <Link href="/book-consultation" style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem", padding: "0.9rem 2rem", borderRadius: "0.875rem", background: "#E8A317", color: "#fff", fontWeight: 700, fontSize: "0.9rem", textDecoration: "none", boxShadow: "0 4px 20px rgba(232,163,23,0.45)" }}>
-              Book Free Consultation <ArrowRight style={{ width: 16, height: 16 }} />
-            </Link>
-            <Link href="/study-destinations" style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem", padding: "0.9rem 2rem", borderRadius: "0.875rem", border: "1.5px solid rgba(255,255,255,0.30)", color: "#fff", fontWeight: 600, fontSize: "0.9rem", textDecoration: "none", background: "rgba(255,255,255,0.08)" }}>
-              Explore Destinations <Globe style={{ width: 16, height: 16 }} />
-            </Link>
+        <div className="container-main hero-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "3.5rem", alignItems: "center", position: "relative", zIndex: 10 }}>
+          {/* Left — text */}
+          <div>
+            <span className="section-label" style={{ background: "rgba(232,163,23,0.18)", color: "#F5C542" }}>Nepal&apos;s Most Trusted Since 2010</span>
+            <h1 style={{ marginTop: "0.75rem", marginBottom: "1.25rem", fontSize: "clamp(2rem, 4vw, 3.25rem)", fontWeight: 900, letterSpacing: "-0.03em", lineHeight: 1.1 }}>
+              Your Dream University<br />
+              <span style={{ color: "#F5C542" }}>Awaits — We Guide the Way</span>
+            </h1>
+            <p style={{ fontSize: "1.05rem", lineHeight: 1.75, color: "rgba(255,255,255,0.82)", marginBottom: "2rem" }}>
+              Over 2,000 Nepali students placed in top universities across 8 countries.
+              Expert counseling, IELTS prep, visa assistance &amp; full scholarship support.
+            </p>
+            <div style={{ display: "flex", flexWrap: "wrap", gap: "0.875rem" }}>
+              <Link href="/book-consultation" style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem", padding: "0.9rem 2rem", borderRadius: "0.875rem", background: "#E8A317", color: "#fff", fontWeight: 700, fontSize: "0.9rem", textDecoration: "none", boxShadow: "0 4px 20px rgba(232,163,23,0.45)" }}>
+                Book Free Consultation <ArrowRight style={{ width: 16, height: 16 }} />
+              </Link>
+              <Link href="/study-destinations" style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem", padding: "0.9rem 2rem", borderRadius: "0.875rem", border: "1.5px solid rgba(255,255,255,0.30)", color: "#fff", fontWeight: 600, fontSize: "0.9rem", textDecoration: "none", background: "rgba(255,255,255,0.08)" }}>
+                Explore Destinations <Globe style={{ width: 16, height: 16 }} />
+              </Link>
+            </div>
+          </div>
+          {/* Right — image */}
+          <div style={{ borderRadius: "1.25rem", overflow: "hidden", boxShadow: "0 24px 64px rgba(0,0,0,0.35)", flexShrink: 0 }}>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=720&h=500&fit=crop&auto=format&q=85"
+              alt="Nepali students celebrating graduation at a top university"
+              style={{ width: "100%", height: 420, objectFit: "cover", display: "block" }}
+            />
           </div>
         </div>
       </section>
@@ -451,6 +463,10 @@ export default function HomePage() {
 
 
       <style>{`
+        @media (max-width: 900px) {
+          .hero-grid      { grid-template-columns: 1fr !important; }
+          .hero-grid img  { height: 260px !important; }
+        }
         @media (max-width: 1024px) {
           .dest-grid      { grid-template-columns: repeat(2, 1fr) !important; }
           .steps-grid     { grid-template-columns: repeat(3, 1fr) !important; }
