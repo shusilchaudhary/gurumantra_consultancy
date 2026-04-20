@@ -162,8 +162,8 @@ export default function HomePage() {
           {/* Right — image */}
           <div style={{ borderRadius: "1.25rem", overflow: "hidden", boxShadow: "0 24px 64px rgba(0,0,0,0.35)", flexShrink: 0, position: "relative", height: 420 }}>
             <Image
-              src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=720&h=500&fit=crop&auto=format&q=85"
-              alt="Nepali students celebrating graduation at a top university"
+              src="https://images.unsplash.com/photo-1498243691581-b145c3f54a5a?w=720&h=500&fit=crop&auto=format&q=85"
+              alt="Students walking on a university campus"
               fill
               style={{ objectFit: "cover" }}
               priority
