@@ -1,7 +1,6 @@
 "use client";
 import { useState } from "react";
 import Link from "next/link";
-import Image from "next/image";
 import {
   ArrowRight, GraduationCap, Globe, Users, CheckCircle,
   Star, ChevronRight, BookOpen, FileCheck, School, Award, Plane,
@@ -160,15 +159,14 @@ export default function HomePage() {
             </div>
           </div>
           {/* Right — image */}
-          <div style={{ borderRadius: "1.25rem", overflow: "hidden", boxShadow: "0 24px 64px rgba(0,0,0,0.35)", flexShrink: 0, position: "relative", height: 420 }}>
-            <Image
-              src="https://images.unsplash.com/photo-1498243691581-b145c3f54a5a?w=720&h=500&fit=crop&auto=format&q=85"
-              alt="Students walking on a university campus"
-              fill
-              style={{ objectFit: "cover" }}
-              priority
-            />
-          </div>
+          <div style={{
+            height: 420, flexShrink: 0,
+            borderRadius: "1.25rem",
+            boxShadow: "0 24px 64px rgba(0,0,0,0.35)",
+            backgroundImage: `url(https://images.unsplash.com/photo-1498243691581-b145c3f54a5a?w=720&h=500&fit=crop&auto=format&q=85)`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+          }} />
         </div>
       </section>
 
