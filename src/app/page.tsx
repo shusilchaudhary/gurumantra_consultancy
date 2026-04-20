@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import {
   ArrowRight, GraduationCap, Globe, Users, CheckCircle,
   Star, ChevronRight, BookOpen, FileCheck, School, Award, Plane,
@@ -159,12 +160,13 @@ export default function HomePage() {
             </div>
           </div>
           {/* Right — image */}
-          <div style={{ borderRadius: "1.25rem", overflow: "hidden", boxShadow: "0 24px 64px rgba(0,0,0,0.35)", flexShrink: 0 }}>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
+          <div style={{ borderRadius: "1.25rem", overflow: "hidden", boxShadow: "0 24px 64px rgba(0,0,0,0.35)", flexShrink: 0, position: "relative", height: 420 }}>
+            <Image
               src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=720&h=500&fit=crop&auto=format&q=85"
               alt="Nepali students celebrating graduation at a top university"
-              style={{ width: "100%", height: 420, objectFit: "cover", display: "block" }}
+              fill
+              style={{ objectFit: "cover" }}
+              priority
             />
           </div>
         </div>
