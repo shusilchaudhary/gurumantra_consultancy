@@ -195,7 +195,7 @@ export default function Navbar() {
             {/* ── Desktop Nav links (centered) ── */}
             <div
               ref={ddRef}
-              className="hidden xl:flex"
+              className="hidden md:flex"
               style={{ alignItems: "stretch", height: 64, gap: 0, flex: 1, justifyContent: "center" }}
             >
               {navLinks.map((link) =>
@@ -285,7 +285,7 @@ export default function Navbar() {
             </div>
 
             {/* ── Desktop CTA + Theme ── */}
-            <div className="hidden xl:flex" style={{ alignItems: "center", gap: 10, flexShrink: 0 }}>
+            <div className="hidden md:flex" style={{ alignItems: "center", gap: 10, flexShrink: 0 }}>
               <a href="tel:+9779802356302" title="+977-9802356302"
                 style={{
                   width: 34, height: 34, borderRadius: "50%",
@@ -330,7 +330,7 @@ export default function Navbar() {
 
             {/* ── Mobile: Hamburger at TOP-RIGHT ── */}
             <button
-              className="flex xl:hidden"
+              className="flex md:hidden"
               onClick={() => setMobileOpen(!mobileOpen)}
               aria-label="Toggle menu"
               style={{
@@ -353,7 +353,7 @@ export default function Navbar() {
       {/* ══════ MOBILE BACKDROP ══════ */}
       {mobileOpen && (
         <div
-          className="xl:hidden"
+          className="md:hidden"
           onClick={() => setMobileOpen(false)}
           style={{
             position: "fixed", inset: 0, zIndex: 9998,
@@ -366,7 +366,7 @@ export default function Navbar() {
 
       {/* ══════ MOBILE SLIDE-IN DRAWER (from right) ══════ */}
       <div
-        className="xl:hidden"
+        className="md:hidden"
         style={{
           position: "fixed",
           top: 0,
