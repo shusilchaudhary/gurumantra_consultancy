@@ -1,13 +1,81 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
-import TestPrepTabs from "./test-prep-tabs";
+import { ArrowRight, CheckCircle, ChevronRight } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Test Preparation — IELTS, PTE, TOEFL Classes in Kathmandu | Gurumantra",
+  title: "Test Preparation — IELTS, PTE, TOEFL, Languages | Gurumantra",
   description:
-    "Expert IELTS, PTE, TOEFL preparation classes in Kathmandu. Small batches, experienced trainers, flexible timings. Achieve your target score on the first attempt with Gurumantra Education Consultancy.",
+    "Expert IELTS, PTE, TOEFL, Duolingo, Korean, and Japanese preparation classes in Kathmandu. Small batches, experienced trainers, flexible timings.",
 };
+
+const COURSES = [
+  { 
+    name: "Korean Language", 
+    fullName: "TOPIK & EPS-TOPIK", 
+    icon: "🇰🇷", 
+    tagline: "Essential for South Korean universities and D-4/D-2 visa success.", 
+    color: "#D32F2F", 
+    color2: "#B71C1C", 
+    highlights: ["Native-tier instructors", "TOPIK 1-4 prep", "Interview training"], 
+    badge: "Our Specialty", 
+    badgeColor: "#D32F2F" 
+  },
+  { 
+    name: "IELTS", 
+    fullName: "International English Language Testing System", 
+    icon: "🇬🇧", 
+    tagline: "The world's most widely accepted English test for global universities.", 
+    color: "#1565C0", 
+    color2: "#0D47A1", 
+    highlights: ["Max 15 students", "2 mock tests/wk", "Score guarantee"], 
+    badge: "Most Popular", 
+    badgeColor: "#1565C0" 
+  },
+  { 
+    name: "PTE Academic", 
+    fullName: "Pearson Test of English", 
+    icon: "💻", 
+    tagline: "Computer-based test with rapid results in just 48 hours.", 
+    color: "#6D28D9", 
+    color2: "#4C1D95", 
+    highlights: ["AI scoring analysis", "48hr results", "Template strategies"], 
+    badge: "Fastest Results", 
+    badgeColor: "#6D28D9" 
+  },
+  { 
+    name: "Japanese Language", 
+    fullName: "JLPT & NAT-TEST", 
+    icon: "🇯🇵", 
+    tagline: "Comprehensive preparation from N5 basics up to N3 intermediate.", 
+    color: "#880E4F", 
+    color2: "#4a0028", 
+    highlights: ["JLPT & NAT focus", "Kanji mastery", "Speaking drills"], 
+    badge: "Trending", 
+    badgeColor: "#C62828" 
+  },
+  { 
+    name: "Duolingo (DET)", 
+    fullName: "Duolingo English Test", 
+    icon: "🦉", 
+    tagline: "Fast, convenient, and affordable online test accepted widely in North America.", 
+    color: "#2E7D32", 
+    color2: "#1B5E20", 
+    highlights: ["Fast-track training", "Home testing prep", "High scoring tricks"], 
+    badge: "Most Convenient", 
+    badgeColor: "#2E7D32" 
+  },
+  { 
+    name: "TOEFL iBT", 
+    fullName: "Test of English as a Foreign Language", 
+    icon: "🇺🇸", 
+    tagline: "The gold standard for universities across the USA and Canada.", 
+    color: "#065F46", 
+    color2: "#064E3B", 
+    highlights: ["Academic context", "Full-length mocks", "Speaking frames"], 
+    badge: "USA & Canada", 
+    badgeColor: "#065F46" 
+  },
+];
 
 const WHY = [
   { label: "Certified trainers with 10+ years experience" },
@@ -24,39 +92,27 @@ export default function TestPreparationPage() {
           HERO
       ══════════════════════════════════════════ */}
       <section style={{
-        background: `linear-gradient(rgba(21,101,192,0.82), rgba(13,71,161,0.90)), url(https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=1400&h=700&fit=crop&auto=format&q=80)`,
+        background: `linear-gradient(rgba(21,101,192,0.88), rgba(13,71,161,0.92)), url(https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=1400&h=700&fit=crop&auto=format&q=80)`,
         backgroundSize: "cover", backgroundPosition: "center",
         color: "#fff", paddingTop: "5rem", paddingBottom: "5rem",
         position: "relative", overflow: "hidden",
       }}>
         <div aria-hidden="true" style={{ position: "absolute", inset: 0, overflow: "hidden", pointerEvents: "none" }}>
-          <div style={{
-            position: "absolute", top: "-10rem", left: "-10rem",
-            width: "24rem", height: "24rem", borderRadius: "50%",
-            background: "var(--accent)", opacity: 0.08, filter: "blur(100px)",
-          }} />
-          <div style={{
-            position: "absolute", bottom: "-5rem", right: "-5rem",
-            width: "32rem", height: "32rem", borderRadius: "50%",
-            background: "var(--accent)", opacity: 0.06, filter: "blur(120px)",
-          }} />
+          <div style={{ position: "absolute", top: "-10rem", left: "-10rem", width: "24rem", height: "24rem", borderRadius: "50%", background: "var(--accent)", opacity: 0.15, filter: "blur(100px)" }} />
+          <div style={{ position: "absolute", bottom: "-5rem", right: "-5rem", width: "32rem", height: "32rem", borderRadius: "50%", background: "var(--accent)", opacity: 0.15, filter: "blur(120px)" }} />
         </div>
         <div className="container-main" style={{ maxWidth: 768, textAlign: "center", position: "relative", zIndex: 10 }}>
-          <span className="section-label" style={{ background: "rgba(232,163,23,0.18)", color: "#F5C542" }}>
-            Test Preparation
+          <span className="section-label" style={{ background: "rgba(211,47,47,)", color: "#E53935" }}>
+            Test Preparation &amp; Languages
           </span>
-          <h1 style={{
-            marginTop: "0.75rem", marginBottom: "1.25rem",
-            fontSize: "clamp(2rem, 5vw, 3.25rem)", fontWeight: 900,
-            letterSpacing: "-0.03em", lineHeight: 1.1,
-          }}>
-            IELTS, PTE &amp; TOEFL<br />Classes in Kathmandu
+          <h1 style={{ marginTop: "0.75rem", marginBottom: "1.25rem", fontSize: "clamp(2rem, 5vw, 3.25rem)", fontWeight: 900, letterSpacing: "-0.03em", lineHeight: 1.1 }}>
+            Master Your Tests. <br/> Secure Your Visa.
           </h1>
-          <p style={{ fontSize: "1.1rem", lineHeight: 1.75, color: "rgba(255,255,255,0.82)", marginBottom: "2rem" }}>
-            Small batches, experienced trainers, and proven strategies to hit your target score on the first attempt.
+          <p style={{ fontSize: "1.1rem", lineHeight: 1.75, color: "rgba(255,255,255,0.85)", marginBottom: "2rem" }}>
+            From elite English proficiency to intensive Korean and Japanese language training, we equip you for absolute success on your first attempt.
           </p>
           <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: "0.625rem" }}>
-            {["IELTS", "PTE Academic", "TOEFL iBT"].map((name) => (
+            {["IELTS", "PTE", "TOEFL", "Duolingo", "Korean TOPIK", "Japanese JLPT"].map((name) => (
               <span key={name} style={{
                 padding: "0.375rem 1.125rem", borderRadius: 999,
                 fontSize: "0.8rem", fontWeight: 700, color: "#fff",
@@ -71,154 +127,102 @@ export default function TestPreparationPage() {
       </section>
 
       {/* ══════════════════════════════════════════
-          TABS + DETAIL + COMPARISON (client)
+          COURSES GRID (Replaces old tabs)
       ══════════════════════════════════════════ */}
-      <TestPrepTabs />
+      <div style={{ background: "var(--background)" }}>
+        <div className="container-main" style={{ paddingTop: "4rem", paddingBottom: "4rem" }}>
+          
+          <div style={{ textAlign: "center", marginBottom: "3rem" }}>
+            <span className="section-label">Our Classes</span>
+            <h2 style={{ marginTop: "0.5rem", fontSize: "clamp(1.5rem, 3vw, 2.25rem)", fontWeight: 900, color: "var(--foreground)", letterSpacing: "-0.02em" }}>
+              Explore Our Training Programs
+            </h2>
+            <p style={{ marginTop: "0.75rem", fontSize: "1rem", color: "var(--muted-foreground)", lineHeight: 1.75, maxWidth: "54ch", marginInline: "auto" }}>
+              Tailored preparation courses designed around one goal: your highest possible score in the shortest possible time.
+            </p>
+          </div>
+
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "1.5rem" }} className="courses-grid">
+            {COURSES.map((course) => (
+              <div key={course.name} style={{ display: "flex", flexDirection: "column", borderRadius: "1.25rem", overflow: "hidden", border: "1px solid var(--border)", background: "var(--card)", boxShadow: "0 4px 6px rgba(0,0,0,0.02)" }}>
+                
+                {/* Header Banner */}
+                <div style={{ background: `linear-gradient(135deg, ${course.color} 0%, ${course.color2} 100%)`, padding: "1.5rem", position: "relative", flexShrink: 0 }}>
+                  <span style={{ position: "absolute", top: "1rem", right: "1rem", fontSize: "0.68rem", fontWeight: 800, color: "#fff", padding: "0.25rem 0.75rem", borderRadius: 999, background: "rgba(0,0,0,0.25)" }}>
+                    {course.badge}
+                  </span>
+                  <div style={{ fontSize: "3rem", marginBottom: "0.75rem", filter: "drop-shadow(0 2px 4px rgba(0,0,0,0.2))" }}>{course.icon}</div>
+                  <h2 style={{ fontSize: "1.35rem", fontWeight: 800, color: "#fff", lineHeight: 1.2 }}>{course.name}</h2>
+                  <p style={{ fontSize: "0.8rem", color: "rgba(255,255,255,0.8)", marginTop: "0.25rem", fontWeight: 500 }}>{course.fullName}</p>
+                </div>
+                
+                {/* Body Content */}
+                <div style={{ padding: "1.5rem", display: "flex", flexDirection: "column", flex: 1 }}>
+                  <p style={{ fontSize: "0.85rem", color: "var(--muted-foreground)", lineHeight: 1.6, marginBottom: "1.25rem" }}>{course.tagline}</p>
+                  
+                  <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem", flex: 1, marginBottom: "1.5rem" }}>
+                    {course.highlights.map((h) => (
+                      <div key={h} style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
+                        <CheckCircle style={{ width: 14, height: 14, color: course.color, flexShrink: 0 }} />
+                        <span style={{ fontSize: "0.85rem", color: "var(--foreground)", fontWeight: 500 }}>{h}</span>
+                      </div>
+                    ))}
+                  </div>
+                  
+                  {/* CTA Button */}
+                  <Link href="/book-consultation" style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "0.875rem 1.25rem", borderRadius: "0.75rem", background: `${course.color}15`, color: course.color, fontWeight: 700, fontSize: "0.9rem", textDecoration: "none", transition: "background 0.2s" }}>
+                    <span>Enroll Now</span>
+                    <ChevronRight style={{ width: 18, height: 18 }} />
+                  </Link>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
 
       {/* ══════════════════════════════════════════
           WHY CHOOSE US  +  NOT SURE CARD
       ══════════════════════════════════════════ */}
-      <div style={{ background: "var(--background)", borderTop: "1px solid var(--border)" }}>
+      <div style={{ background: "var(--muted)", borderTop: "1px solid var(--border)" }}>
         <div className="container-main" style={{ paddingTop: "3.5rem", paddingBottom: "3.5rem" }}>
 
-          {/* Section label */}
-          <div style={{ marginBottom: "2.5rem" }}>
-            <span className="section-label">Why Gurumantra</span>
-            <h2 style={{
-              marginTop: "0.5rem",
-              fontSize: "clamp(1.5rem, 3vw, 2.25rem)", fontWeight: 900,
-              color: "var(--foreground)", letterSpacing: "-0.02em", lineHeight: 1.15,
-            }}>
-              Why Students Choose Our Test Prep
-            </h2>
-            <p style={{
-              marginTop: "0.75rem", fontSize: "1rem",
-              color: "var(--muted-foreground)", lineHeight: 1.75, maxWidth: "52ch",
-            }}>
-              Our test prep classes are designed around one goal: your highest possible score in the shortest possible time.
-            </p>
-          </div>
-
-          {/* Two columns */}
-          <div style={{
-            display: "grid",
-            gridTemplateColumns: "1fr 1fr",
-            gap: "1.5rem",
-            alignItems: "start",
-          }}
-            className="why-grid"
-          >
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1.5rem", alignItems: "start" }} className="why-grid">
 
             {/* LEFT — checklist */}
-            <div style={{
-              background: "var(--card)",
-              border: "1px solid var(--border)",
-              borderRadius: "1rem",
-              padding: "2rem",
-            }}>
-              <p style={{
-                fontSize: "0.65rem", fontWeight: 800, textTransform: "uppercase",
-                letterSpacing: "0.12em", color: "var(--primary)", marginBottom: "1.25rem",
-              }}>
+            <div style={{ background: "var(--card)", border: "1px solid var(--border)", borderRadius: "1.25rem", padding: "2.5rem" }}>
+              <span className="section-label" style={{ marginBottom: "1rem" }}>Why Gurumantra</span>
+              <h2 style={{ fontSize: "1.75rem", fontWeight: 900, color: "var(--foreground)", letterSpacing: "-0.02em", lineHeight: 1.15, marginBottom: "1.5rem" }}>
                 What Makes Us Different
-              </p>
-              <ul style={{ listStyle: "none", display: "flex", flexDirection: "column", gap: "0.875rem" }}>
+              </h2>
+              <ul style={{ listStyle: "none", display: "flex", flexDirection: "column", gap: "1rem" }}>
                 {WHY.map(({ label }) => (
-                  <li key={label} style={{ display: "flex", alignItems: "flex-start", gap: "0.75rem" }}>
-                    <span style={{
-                      width: 22, height: 22, borderRadius: "50%", flexShrink: 0, marginTop: 2,
-                      background: "#EBF2FF",
-                      display: "flex", alignItems: "center", justifyContent: "center",
-                      border: "1.5px solid #BFDBFE",
-                    }}>
-                      <svg width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden="true">
-                        <path d="M2 5l2.5 2.5 4-4.5" stroke="#1565C0" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
-                      </svg>
+                  <li key={label} style={{ display: "flex", alignItems: "center", gap: "0.875rem" }}>
+                    <span style={{ width: 26, height: 26, borderRadius: "50%", flexShrink: 0, background: "#EBF2FF", display: "flex", alignItems: "center", justifyContent: "center", border: "1.5px solid #BFDBFE" }}>
+                      <svg width="12" height="12" viewBox="0 0 10 10" fill="none"><path d="M2 5l2.5 2.5 4-4.5" stroke="#1565C0" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" /></svg>
                     </span>
-                    <span style={{ fontSize: "0.9rem", color: "var(--foreground)", lineHeight: 1.6 }}>{label}</span>
+                    <span style={{ fontSize: "0.95rem", color: "var(--foreground)", fontWeight: 500 }}>{label}</span>
                   </li>
                 ))}
               </ul>
             </div>
 
             {/* RIGHT — Not Sure card */}
-            <div style={{
-              background: "var(--primary)",
-              borderRadius: "1rem",
-              padding: "2rem",
-              display: "flex",
-              flexDirection: "column",
-              gap: "1.25rem",
-            }}>
-              {/* Top accent */}
-              <div style={{
-                display: "inline-flex", alignItems: "center", justifyContent: "center",
-                width: 48, height: 48, borderRadius: "0.875rem",
-                background: "rgba(255,255,255,0.12)",
-                fontSize: "1.5rem",
-              }}>
+            <div style={{ background: "var(--primary)", borderRadius: "1.25rem", padding: "2.5rem", display: "flex", flexDirection: "column", gap: "1.25rem", color: "#fff" }}>
+              <div style={{ display: "inline-flex", alignItems: "center", justifyContent: "center", width: 56, height: 56, borderRadius: "1rem", background: "rgba(255,255,255,0.15)", fontSize: "1.75rem" }}>
                 🤔
               </div>
-
               <div>
-                <h3 style={{
-                  fontSize: "1.2rem", fontWeight: 800,
-                  color: "#fff", lineHeight: 1.2, marginBottom: "0.5rem",
-                }}>
+                <h3 style={{ fontSize: "1.5rem", fontWeight: 800, lineHeight: 1.2, marginBottom: "0.75rem" }}>
                   Not Sure Which Test to Take?
                 </h3>
-                <p style={{
-                  fontSize: "0.9rem", color: "rgba(255,255,255,0.80)",
-                  lineHeight: 1.7,
-                }}>
-                  Our counselors will recommend the best test based on your destination country, target university, and personal strengths — completely free.
+                <p style={{ fontSize: "1rem", color: "rgba(255,255,255,0.85)", lineHeight: 1.7 }}>
+                  Our counselors will recommend the best language or proficiency test based on your destination country, target university, and personal strengths — completely free.
                 </p>
               </div>
-
-              {/* Trust badges */}
-              <div style={{ display: "flex", flexWrap: "wrap", gap: "0.5rem" }}>
-                {["100% Free", "No Obligation", "Expert Advice"].map((tag) => (
-                  <span key={tag} style={{
-                    fontSize: "0.7rem", fontWeight: 700,
-                    padding: "0.25rem 0.75rem", borderRadius: 999,
-                    background: "rgba(255,255,255,0.12)",
-                    color: "rgba(255,255,255,0.9)",
-                    border: "1px solid rgba(255,255,255,0.2)",
-                  }}>
-                    {tag}
-                  </span>
-                ))}
-              </div>
-
-              {/* Buttons */}
-              <div style={{ display: "flex", flexDirection: "column", gap: "0.625rem", marginTop: "0.25rem" }}>
-                <Link
-                  href="/book-consultation"
-                  style={{
-                    display: "flex", alignItems: "center", justifyContent: "center",
-                    gap: "0.5rem", padding: "0.875rem 1.5rem",
-                    borderRadius: "0.875rem", textDecoration: "none",
-                    background: "#E8A317", color: "#fff",
-                    fontWeight: 700, fontSize: "0.9rem",
-                    boxShadow: "0 4px 14px rgba(232,163,23,0.40)",
-                    transition: "opacity 0.15s",
-                  }}
-                >
-                  Book Free Consultation <ArrowRight style={{ width: 16, height: 16 }} />
-                </Link>
-                <Link
-                  href="/services"
-                  style={{
-                    display: "flex", alignItems: "center", justifyContent: "center",
-                    gap: "0.5rem", padding: "0.875rem 1.5rem",
-                    borderRadius: "0.875rem", textDecoration: "none",
-                    background: "rgba(255,255,255,0.10)",
-                    color: "#fff", fontWeight: 600, fontSize: "0.9rem",
-                    border: "1.5px solid rgba(255,255,255,0.25)",
-                    transition: "background 0.15s",
-                  }}
-                >
-                  View All Services
+              <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem", marginTop: "1rem" }}>
+                <Link href="/book-consultation" style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "0.5rem", padding: "1rem 1.5rem", borderRadius: "0.875rem", background: "#D32F2F", color: "#fff", fontWeight: 700, fontSize: "1rem", boxShadow: "0 4px 14px rgba(211,47,47,)", transition: "opacity 0.15s" }}>
+                  Book Free Consultation <ArrowRight style={{ width: 18, height: 18 }} />
                 </Link>
               </div>
             </div>
@@ -227,69 +231,13 @@ export default function TestPreparationPage() {
         </div>
       </div>
 
-      {/* ══════════════════════════════════════════
-          FINAL CTA STRIP
-      ══════════════════════════════════════════ */}
-      <div style={{
-        background: "var(--muted)", borderTop: "1px solid var(--border)",
-      }}>
-        <div className="container-main" style={{ paddingTop: "3rem", paddingBottom: "3rem" }}>
-          <div style={{
-            background: "var(--primary)", borderRadius: "1.25rem",
-            padding: "3rem 2.5rem", textAlign: "center",
-          }}>
-            <span className="section-label" style={{ background: "rgba(232,163,23,0.18)", color: "#F5C542" }}>
-              Get Started
-            </span>
-            <h2 style={{
-              marginTop: "0.75rem", marginBottom: "1rem",
-              fontSize: "clamp(1.5rem, 3vw, 2.25rem)", fontWeight: 900,
-              color: "#fff", letterSpacing: "-0.02em",
-            }}>
-              Ready to Ace Your English Test?
-            </h2>
-            <p style={{
-              fontSize: "1rem", color: "rgba(255,255,255,0.80)",
-              lineHeight: 1.75, marginBottom: "2rem",
-              maxWidth: "50ch", marginInline: "auto",
-            }}>
-              Join thousands of Nepali students who achieved their target score with Gurumantra&apos;s expert coaching.
-            </p>
-            <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: "0.875rem" }}>
-              <Link
-                href="/book-consultation"
-                style={{
-                  display: "inline-flex", alignItems: "center", gap: "0.5rem",
-                  padding: "0.9rem 2rem", borderRadius: "0.875rem",
-                  background: "#E8A317", color: "#fff",
-                  fontWeight: 700, fontSize: "0.9rem", textDecoration: "none",
-                  boxShadow: "0 4px 20px rgba(232,163,23,0.45)",
-                  transition: "opacity 0.15s, transform 0.15s",
-                }}
-              >
-                Book Free Consultation <ArrowRight style={{ width: 16, height: 16 }} />
-              </Link>
-              <Link
-                href="/study-destinations"
-                style={{
-                  display: "inline-flex", alignItems: "center", gap: "0.5rem",
-                  padding: "0.9rem 2rem", borderRadius: "0.875rem",
-                  border: "1.5px solid rgba(255,255,255,0.30)",
-                  color: "#fff", fontWeight: 600, fontSize: "0.9rem", textDecoration: "none",
-                  background: "rgba(255,255,255,0.08)",
-                  transition: "background 0.15s",
-                }}
-              >
-                Explore Destinations
-              </Link>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Responsive */}
+      {/* Responsive adjustments */}
       <style>{`
+        @media (max-width: 1024px) {
+          .courses-grid { grid-template-columns: repeat(2, 1fr) !important; }
+        }
         @media (max-width: 640px) {
+          .courses-grid { grid-template-columns: 1fr !important; }
           .why-grid { grid-template-columns: 1fr !important; }
         }
       `}</style>

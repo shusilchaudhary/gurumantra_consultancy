@@ -227,7 +227,7 @@ export default async function CountryPage({ params }: Props) {
                   <div key={intake.intake} style={{
                     borderRadius: "1rem", padding: "1.5rem",
                     border: intake.popular ? "1.5px solid var(--accent)" : "1px solid var(--border)",
-                    background: intake.popular ? "rgba(232,163,23,0.05)" : "var(--card)",
+                    background: intake.popular ? "rgba(211,47,47,)" : "var(--card)",
                   }}>
                     {intake.popular && (
                       <span style={{ display: "inline-flex", alignItems: "center", gap: "0.25rem", fontSize: "0.75rem", fontWeight: 700, color: "var(--accent)", marginBottom: "0.75rem" }}>
@@ -314,7 +314,7 @@ export default async function CountryPage({ params }: Props) {
 
             {/* ── CTA ── */}
             <section style={{ background: "var(--primary)", borderRadius: "1.25rem", padding: "3.5rem 2.5rem", textAlign: "center" }}>
-              <span className="section-label" style={{ background: "rgba(232,163,23,0.18)", color: "#F5C542" }}>Get Started</span>
+              <span className="section-label" style={{ background: "rgba(211,47,47,)", color: "#E53935" }}>Get Started</span>
               <h2 style={{ marginTop: "0.75rem", marginBottom: "1rem", fontSize: "clamp(1.5rem, 3vw, 2.25rem)", fontWeight: 900, color: "#fff", letterSpacing: "-0.02em" }}>
                 Ready to Study in {country.name}?
               </h2>
@@ -322,7 +322,7 @@ export default async function CountryPage({ params }: Props) {
                 Talk to our {country.name} specialist counselor for personalised guidance — absolutely free.
               </p>
               <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: "0.875rem" }}>
-                <Link href="/book-consultation" style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem", padding: "0.9rem 2rem", borderRadius: "0.875rem", background: "#E8A317", color: "#fff", fontWeight: 700, fontSize: "0.9rem", textDecoration: "none", boxShadow: "0 4px 20px rgba(232,163,23,0.45)" }}>
+                <Link href="/book-consultation" style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem", padding: "0.9rem 2rem", borderRadius: "0.875rem", background: "#D32F2F", color: "#fff", fontWeight: 700, fontSize: "0.9rem", textDecoration: "none", boxShadow: "0 4px 20px rgba(211,47,47,)" }}>
                   Book Free Consultation <ArrowRight style={{ width: 16, height: 16 }} />
                 </Link>
                 <Link href="/study-destinations" style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem", padding: "0.9rem 2rem", borderRadius: "0.875rem", border: "1.5px solid rgba(255,255,255,0.30)", color: "#fff", fontWeight: 600, fontSize: "0.9rem", textDecoration: "none", background: "rgba(255,255,255,0.08)" }}>

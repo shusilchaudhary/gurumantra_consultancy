@@ -30,14 +30,13 @@ const socialLinks = [
 
 const footerLinks = {
   studyAbroad: [
+    { label: "🇰🇷 South Korea",     href: "/study-destinations/south-korea" },
     { label: "🇦🇺 Australia",      href: "/study-destinations/australia"  },
     { label: "🇨🇦 Canada",          href: "/study-destinations/canada"     },
     { label: "🇬🇧 United Kingdom",  href: "/study-destinations/uk"         },
     { label: "🇺🇸 United States",   href: "/study-destinations/usa"        },
     { label: "🇳🇿 New Zealand",     href: "/study-destinations/new-zealand"},
     { label: "🇩🇪 Germany",         href: "/study-destinations/germany"    },
-    { label: "🇯🇵 Japan",           href: "/study-destinations/japan"      },
-    { label: "🇮🇪 Ireland",         href: "/study-destinations/ireland"    },
   ],
   services: [
     { label: "Career Counselling",    href: "/services"          },
@@ -100,10 +99,10 @@ export default function Footer() {
           <Link href="/book-consultation" style={{
             display: "inline-flex", alignItems: "center", gap: "0.5rem",
             padding: "0.875rem 1.75rem", borderRadius: "0.875rem",
-            background: "#E8A317", color: "#fff",
+            background: "#D32F2F", color: "#fff",
             fontWeight: 700, fontSize: "0.875rem", textDecoration: "none",
             whiteSpace: "nowrap", flexShrink: 0,
-            boxShadow: "0 4px 16px rgba(232,163,23,0.40)",
+            boxShadow: "0 4px 16px rgba(211,47,47,)",
           }}>
             Book Free Consultation <ArrowRight style={{ width: 15, height: 15 }} />
           </Link>
@@ -122,12 +121,12 @@ export default function Footer() {
               </div>
               <div>
                 <div style={{ fontWeight: 800, fontSize: "1.1rem", color: "#fff", lineHeight: 1.2 }}>Gurumantra</div>
-                <div style={{ fontSize: "0.72rem", fontWeight: 600, color: "#F5C542", lineHeight: 1.2 }}>Education Consultancy</div>
+                <div style={{ fontSize: "0.72rem", fontWeight: 600, color: "#E53935", lineHeight: 1.2 }}>Education Consultancy</div>
               </div>
             </Link>
 
             <p style={{ fontSize: "0.85rem", color: LINK_COLOR, lineHeight: 1.8, marginBottom: "1.5rem" }}>
-              Nepal&apos;s trusted study abroad consultancy. Over 2,000 students placed in top universities across 8 countries with a 98% visa success rate.
+              Nepal&apos;s trusted study abroad consultancy. Over 2,000 students placed in top universities across 7 countries with a 98% visa success rate.
             </p>
 
             {/* Contact */}
@@ -167,7 +166,7 @@ export default function Footer() {
 
           {/* ── Study Abroad ── */}
           <div>
-            <h3 style={{ fontSize: "0.7rem", fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.1em", color: "#F5C542", marginBottom: "1.25rem" }}>
+            <h3 style={{ fontSize: "0.7rem", fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.1em", color: "#E53935", marginBottom: "1.25rem" }}>
               Study Abroad
             </h3>
             <ul style={{ display: "flex", flexDirection: "column", gap: "0.625rem", listStyle: "none", padding: 0 }}>
@@ -184,7 +183,7 @@ export default function Footer() {
 
           {/* ── Services ── */}
           <div>
-            <h3 style={{ fontSize: "0.7rem", fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.1em", color: "#F5C542", marginBottom: "1.25rem" }}>
+            <h3 style={{ fontSize: "0.7rem", fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.1em", color: "#E53935", marginBottom: "1.25rem" }}>
               Our Services
             </h3>
             <ul style={{ display: "flex", flexDirection: "column", gap: "0.625rem", listStyle: "none", padding: 0 }}>
@@ -201,7 +200,7 @@ export default function Footer() {
 
           {/* ── Resources ── */}
           <div>
-            <h3 style={{ fontSize: "0.7rem", fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.1em", color: "#F5C542", marginBottom: "1.25rem" }}>
+            <h3 style={{ fontSize: "0.7rem", fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.1em", color: "#E53935", marginBottom: "1.25rem" }}>
               Resources
             </h3>
             <ul style={{ display: "flex", flexDirection: "column", gap: "0.625rem", listStyle: "none", padding: 0 }}>
@@ -218,7 +217,7 @@ export default function Footer() {
 
           {/* ── Company ── */}
           <div>
-            <h3 style={{ fontSize: "0.7rem", fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.1em", color: "#F5C542", marginBottom: "1.25rem" }}>
+            <h3 style={{ fontSize: "0.7rem", fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.1em", color: "#E53935", marginBottom: "1.25rem" }}>
               Company
             </h3>
             <ul style={{ display: "flex", flexDirection: "column", gap: "0.625rem", listStyle: "none", padding: 0, marginBottom: "1.5rem" }}>
@@ -237,7 +236,7 @@ export default function Footer() {
               <p style={{ fontSize: "0.68rem", fontWeight: 800, color: "#fff", textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: "0.625rem" }}>
                 Office Hours
               </p>
-              <p style={{ fontSize: "0.78rem", color: LINK_COLOR, marginBottom: "0.25rem" }}>Sun – Fri: 9:00 AM – 6:00 PM</p>
+              <p style={{ fontSize: "0.78rem", color: LINK_COLOR, marginBottom: "0.25rem" }}>Sun – Fri: 6:00 AM – 5:00 PM</p>
               <p style={{ fontSize: "0.78rem", color: MUTED }}>Saturday: Closed</p>
             </div>
           </div>

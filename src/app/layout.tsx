@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     template: "%s | Gurumantra Education Consultancy",
   },
   description:
-    "Nepal's premium study abroad consultancy. 2,000+ students placed in Australia, Canada, UK, USA, Germany, Japan & Ireland. 98% visa success rate. Free consultation in Kathmandu.",
+    "Nepal's premium study abroad consultancy. 2,000+ students placed in Australia, Canada, UK, USA, Germany & Japan. 98% visa success rate. Free consultation in Kathmandu.",
   keywords: [
     "study abroad consultancy Nepal",
     "best consultancy in Kathmandu 2026",

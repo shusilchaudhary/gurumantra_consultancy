@@ -144,13 +144,13 @@ export default async function BlogPostPage({ params }: Props) {
 
           {/* In-article CTA */}
           <div style={{ marginTop: "3.5rem", background: "var(--primary)", borderRadius: "1.25rem", padding: "2.5rem", textAlign: "center" }}>
-            <span className="section-label" style={{ background: "rgba(232,163,23,0.18)", color: "#F5C542" }}>Free Guidance</span>
+            <span className="section-label" style={{ background: "rgba(211,47,47,)", color: "#E53935" }}>Free Guidance</span>
             <h2 style={{ marginTop: "0.75rem", marginBottom: "0.75rem", fontSize: "1.375rem", fontWeight: 900, color: "#fff" }}>Have Questions?</h2>
             <p style={{ fontSize: "0.9rem", color: "rgba(255,255,255,0.80)", lineHeight: 1.75, marginBottom: "1.75rem" }}>
               Our expert counselors can help you navigate every step — from test prep to visa approval.
             </p>
             <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: "0.75rem" }}>
-              <Link href="/book-consultation" style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem", padding: "0.875rem 1.75rem", borderRadius: "0.875rem", background: "#E8A317", color: "#fff", fontWeight: 700, fontSize: "0.875rem", textDecoration: "none", boxShadow: "0 4px 16px rgba(232,163,23,0.40)" }}>
+              <Link href="/book-consultation" style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem", padding: "0.875rem 1.75rem", borderRadius: "0.875rem", background: "#D32F2F", color: "#fff", fontWeight: 700, fontSize: "0.875rem", textDecoration: "none", boxShadow: "0 4px 16px rgba(211,47,47,)" }}>
                 Book Free Consultation <ArrowRight style={{ width: 15, height: 15 }} />
               </Link>
               <Link href="/blog" style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem", padding: "0.875rem 1.75rem", borderRadius: "0.875rem", border: "1.5px solid rgba(255,255,255,0.28)", color: "#fff", fontWeight: 600, fontSize: "0.875rem", textDecoration: "none", background: "rgba(255,255,255,0.08)" }}>

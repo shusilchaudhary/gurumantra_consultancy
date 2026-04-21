@@ -4,10 +4,11 @@ import { ChevronRight, ArrowRight, CheckCircle } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Study Destinations — Study Abroad from Nepal 2026",
-  description: "Explore 8 top study destinations for Nepali students: Australia, Canada, UK, USA, New Zealand, Germany, Japan, Ireland.",
+  description: "Explore 8 top study destinations for Nepali students: Australia, Canada, UK, USA, New Zealand, Germany, Japan.",
 };
 
 const DEST_IMAGES: Record<string, string> = {
+  "south-korea": "https://images.unsplash.com/photo-1538485399081-7191377e8241?auto=format&fit=crop&w=400&q=80",
   "australia":   "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=160&fit=crop&auto=format&q=80",
   "canada":      "https://images.unsplash.com/photo-1517935706615-2717063c2225?w=400&h=160&fit=crop&auto=format&q=80",
   "uk":          "https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=400&h=160&fit=crop&auto=format&q=80",
@@ -15,18 +16,17 @@ const DEST_IMAGES: Record<string, string> = {
   "new-zealand": "https://images.unsplash.com/photo-1507699622108-4be3abd695ad?w=400&h=160&fit=crop&auto=format&q=80",
   "germany":     "https://images.unsplash.com/photo-1467269204594-9661b134dd2b?w=400&h=160&fit=crop&auto=format&q=80",
   "japan":       "https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=400&h=160&fit=crop&auto=format&q=80",
-  "ireland":     "https://images.unsplash.com/photo-1590089415225-401ed6f9db8e?w=400&h=160&fit=crop&auto=format&q=80",
 };
 
 const destinations = [
-  { name: "Australia",      slug: "australia",   flag: "🇦🇺", tagline: "World-class universities & up to 4 years post-study work rights",      color: "#1565C0", color2: "#0D47A1", highlights: ["7 top-100 universities", "48 hrs/fortnight work", "2–4 yr post-study visa"], badge: "Most Popular",  badgeColor: "#E8A317" },
+  { name: "South Korea",      slug: "south-korea", flag: "🇰🇷", tagline: "Our leading destination: D-2 & D-4 visa specialists",   color: "#D32F2F", color2: "#B71C1C", highlights: ["Highest Nepal Visa rate", "GKS Scholarships", "Fast processing"], badge: "Our Specialty", badgeColor: "#D32F2F" },
+  { name: "Australia",      slug: "australia",   flag: "🇦🇺", tagline: "World-class universities & up to 4 years post-study work rights",      color: "#1565C0", color2: "#0D47A1", highlights: ["7 top-100 universities", "48 hrs/fortnight work", "2–4 yr post-study visa"], badge: "Most Popular",  badgeColor: "#D32F2F" },
   { name: "Canada",         slug: "canada",      flag: "🇨🇦", tagline: "Clear PR pathway, co-op programs & affordable world-class education",    color: "#B71C1C", color2: "#7F0000", highlights: ["3-year PGWP", "Express Entry PR", "Affordable tuition"],                    badge: "PR Friendly",  badgeColor: "#1565C0" },
   { name: "United Kingdom", slug: "uk",          flag: "🇬🇧", tagline: "1-year Master's, globally respected degrees & Graduate Route visa",      color: "#4A148C", color2: "#1A0050", highlights: ["1-year Master's", "2-yr Graduate Route", "Top 10 global unis"],            badge: "Fast Degree",  badgeColor: "#7B1FA2" },
   { name: "United States",  slug: "usa",         flag: "🇺🇸", tagline: "Best universities globally, OPT work rights & research opportunities",   color: "#1B5E20", color2: "#003300", highlights: ["50+ top-200 unis", "3-yr STEM OPT", "Flexible curriculum"],               badge: "Top Research", badgeColor: "#1565C0" },
   { name: "New Zealand",    slug: "new-zealand", flag: "🇳🇿", tagline: "Safe, scenic & English-speaking with strong student support",             color: "#006064", color2: "#00363a", highlights: ["#2 safest country", "3-yr work visa", "Affordable living"],               badge: "Safe & Scenic",badgeColor: "#2E7D32" },
-  { name: "Germany",        slug: "germany",     flag: "🇩🇪", tagline: "Tuition-free public universities, strong engineering sector & EU access", color: "#E65100", color2: "#8D3100", highlights: ["Zero tuition (public)", "18-mo job seeker visa", "EU Blue Card"],         badge: "Tuition Free", badgeColor: "#E8A317" },
+  { name: "Germany",        slug: "germany",     flag: "🇩🇪", tagline: "Tuition-free public universities, strong engineering sector & EU access", color: "#E65100", color2: "#8D3100", highlights: ["Zero tuition (public)", "18-mo job seeker visa", "EU Blue Card"],         badge: "Tuition Free", badgeColor: "#D32F2F" },
   { name: "Japan",          slug: "japan",       flag: "🇯🇵", tagline: "MEXT scholarships, tech innovation & affordable national universities",   color: "#880E4F", color2: "#4a0028", highlights: ["MEXT full scholarship", "~NPR 5L/yr tuition", "100K+ Nepalis"],           badge: "Scholarship",  badgeColor: "#C62828" },
-  { name: "Ireland",        slug: "ireland",     flag: "🇮🇪", tagline: "English-speaking EU country, tech hub & 2-year Stay Back visa",           color: "#2E7D32", color2: "#005005", highlights: ["Google/Meta/Apple HQ", "2-yr Stay Back", "EU job market"],               badge: "Tech Hub",     badgeColor: "#2E7D32" },
 ];
 
 const quickFacts = [
@@ -46,7 +46,7 @@ const whyPoints = [
 const whyStats = [
   { value: "2,000+", label: "Students Placed", sub: "Since 2010"         },
   { value: "98%",    label: "Visa Success",    sub: "First attempt"      },
-  { value: "200+",   label: "Universities",    sub: "Across 8 countries" },
+  { value: "200+",   label: "Universities",    sub: "Across 7 countries" },
   { value: "Free",   label: "Consultation",    sub: "No obligation"      },
 ];
 
@@ -65,7 +65,7 @@ export default function StudyDestinationsPage() {
           <div style={{ position: "absolute", bottom: "-5rem", right: "-5rem", width: "30rem", height: "30rem", borderRadius: "50%", background: "var(--accent)", opacity: 0.1, filter: "blur(120px)" }} />
         </div>
         <div className="container-main" style={{ maxWidth: 720, textAlign: "center", position: "relative", zIndex: 10 }}>
-          <span className="section-label" style={{ background: "rgba(232,163,23,0.20)", color: "#F5C542" }}>2026 Intake Open</span>
+          <span className="section-label" style={{ background: "rgba(211,47,47,)", color: "#E53935" }}>2026 Intake Open</span>
           <h1 style={{ marginTop: "0.75rem", marginBottom: "1.25rem", fontSize: "clamp(2rem, 5vw, 3.25rem)", fontWeight: 900, letterSpacing: "-0.03em", lineHeight: 1.1 }}>
             Choose Your Study Destination
           </h1>
@@ -121,7 +121,7 @@ export default function StudyDestinationsPage() {
                   </div>
                   <div style={{ borderTop: "1px solid var(--border)", paddingTop: "0.75rem", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
                     <span style={{ fontSize: "0.75rem", fontWeight: 700, color: d.color }}>Full Guide</span>
-                    <div style={{ width: 26, height: 26, borderRadius: "50%", background: "#E8A317", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                    <div style={{ width: 26, height: 26, borderRadius: "50%", background: "#D32F2F", display: "flex", alignItems: "center", justifyContent: "center" }}>
                       <ChevronRight style={{ width: 13, height: 13, color: "#fff" }} />
                     </div>
                   </div>
@@ -143,7 +143,7 @@ export default function StudyDestinationsPage() {
                 We Know Every Destination Inside Out
               </h2>
               <p style={{ fontSize: "0.95rem", color: "var(--muted-foreground)", lineHeight: 1.8, marginBottom: "1.75rem" }}>
-                Our counselors have personally visited partner universities across all 8 countries. We don&apos;t just advise — we guide from firsthand knowledge.
+                Our counselors have personally visited partner universities across all 7 countries. We don&apos;t just advise — we guide from firsthand knowledge.
               </p>
               <div style={{ display: "flex", flexDirection: "column", gap: "0.875rem" }}>
                 {whyPoints.map((item) => (
@@ -174,7 +174,7 @@ export default function StudyDestinationsPage() {
       <div style={{ background: "var(--muted)" }}>
         <div className="container-main" style={{ paddingTop: "3rem", paddingBottom: "3rem" }}>
           <div style={{ background: "var(--primary)", borderRadius: "1.25rem", padding: "3rem 2.5rem", textAlign: "center" }}>
-            <span className="section-label" style={{ background: "rgba(232,163,23,0.20)", color: "#F5C542" }}>Free Consultation</span>
+            <span className="section-label" style={{ background: "rgba(211,47,47,)", color: "#E53935" }}>Free Consultation</span>
             <h2 style={{ marginTop: "0.75rem", marginBottom: "1rem", fontSize: "clamp(1.5rem, 3vw, 2.25rem)", fontWeight: 900, color: "#fff", letterSpacing: "-0.02em" }}>
               Not Sure Which Country Is Right for You?
             </h2>
@@ -182,7 +182,7 @@ export default function StudyDestinationsPage() {
               Our counselors will evaluate your profile, budget, and career goals — then recommend the perfect destination and program.
             </p>
             <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: "0.875rem" }}>
-              <Link href="/book-consultation" style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem", padding: "0.9rem 2rem", borderRadius: "0.875rem", background: "#E8A317", color: "#fff", fontWeight: 700, fontSize: "0.9rem", textDecoration: "none", boxShadow: "0 4px 20px rgba(232,163,23,0.45)" }}>
+              <Link href="/book-consultation" style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem", padding: "0.9rem 2rem", borderRadius: "0.875rem", background: "#D32F2F", color: "#fff", fontWeight: 700, fontSize: "0.9rem", textDecoration: "none", boxShadow: "0 4px 20px rgba(211,47,47,)" }}>
                 Book Free Consultation <ArrowRight style={{ width: 16, height: 16 }} />
               </Link>
               <Link href="/scholarships" style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem", padding: "0.9rem 2rem", borderRadius: "0.875rem", border: "1.5px solid rgba(255,255,255,0.30)", color: "#fff", fontWeight: 600, fontSize: "0.9rem", textDecoration: "none", background: "rgba(255,255,255,0.08)" }}>

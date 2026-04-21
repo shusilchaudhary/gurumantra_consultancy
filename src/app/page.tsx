@@ -10,6 +10,7 @@ import { testimonials, services, blogPosts } from "@/data/content";
 
 /* ── Images ── */
 const DEST_IMAGES: Record<string, string> = {
+  "south-korea": "https://images.unsplash.com/photo-1538485399081-7191377e8241?auto=format&fit=crop&w=400&q=80",
   "australia":   "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=160&fit=crop&auto=format&q=80",
   "canada":      "https://images.unsplash.com/photo-1517935706615-2717063c2225?w=400&h=160&fit=crop&auto=format&q=80",
   "uk":          "https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=400&h=160&fit=crop&auto=format&q=80",
@@ -17,7 +18,6 @@ const DEST_IMAGES: Record<string, string> = {
   "new-zealand": "https://images.unsplash.com/photo-1507699622108-4be3abd695ad?w=400&h=160&fit=crop&auto=format&q=80",
   "germany":     "https://images.unsplash.com/photo-1467269204594-9661b134dd2b?w=400&h=160&fit=crop&auto=format&q=80",
   "japan":       "https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=400&h=160&fit=crop&auto=format&q=80",
-  "ireland":     "https://images.unsplash.com/photo-1590089415225-401ed6f9db8e?w=400&h=160&fit=crop&auto=format&q=80",
 };
 const BLOG_IMAGES: Record<string, string> = {
   "Guide":        "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=600&h=200&fit=crop&auto=format&q=80",
@@ -34,6 +34,7 @@ const TRUST = [
 ];
 
 const destinations = [
+  { name: "South Korea",      slug: "south-korea", flag: "🇰🇷", tagline: "Our leading destination: D-2 & D-4 visa specialists",   color: "#D32F2F", color2: "#B71C1C", badge: "Top Choice", badgeColor: "#D32F2F" },
   { name: "Australia",      slug: "australia",   flag: "🇦🇺", tagline: "Top-ranked universities & post-study work rights",  color: "#1565C0", color2: "#0D47A1" },
   { name: "Canada",         slug: "canada",      flag: "🇨🇦", tagline: "Clear PR pathway & world-class education",          color: "#B71C1C", color2: "#7F0000" },
   { name: "United Kingdom", slug: "uk",          flag: "🇬🇧", tagline: "1-year Master's & Graduate Route visa",             color: "#4A148C", color2: "#1A0050" },
@@ -41,13 +42,12 @@ const destinations = [
   { name: "New Zealand",    slug: "new-zealand", flag: "🇳🇿", tagline: "Safe, scenic & affordable education",               color: "#006064", color2: "#00363a" },
   { name: "Germany",        slug: "germany",     flag: "🇩🇪", tagline: "Tuition-free public universities",                 color: "#E65100", color2: "#8D3100" },
   { name: "Japan",          slug: "japan",       flag: "🇯🇵", tagline: "MEXT scholarships & tech innovation hub",          color: "#880E4F", color2: "#4a0028" },
-  { name: "Ireland",        slug: "ireland",     flag: "🇮🇪", tagline: "Tech HQ of Europe & fast visa processing",         color: "#2E7D32", color2: "#005005" },
 ];
 
 const whyUs = [
   { title: "Expert Counseling",   desc: "One-on-one guidance from certified counselors with 10+ years of experience." },
   { title: "98% Visa Success",    desc: "Watertight applications with thorough document prep and interview coaching."  },
-  { title: "200+ Universities",   desc: "Direct partnerships with universities in 8 countries for faster admissions."  },
+  { title: "200+ Universities",   desc: "Direct partnerships with universities in 7 countries for faster admissions."  },
   { title: "Scholarship Support", desc: "We've helped students secure over NPR 5 Crore in scholarships collectively." },
   { title: "End-to-End Service",  desc: "From IELTS coaching to pre-departure briefings — everything under one roof." },
 ];
@@ -140,17 +140,17 @@ export default function HomePage() {
         <div className="container-main hero-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "3.5rem", alignItems: "center", position: "relative", zIndex: 10 }}>
           {/* Left — text */}
           <div>
-            <span className="section-label" style={{ background: "rgba(232,163,23,0.18)", color: "#F5C542" }}>Nepal&apos;s Most Trusted Since 2010</span>
+            <span className="section-label" style={{ background: "rgba(211,47,47,)", color: "#E53935" }}>Nepal&apos;s Most Trusted Since 2010</span>
             <h1 style={{ marginTop: "0.75rem", marginBottom: "1.25rem", fontSize: "clamp(2rem, 4vw, 3.25rem)", fontWeight: 900, letterSpacing: "-0.03em", lineHeight: 1.1 }}>
               Your Dream University<br />
-              <span style={{ color: "#F5C542" }}>Awaits — We Guide the Way</span>
+              <span style={{ color: "#E53935" }}>Awaits — We Guide the Way</span>
             </h1>
             <p style={{ fontSize: "1.05rem", lineHeight: 1.75, color: "rgba(255,255,255,0.82)", marginBottom: "2rem" }}>
-              Over 2,000 Nepali students placed in top universities across 8 countries.
+              Over 2,000 Nepali students placed in top universities across 7 countries.
               Expert counseling, IELTS prep, visa assistance &amp; full scholarship support.
             </p>
             <div style={{ display: "flex", flexWrap: "wrap", gap: "0.875rem" }}>
-              <Link href="/book-consultation" style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem", padding: "0.9rem 2rem", borderRadius: "0.875rem", background: "#E8A317", color: "#fff", fontWeight: 700, fontSize: "0.9rem", textDecoration: "none", boxShadow: "0 4px 20px rgba(232,163,23,0.45)" }}>
+              <Link href="/book-consultation" style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem", padding: "0.9rem 2rem", borderRadius: "0.875rem", background: "#D32F2F", color: "#fff", fontWeight: 700, fontSize: "0.9rem", textDecoration: "none", boxShadow: "0 4px 20px rgba(211,47,47,)" }}>
                 Book Free Consultation <ArrowRight style={{ width: 16, height: 16 }} />
               </Link>
               <Link href="/study-destinations" style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem", padding: "0.9rem 2rem", borderRadius: "0.875rem", border: "1.5px solid rgba(255,255,255,0.30)", color: "#fff", fontWeight: 600, fontSize: "0.9rem", textDecoration: "none", background: "rgba(255,255,255,0.08)" }}>
@@ -176,8 +176,8 @@ export default function HomePage() {
           <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)" }} className="trust-grid">
             {TRUST.map(({ icon: Icon, value, label }, i) => (
               <div key={label} style={{ display: "flex", alignItems: "center", gap: "0.75rem", padding: "1.25rem 1.5rem", borderRight: i < TRUST.length - 1 ? "1px solid rgba(255,255,255,0.10)" : "none" }}>
-                <div style={{ width: 36, height: 36, borderRadius: "0.625rem", flexShrink: 0, background: "rgba(232,163,23,0.18)", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                  <Icon style={{ width: 16, height: 16, color: "#F5C542" }} />
+                <div style={{ width: 36, height: 36, borderRadius: "0.625rem", flexShrink: 0, background: "rgba(211,47,47,)", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                  <Icon style={{ width: 16, height: 16, color: "#E53935" }} />
                 </div>
                 <div>
                   <div style={{ fontSize: "1.25rem", fontWeight: 900, color: "#fff", lineHeight: 1 }}>{value}</div>
@@ -307,7 +307,7 @@ export default function HomePage() {
       <div style={{ background: "var(--primary)", borderBottom: "1px solid rgba(255,255,255,0.08)" }}>
         <div className="container-main" style={{ paddingTop: "3.5rem", paddingBottom: "3.5rem" }}>
           <div style={{ textAlign: "center", marginBottom: "2.5rem" }}>
-            <span className="section-label" style={{ background: "rgba(232,163,23,0.18)", color: "#F5C542" }}>Student Stories</span>
+            <span className="section-label" style={{ background: "rgba(211,47,47,)", color: "#E53935" }}>Student Stories</span>
             <h2 style={{ marginTop: "0.5rem", fontSize: "clamp(1.5rem, 3vw, 2.25rem)", fontWeight: 900, color: "#fff", letterSpacing: "-0.02em" }}>
               Real Students. Real Success.
             </h2>
@@ -326,7 +326,7 @@ export default function HomePage() {
                 <p style={{ fontSize: "0.875rem", lineHeight: 1.8, fontStyle: "italic", color: "rgba(255,255,255,0.88)", flex: 1 }}>&ldquo;{t.quote}&rdquo;</p>
                 <div style={{ borderTop: "1px solid rgba(255,255,255,0.12)", paddingTop: "1rem" }}>
                   <div style={{ fontWeight: 700, color: "#fff", fontSize: "0.875rem" }}>{t.name}</div>
-                  <div style={{ fontSize: "0.75rem", color: "#F5C542", marginTop: 2 }}>{t.program} — {t.university}</div>
+                  <div style={{ fontSize: "0.75rem", color: "#E53935", marginTop: 2 }}>{t.program} — {t.university}</div>
                 </div>
               </div>
             ))}
@@ -371,7 +371,7 @@ export default function HomePage() {
                 {[
                   { icon: <Phone style={{ width: 14, height: 14, color: "var(--primary)" }} />, label: "Call Us",      value: "+977-9802356302",                                     href: "tel:+9779802356302" },
                   { icon: <MapPin style={{ width: 14, height: 14, color: "var(--primary)" }} />, label: "Visit Us",    value: "Chabahil Central Complex, 3rd Floor, Kathmandu" },
-                  { icon: <Clock style={{ width: 14, height: 14, color: "var(--primary)" }} />,  label: "Hours",       value: "Sun – Fri  9:00 AM – 6:00 PM" },
+                  { icon: <Clock style={{ width: 14, height: 14, color: "var(--primary)" }} />,  label: "Hours",       value: "Sun – Fri  6:00 AM – 5:00 PM" },
                 ].map(({ icon, label, value, href }) => (
                   <div key={label} style={{ display: "flex", alignItems: "flex-start", gap: "0.75rem" }}>
                     <div style={{ width: 30, height: 30, borderRadius: "0.5rem", background: "#E3F0FF", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
@@ -442,7 +442,7 @@ export default function HomePage() {
       <div style={{ background: "var(--muted)" }}>
         <div className="container-main" style={{ paddingTop: "3rem", paddingBottom: "3rem" }}>
           <div style={{ background: "var(--primary)", borderRadius: "1.25rem", padding: "3rem 2.5rem", textAlign: "center" }}>
-            <span className="section-label" style={{ background: "rgba(232,163,23,0.18)", color: "#F5C542" }}>Get Started Today</span>
+            <span className="section-label" style={{ background: "rgba(211,47,47,)", color: "#E53935" }}>Get Started Today</span>
             <h2 style={{ marginTop: "0.75rem", marginBottom: "1rem", fontSize: "clamp(1.5rem, 3vw, 2.25rem)", fontWeight: 900, color: "#fff", letterSpacing: "-0.02em" }}>
               Your Global Future Starts Today
             </h2>
@@ -450,7 +450,7 @@ export default function HomePage() {
               Join 2,000+ Nepali students who trusted Gurumantra to take them from Kathmandu to the world&apos;s best universities.
             </p>
             <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: "0.875rem" }}>
-              <Link href="/book-consultation" style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem", padding: "0.9rem 2rem", borderRadius: "0.875rem", background: "#E8A317", color: "#fff", fontWeight: 700, fontSize: "0.9rem", textDecoration: "none", boxShadow: "0 4px 20px rgba(232,163,23,0.45)" }}>
+              <Link href="/book-consultation" style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem", padding: "0.9rem 2rem", borderRadius: "0.875rem", background: "#D32F2F", color: "#fff", fontWeight: 700, fontSize: "0.9rem", textDecoration: "none", boxShadow: "0 4px 20px rgba(211,47,47,)" }}>
                 Book Free Consultation <ArrowRight style={{ width: 16, height: 16 }} />
               </Link>
               <a href="tel:+9779802356302" style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem", padding: "0.9rem 2rem", borderRadius: "0.875rem", border: "1.5px solid rgba(255,255,255,0.30)", color: "#fff", fontWeight: 600, fontSize: "0.9rem", textDecoration: "none", background: "rgba(255,255,255,0.08)" }}>

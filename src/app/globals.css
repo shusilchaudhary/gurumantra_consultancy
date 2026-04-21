@@ -27,7 +27,7 @@
   --foreground: #0B1D33;
   --primary: #1565C0;
   --primary-foreground: #FFFFFF;
-  --accent: #E8A317;
+  --accent: #D32F2F;
   --accent-foreground: #FFFFFF;
   --muted: #EEF2F7;
   --muted-foreground: #5A6A7E;
@@ -40,7 +40,7 @@
   --primary-dark: #0D47A1;
   --accent-light: #FFF3D6;
   --accent-dark: #B07A0A;
-  --gold-gradient: linear-gradient(135deg, #E8A317 0%, #F5C542 50%, #FFD966 100%);
+  --gold-gradient: linear-gradient(135deg, #D32F2F 0%, #E53935 50%, #FFD966 100%);
   --blue-gradient: linear-gradient(135deg, #0D47A1 0%, #1565C0 50%, #1E88E5 100%);
 }
 
@@ -49,7 +49,7 @@
   --foreground: #E4EAF2;
   --primary: #1E88E5;
   --primary-foreground: #FFFFFF;
-  --accent: #F5C542;
+  --accent: #E53935;
   --accent-foreground: #0B1D33;
   --muted: #0D1A2E;
   --muted-foreground: #8899AA;
@@ -203,8 +203,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 @keyframes pulse-glow {
-  0%, 100% { box-shadow: 0 0 20px rgba(232, 163, 23, 0.2); }
-  50% { box-shadow: 0 0 40px rgba(232, 163, 23, 0.4); }
+  0%, 100% { box-shadow: 0 0 20px rgba(211,47,47,); }
+  50% { box-shadow: 0 0 40px rgba(211,47,47,); }
 }
 
 @keyframes shimmer {

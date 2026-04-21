@@ -5,6 +5,7 @@ import type { Metadata } from "next";
 import { Phone, Mail, MapPin, Clock, CheckCircle, ArrowRight, ChevronDown } from "lucide-react";
 
 const destinations = [
+  { slug: "south-korea",   name: "South Korea",     flag: "🇰🇷" },
   { slug: "australia",   name: "Australia",      flag: "🇦🇺" },
   { slug: "canada",      name: "Canada",          flag: "🇨🇦" },
   { slug: "uk",          name: "United Kingdom",  flag: "🇬🇧" },
@@ -12,7 +13,6 @@ const destinations = [
   { slug: "new-zealand", name: "New Zealand",     flag: "🇳🇿" },
   { slug: "germany",     name: "Germany",         flag: "🇩🇪" },
   { slug: "japan",       name: "Japan",           flag: "🇯🇵" },
-  { slug: "ireland",     name: "Ireland",         flag: "🇮🇪" },
 ];
 
 const TRUST_POINTS = [
@@ -109,7 +109,7 @@ export default function BookConsultationPage() {
           <div style={{ position: "absolute", bottom: "-5rem", right: "-5rem", width: "32rem", height: "32rem", borderRadius: "50%", background: "var(--accent)", opacity: 0.06, filter: "blur(120px)" }} />
         </div>
         <div className="container-main" style={{ maxWidth: 720, textAlign: "center", position: "relative", zIndex: 10 }}>
-          <span className="section-label" style={{ background: "rgba(232,163,23,0.18)", color: "#F5C542" }}>100% Free</span>
+          <span className="section-label" style={{ background: "rgba(211,47,47,)", color: "#E53935" }}>100% Free</span>
           <h1 style={{ marginTop: "0.75rem", marginBottom: "1.25rem", fontSize: "clamp(2rem, 5vw, 3.25rem)", fontWeight: 900, letterSpacing: "-0.03em", lineHeight: 1.1 }}>
             Book a Free Consultation
           </h1>

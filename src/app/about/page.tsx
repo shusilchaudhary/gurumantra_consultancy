@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 const stats = [
   { value: "2,000+", label: "Students Placed",     sub: "Since 2010",          icon: Users       },
   { value: "98%",    label: "Visa Success Rate",    sub: "First attempt",       icon: CheckCircle },
-  { value: "200+",   label: "Partner Universities", sub: "Across 8 countries",  icon: School      },
+  { value: "200+",   label: "Partner Universities", sub: "Across 7 countries",  icon: School      },
   { value: "8",      label: "Countries",             sub: "Study destinations",  icon: Globe       },
 ];
 
@@ -19,7 +19,7 @@ const values = [
   { icon: Target,      title: "Student-First",   description: "Every recommendation is guided by what's genuinely best for the student — not commission-driven placements." },
   { icon: Eye,         title: "Transparency",    description: "No hidden fees, no unrealistic promises. Honest timelines, real costs, and truthful success rates." },
   { icon: CheckCircle, title: "Result-Oriented", description: "Our 98% visa success rate is built on thorough preparation and genuine student profiles — not shortcuts." },
-  { icon: Globe,       title: "Global Network",  description: "Partnerships with 200+ universities across 8 countries give students access to the best programs." },
+  { icon: Globe,       title: "Global Network",  description: "Partnerships with 200+ universities across 7 countries give students access to the best programs." },
 ];
 
 const milestones = [
@@ -29,8 +29,8 @@ const milestones = [
   { year: "2016", event: "Crossed 500 student placements, added UK and USA destinations" },
   { year: "2018", event: "Launched Germany and Japan programs with scholarship focus" },
   { year: "2020", event: "Reached 1,000+ students placed, 98% visa success rate" },
-  { year: "2022", event: "Added Ireland and New Zealand, expanded university partnerships to 200+" },
-  { year: "2025–26", event: "2,000+ cumulative students placed across 8 countries" },
+  { year: "2022", event: "Added New Zealand, expanded university partnerships to 200+" },
+  { year: "2025–26", event: "2,000+ cumulative students placed across 7 countries" },
 ];
 
 export default function AboutPage() {
@@ -50,7 +50,7 @@ export default function AboutPage() {
           <div style={{ position: "absolute", bottom: "-5rem", right: "-5rem", width: "32rem", height: "32rem", borderRadius: "50%", background: "var(--accent)", opacity: 0.06, filter: "blur(120px)" }} />
         </div>
         <div className="container-main" style={{ maxWidth: 720, textAlign: "center", position: "relative", zIndex: 10 }}>
-          <span className="section-label" style={{ background: "rgba(232,163,23,0.18)", color: "#F5C542" }}>Our Story</span>
+          <span className="section-label" style={{ background: "rgba(211,47,47,)", color: "#E53935" }}>Our Story</span>
           <h1 style={{
             marginTop: "0.75rem", marginBottom: "1.25rem",
             fontSize: "clamp(2rem, 5vw, 3.25rem)", fontWeight: 900,
@@ -238,7 +238,7 @@ export default function AboutPage() {
             background: "var(--primary)", borderRadius: "1.25rem",
             padding: "3rem 2.5rem", textAlign: "center",
           }}>
-            <span className="section-label" style={{ background: "rgba(232,163,23,0.18)", color: "#F5C542" }}>
+            <span className="section-label" style={{ background: "rgba(211,47,47,)", color: "#E53935" }}>
               Work With Us
             </span>
             <h2 style={{
@@ -259,9 +259,9 @@ export default function AboutPage() {
               <Link href="/book-consultation" style={{
                 display: "inline-flex", alignItems: "center", gap: "0.5rem",
                 padding: "0.9rem 2rem", borderRadius: "0.875rem",
-                background: "#E8A317", color: "#fff",
+                background: "#D32F2F", color: "#fff",
                 fontWeight: 700, fontSize: "0.9rem", textDecoration: "none",
-                boxShadow: "0 4px 20px rgba(232,163,23,0.45)",
+                boxShadow: "0 4px 20px rgba(211,47,47,)",
               }}>
                 Book Free Consultation <ArrowRight style={{ width: 16, height: 16 }} />
               </Link>

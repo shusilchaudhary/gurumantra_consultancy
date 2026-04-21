@@ -19,6 +19,64 @@ export interface CountryData {
 
 export const countries: CountryData[] = [
   {
+    slug: "south-korea",
+    name: "South Korea",
+    flag: "🇰🇷",
+    heroTitle: "Study in South Korea from Nepal — Our #1 Specialty",
+    heroDescription: "Gurumantra Education Consultancy is Nepal's leading expert for South Korea processing. With unparalleled university partnerships, we boast the highest D-2 and D-4 visa success rates in the country.",
+    currency: "KRW",
+    whyStudy: [
+      "Nepal's #1 trusted consultancy for South Korean university placements",
+      "Global Korea Scholarship (GKS) offering 100% tuition & living stipends",
+      "Strong demand for IT, engineering, and hospitality graduates",
+      "Extremely safe environment with a booming tech and cultural economy",
+      "Part-time work permitted (up to 20 hrs/week) during studies",
+      "Opportunity to switch to E-7 work visa after graduation"
+    ],
+    eligibility: [
+      { level: "Language (D-4)", gpa: "2.0+ (50%+)", ielts: "Not required", pte: "", toefl: "TOPIK Level 1/2 preferred" },
+      { level: "Bachelor's (D-2)", gpa: "2.5+ (60%+)", ielts: "5.5+ or TOPIK 3+", pte: "45+", toefl: "71+" },
+      { level: "Master's (D-2)", gpa: "3.0+ (65%+)", ielts: "6.0+ or TOPIK 4+", pte: "50+", toefl: "79+" },
+    ],
+    costs: [
+      { item: "Tuition (Language/6 mos)", costNPR: "NPR 2–3 Lakhs", costUSD: "KRW 2.5M–3M" },
+      { item: "Tuition (UG per year)", costNPR: "NPR 4–8 Lakhs", costUSD: "KRW 4M–8M" },
+      { item: "Living Expenses (annual)", costNPR: "NPR 6–10 Lakhs", costUSD: "KRW 6M–10M" },
+      { item: "Health Insurance", costNPR: "NPR 60,000", costUSD: "KRW ~600,000" },
+      { item: "Visa Application Fee", costNPR: "NPR 6,000", costUSD: "USD 60" },
+    ],
+    topUniversities: [
+      { name: "Seoul National University (SNU)", ranking: "#31 QS 2026", location: "Seoul" },
+      { name: "KAIST", ranking: "#53 QS 2026", location: "Daejeon" },
+      { name: "Yonsei University", ranking: "#56 QS 2026", location: "Seoul" },
+      { name: "Korea University", ranking: "#67 QS 2026", location: "Seoul" },
+      { name: "Sungkyunkwan Univ. (SKKU)", ranking: "#123 QS 2026", location: "Seoul/Suwon" },
+      { name: "Hanyang University", ranking: "#162 QS 2026", location: "Seoul" },
+    ],
+    visaSteps: [
+      { step: 1, title: "University Application", description: "Apply through Gurumantra to secure your standard admission or language school acceptance." },
+      { step: 2, title: "Pay Tuition & Issue CoA", description: "Pay the required initial tuition directly to the university to receive your Certificate of Admission (CoA)." },
+      { step: 3, title: "Financial Capability Proof", description: "Prepare bank balance certificates (usually equivalent to USD 10K-20K) to prove financial readiness." },
+      { step: 4, title: "Submit Visa at Embassy", description: "Submit the standard D-2 or D-4 visa application at the Embassy of the Republic of Korea in Nepal." },
+      { step: 5, title: "Visa Grant & Travel", description: "Once stamped, attend our specialized Korean pre-departure briefing before flying out." },
+    ],
+    intakes: [
+      { intake: "Spring Semester", months: "March", deadline: "Sep-Nov", popular: true },
+      { intake: "Fall Semester", months: "September", deadline: "May-Jun", popular: true },
+      { intake: "Language Intakes", months: "Mar, Jun, Sep, Dec", deadline: "3 months prior", popular: true },
+    ],
+    scholarships: [
+      { name: "Global Korea Scholarship (GKS)", amount: "Full tuition, flights + monthly stipend", eligibility: "Top academic performers (Embassy/Univ track)" },
+      { name: "University Merit Scholarships", amount: "30-100% tuition waiver", eligibility: "Based on TOPIK score or high IELTS" },
+    ],
+    faqs: [
+      { question: "Why is Gurumantra the best for South Korea in Nepal?", answer: "We have direct tie-ups with top Korean universities and deep expertise in compiling rigorous D-2/D-4 visa documentation. Our students enjoy the highest visa success rates in Nepal." },
+      { question: "Is TOPIK mandatory?", answer: "For English-track programs, IELTS is sufficient. However, for Korean-track and everyday life, reaching TOPIK Level 3 or doing a 6-month D-4 language course first is highly recommended." },
+    ],
+    workRights: "Permitted part-time up to 20 hours/week (after reaching specific TOPIK levels and receiving immigration clearance). Full-time during holidays.",
+    postStudyVisa: "D-10 Job Seeker visa (up to 2 years) or transition directly to E-7 special occupation work visa based on a points system.",
+  },
+  {
     slug: "australia",
     name: "Australia",
     flag: "🏢",
@@ -466,66 +524,5 @@ export const countries: CountryData[] = [
     ],
     workRights: "28 hours/week during semester (special permission required). Unlimited during long holidays. Many students work in convenience stores, restaurants.",
     postStudyVisa: "Change status to 'Engineer/Specialist in Humanities' work visa. Job seeker activities allowed for 6 months after graduation.",
-  },
-  {
-    slug: "ireland",
-    name: "Ireland",
-    flag: "☘️",
-    heroTitle: "Study in Ireland from Nepal — 2026 Complete Guide",
-    heroDescription: "Ireland is a rising star for Nepali students with its English-speaking environment, tech industry hub (Google, Meta, Apple HQs), and generous 2-year post-study Stay Back visa.",
-    currency: "EUR",
-    whyStudy: [
-      "English-speaking EU country — no language barrier",
-      "European HQ of Google, Meta, Apple, Microsoft, Pfizer",
-      "2-year Stay Back visa (1 year for Level 8, 2 years for Level 9+)",
-      "More affordable than UK with similar quality degrees",
-      "Friendly, welcoming culture with growing Nepali community",
-      "Gateway to EU job market post-graduation"
-    ],
-    eligibility: [
-      { level: "Bachelor's (Level 8)", gpa: "2.5+ (60%+)", ielts: "6.0 overall (5.5 each)", pte: "50+", toefl: "60+" },
-      { level: "Master's (Level 9)", gpa: "3.0+ (65%+)", ielts: "6.5 overall (6.0 each)", pte: "58+", toefl: "79+" },
-    ],
-    costs: [
-      { item: "Tuition (UG per year)", costNPR: "NPR 15–30 Lakhs", costUSD: "€10,000–20,000" },
-      { item: "Tuition (PG per year)", costNPR: "NPR 18–40 Lakhs", costUSD: "€12,000–25,000" },
-      { item: "Living Expenses (annual)", costNPR: "NPR 12–18 Lakhs", costUSD: "€10,000–14,000" },
-      { item: "Health Insurance", costNPR: "NPR 70,000–1 Lakh", costUSD: "€500–800" },
-      { item: "Visa Application Fee", costNPR: "NPR 12,000", costUSD: "€60" },
-    ],
-    topUniversities: [
-      { name: "Trinity College Dublin", ranking: "#81 QS 2026", location: "Dublin" },
-      { name: "University College Dublin", ranking: "#126 QS 2026", location: "Dublin" },
-      { name: "NUI Galway", ranking: "#244 QS 2026", location: "Galway" },
-      { name: "University College Cork", ranking: "#292 QS 2026", location: "Cork" },
-      { name: "University of Limerick", ranking: "#421 QS 2026", location: "Limerick" },
-      { name: "Dublin City University", ranking: "#436 QS 2026", location: "Dublin" },
-      { name: "Technological University Dublin", ranking: "#651 QS 2026", location: "Dublin" },
-      { name: "Griffith College", ranking: "Private — Top rated", location: "Dublin, Cork, Limerick" },
-    ],
-    visaSteps: [
-      { step: 1, title: "Receive Offer Letter", description: "Apply through Gurumantra Education Consultancy to an Irish institution and receive your offer letter and acceptance." },
-      { step: 2, title: "Pay Tuition Deposit", description: "Pay the required deposit (usually €5,000–7,000) to secure your place and get confirmation." },
-      { step: 3, title: "Prepare Financial Documents", description: "Show proof of €10,000+ in your account plus tuition paid. Bank statement for 6 months, sponsor letter if applicable." },
-      { step: 4, title: "Apply for Study Visa", description: "Apply online through the AVATS system. Upload documents including offer letter, financials, insurance, academic records." },
-      { step: 5, title: "Attend Visa Appointment", description: "Submit biometrics and original documents at VFS Global, Kathmandu. Processing takes 4–8 weeks." },
-      { step: 6, title: "Register with GNIB/IRP on Arrival", description: "Within 90 days of arriving in Ireland, register with local immigration (IRP card) to get permission to stay." },
-    ],
-    intakes: [
-      { intake: "September", months: "Sep", deadline: "Feb–Jun", popular: true },
-      { intake: "January/February", months: "Jan–Feb", deadline: "Aug–Oct", popular: true },
-    ],
-    scholarships: [
-      { name: "Government of Ireland International Education Scholarships", amount: "€10,000 + tuition waiver", eligibility: "Non-EU students admitted to Irish HEIs" },
-      { name: "Trinity College Provost Scholarships", amount: "Up to €5,000", eligibility: "First year undergraduates with high marks" },
-      { name: "UCD Global Excellence Scholarship", amount: "50–100% tuition", eligibility: "Outstanding academic achievers, all nationalities" },
-      { name: "NUI Galway International Scholarships", amount: "€2,000–€4,000", eligibility: "Merit-based, undergraduate and postgraduate" },
-    ],
-    faqs: [
-      { question: "Why is Ireland becoming popular among Nepali students?", answer: "Ireland combines affordable EU education with English-medium instruction, a booming tech sector (Dublin is Europe's Silicon Valley), and a 2-year Stay Back visa. It's significantly cheaper than the UK with comparable quality and better post-study work opportunities in the EU market." },
-      { question: "Can I work part-time while studying in Ireland?", answer: "Yes, students on Stamp 2 permission can work 20 hours/week during term and 40 hours/week during holidays (June–September and December 15–January 15)." },
-    ],
-    workRights: "20 hours/week during term, 40 hours/week during holidays. Minimum wage: €12.70/hour (2026).",
-    postStudyVisa: "Stay Back Permission: 12 months for Level 8 (Bachelor's), 24 months for Level 9+ (Master's/PhD).",
   },
 ];

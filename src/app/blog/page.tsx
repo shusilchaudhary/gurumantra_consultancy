@@ -34,7 +34,7 @@ export default function BlogPage() {
           <div style={{ position: "absolute", bottom: "-5rem", right: "-5rem", width: "32rem", height: "32rem", borderRadius: "50%", background: "var(--accent)", opacity: 0.06, filter: "blur(120px)" }} />
         </div>
         <div className="container-main" style={{ maxWidth: 720, textAlign: "center", position: "relative", zIndex: 10 }}>
-          <span className="section-label" style={{ background: "rgba(232,163,23,0.18)", color: "#F5C542" }}>Latest Updates</span>
+          <span className="section-label" style={{ background: "rgba(211,47,47,)", color: "#E53935" }}>Latest Updates</span>
           <h1 style={{ marginTop: "0.75rem", marginBottom: "1.25rem", fontSize: "clamp(2rem, 5vw, 3.25rem)", fontWeight: 900, letterSpacing: "-0.03em", lineHeight: 1.1 }}>
             Study Abroad Guides &amp; Insights
           </h1>
@@ -136,7 +136,7 @@ export default function BlogPage() {
       <div style={{ background: "var(--muted)", borderTop: "1px solid var(--border)" }}>
         <div className="container-main" style={{ paddingTop: "3rem", paddingBottom: "3rem" }}>
           <div style={{ background: "var(--primary)", borderRadius: "1.25rem", padding: "3rem 2.5rem", textAlign: "center" }}>
-            <span className="section-label" style={{ background: "rgba(232,163,23,0.18)", color: "#F5C542" }}>Free Guidance</span>
+            <span className="section-label" style={{ background: "rgba(211,47,47,)", color: "#E53935" }}>Free Guidance</span>
             <h2 style={{ marginTop: "0.75rem", marginBottom: "1rem", fontSize: "clamp(1.5rem, 3vw, 2.25rem)", fontWeight: 900, color: "#fff", letterSpacing: "-0.02em" }}>
               Have Questions About Studying Abroad?
             </h2>
@@ -144,7 +144,7 @@ export default function BlogPage() {
               Our expert counselors can answer every question — from choosing a country to surviving your first week abroad.
             </p>
             <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: "0.875rem" }}>
-              <Link href="/book-consultation" style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem", padding: "0.9rem 2rem", borderRadius: "0.875rem", background: "#E8A317", color: "#fff", fontWeight: 700, fontSize: "0.9rem", textDecoration: "none", boxShadow: "0 4px 20px rgba(232,163,23,0.45)" }}>
+              <Link href="/book-consultation" style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem", padding: "0.9rem 2rem", borderRadius: "0.875rem", background: "#D32F2F", color: "#fff", fontWeight: 700, fontSize: "0.9rem", textDecoration: "none", boxShadow: "0 4px 20px rgba(211,47,47,)" }}>
                 Book Free Consultation <ArrowRight style={{ width: 16, height: 16 }} />
               </Link>
               <Link href="/study-destinations" style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem", padding: "0.9rem 2rem", borderRadius: "0.875rem", border: "1.5px solid rgba(255,255,255,0.30)", color: "#fff", fontWeight: 600, fontSize: "0.9rem", textDecoration: "none", background: "rgba(255,255,255,0.08)" }}>
