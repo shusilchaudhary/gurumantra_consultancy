@@ -121,7 +121,7 @@ export default function Footer() {
               </div>
               <div>
                 <div style={{ fontWeight: 800, fontSize: "1.1rem", color: "#fff", lineHeight: 1.2 }}>Gurumantra</div>
-                <div style={{ fontSize: "0.72rem", fontWeight: 600, color: "#E53935", lineHeight: 1.2 }}>Education Consultancy</div>
+                <div style={{ fontSize: "0.72rem", fontWeight: 600, color: "#E53935", lineHeight: 1.2 }}>Educational Consultancy</div>
               </div>
             </Link>
 
