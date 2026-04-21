@@ -117,7 +117,7 @@ export default function Footer() {
           <div>
             <Link href="/" style={{ display: "inline-flex", alignItems: "center", gap: "0.75rem", textDecoration: "none", marginBottom: "1.25rem" }}>
               <div style={{ position: "relative", width: 44, height: 44, flexShrink: 0 }}>
-                <Image src="/gurumantra.jpeg" alt="Gurumantra Education Consultancy" fill sizes="44px" style={{ objectFit: "contain", borderRadius: 10 }} />
+                <Image src="/gurumantra.jpeg" alt="Gurumantra Educational Consultancy" fill sizes="44px" style={{ objectFit: "contain", borderRadius: 10 }} />
               </div>
               <div>
                 <div style={{ fontWeight: 800, fontSize: "1.1rem", color: "#fff", lineHeight: 1.2 }}>Gurumantra</div>
@@ -252,7 +252,7 @@ export default function Footer() {
           gap: "1rem", flexWrap: "wrap",
         }}>
           <p style={{ fontSize: "0.78rem", color: MUTED }}>
-            © {new Date().getFullYear()} Gurumantra Education Consultancy. All rights reserved.
+            © {new Date().getFullYear()} Gurumantra Educational Consultancy. All rights reserved.
           </p>
           <div style={{ display: "flex", alignItems: "center", gap: "1.5rem" }}>
             {["Privacy Policy", "Terms of Service", "Disclaimer"].map((label) => (

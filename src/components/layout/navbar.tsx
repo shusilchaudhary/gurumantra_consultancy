@@ -184,7 +184,7 @@ export default function Navbar() {
             <Link href="/" style={{ display: "flex", alignItems: "center", flexShrink: 0 }}>
               <Image
                 src="/gurumantra.jpeg"
-                alt="Gurumantra Education Consultancy"
+                alt="Gurumantra Educational Consultancy"
                 width={48}
                 height={48}
                 style={{ borderRadius: 10, objectFit: "contain" }}

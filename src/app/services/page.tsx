@@ -6,7 +6,7 @@ import { ServiceCard } from "@/components/services/service-card";
 
 export const metadata: Metadata = {
   title: "Our Services — Study Abroad Services for Nepali Students",
-  description: "Gurumantra Education Consultancy offers career counselling, university admission, visa assistance, test preparation (IELTS/PTE), scholarship guidance, and pre-departure support.",
+  description: "Gurumantra Educational Consultancy offers career counselling, university admission, visa assistance, test preparation (IELTS/PTE), scholarship guidance, and pre-departure support.",
 };
 
 const ICON_MAP: Record<string, React.ElementType> = {

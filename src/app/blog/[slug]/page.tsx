@@ -30,7 +30,7 @@ This comprehensive guide covers everything from choosing the right country to la
 
 **The Gurumantra Advantage**: With 2,000+ successful placements and a 98% visa success rate, our counselors provide personalised guidance at every step — from choosing the right program to landing in your destination city.`,
 
-  "ielts-vs-pte-which-english-test-nepali-students-2026": `One of the most common questions we get at Gurumantra Education Consultancy is: "Should I take IELTS or PTE?" Both are widely accepted, but they have significant differences that can affect your score and, ultimately, your university admission.
+  "ielts-vs-pte-which-english-test-nepali-students-2026": `One of the most common questions we get at Gurumantra Educational Consultancy is: "Should I take IELTS or PTE?" Both are widely accepted, but they have significant differences that can affect your score and, ultimately, your university admission.
 
 **Acceptance**: IELTS is accepted by virtually all universities worldwide. PTE Academic is accepted by 99% of Australian universities, most UK universities, and an increasing number of Canadian and US institutions. For certain specific programs or countries, always verify PTE acceptance first.
 

@@ -3,9 +3,9 @@ import Link from "next/link";
 import { ArrowRight, Users, CheckCircle, School, Globe, Target, Eye } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "About Gurumantra Education Consultancy — Study Abroad in Nepal",
+  title: "About Gurumantra Educational Consultancy — Study Abroad in Nepal",
   description:
-    "Learn about Gurumantra Education Consultancy's mission and history. We have guided over 2,000 Nepali students to top universities in Australia, Canada, UK, and USA.",
+    "Learn about Gurumantra Educational Consultancy's mission and history. We have guided over 2,000 Nepali students to top universities in Australia, Canada, UK, and USA.",
 };
 
 const stats = [
@@ -83,7 +83,7 @@ export default function AboutPage() {
                 Guiding Dreams Since 2010
               </h2>
               <p style={{ fontSize: "0.95rem", color: "var(--muted-foreground)", lineHeight: 1.8, marginBottom: "1rem" }}>
-                At Gurumantra Education Consultancy, we believe that studying abroad shouldn&apos;t be a privilege reserved for the few — it should be an opportunity accessible to anyone with drive and academic capability.
+                At Gurumantra Educational Consultancy, we believe that studying abroad shouldn&apos;t be a privilege reserved for the few — it should be an opportunity accessible to anyone with drive and academic capability.
               </p>
               <p style={{ fontSize: "0.95rem", color: "var(--muted-foreground)", lineHeight: 1.8, marginBottom: "2rem" }}>
                 Our counselors have guided over 2,000 students to Australia, Canada, USA, UK, and beyond. We replace confusion with clarity, ensuring your application process is smooth, ethical, and highly successful.

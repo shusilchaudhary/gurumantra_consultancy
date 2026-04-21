@@ -5,7 +5,7 @@ import { testimonials } from "@/data/content";
 
 export const metadata: Metadata = {
   title: "Success Stories — Nepali Students Studying Abroad with Gurumantra",
-  description: "Real success stories from Nepali students who achieved their study abroad dreams with Gurumantra Education Consultancy.",
+  description: "Real success stories from Nepali students who achieved their study abroad dreams with Gurumantra Educational Consultancy.",
 };
 
 const DEST_COLORS: Record<string, string> = {

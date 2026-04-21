@@ -23,7 +23,7 @@ export const countries: CountryData[] = [
     name: "South Korea",
     flag: "🇰🇷",
     heroTitle: "Study in South Korea from Nepal — Our #1 Specialty",
-    heroDescription: "Gurumantra Education Consultancy is Nepal's leading expert for South Korea processing. With unparalleled university partnerships, we boast the highest D-2 and D-4 visa success rates in the country.",
+    heroDescription: "Gurumantra Educational Consultancy is Nepal's leading expert for South Korea processing. With unparalleled university partnerships, we boast the highest D-2 and D-4 visa success rates in the country.",
     currency: "KRW",
     whyStudy: [
       "Nepal's #1 trusted consultancy for South Korean university placements",
@@ -116,13 +116,13 @@ export const countries: CountryData[] = [
       { name: "Charles Darwin University", ranking: "#551 QS 2026", location: "Darwin, NT" },
     ],
     visaSteps: [
-      { step: 1, title: "Receive Offer Letter (CoE)", description: "Apply through Gurumantra Education Consultancy and receive your Confirmation of Enrolment from your chosen Australian university." },
+      { step: 1, title: "Receive Offer Letter (CoE)", description: "Apply through Gurumantra Educational Consultancy and receive your Confirmation of Enrolment from your chosen Australian university." },
       { step: 2, title: "Prepare Financial Documents", description: "Show proof of funds: tuition + living costs (AUD 24,505/year). Bank statements, loan sanction letter, or sponsor documents." },
       { step: 3, title: "Get Health Insurance (OSHC)", description: "Purchase Overseas Student Health Cover for the entire duration of your course before applying." },
       { step: 4, title: "Lodge Visa Application (Subclass 500)", description: "Apply online through ImmiAccount. Upload all documents including GTE statement, academic transcripts, and English test scores." },
       { step: 5, title: "Complete Health Examination", description: "Book a medical exam at an approved clinic in Kathmandu (IOM or panel physician). Results are sent directly to immigration." },
-      { step: 6, title: "Attend Visa Interview (if required)", description: "Some applicants may be called for a phone or in-person interview. Gurumantra Education Consultancy provides full mock interview preparation." },
-      { step: 7, title: "Visa Grant & Pre-Departure", description: "Receive your visa grant notice via email. Attend Gurumantra Education Consultancy's pre-departure briefing covering airport procedures, accommodation, and first-week essentials." },
+      { step: 6, title: "Attend Visa Interview (if required)", description: "Some applicants may be called for a phone or in-person interview. Gurumantra Educational Consultancy provides full mock interview preparation." },
+      { step: 7, title: "Visa Grant & Pre-Departure", description: "Receive your visa grant notice via email. Attend Gurumantra Educational Consultancy's pre-departure briefing covering airport procedures, accommodation, and first-week essentials." },
     ],
     intakes: [
       { intake: "February/March", months: "Feb–Mar", deadline: "Oct–Nov (prior year)", popular: true },
@@ -138,8 +138,8 @@ export const countries: CountryData[] = [
     faqs: [
       { question: "What is the total cost to study in Australia from Nepal in 2026?", answer: "The total cost ranges from NPR 53–85 Lakhs per year including tuition and living expenses. This varies based on the city, university, and program you choose. Regional cities like Adelaide and Darwin are significantly cheaper than Sydney or Melbourne." },
       { question: "Can I work while studying in Australia?", answer: "Yes, international students can work up to 48 hours per fortnight during semester and unlimited hours during scheduled breaks. Average part-time earnings are AUD 20–30 per hour." },
-      { question: "What is the GTE requirement for Australian student visa?", answer: "The Genuine Temporary Entrant (GTE) requirement has been replaced by Genuine Student (GS) requirement from March 2024. You must demonstrate genuine intention to study, not just migrate. Gurumantra Education Consultancy helps you craft a compelling GS statement." },
-      { question: "How long does the Australian student visa take to process?", answer: "Processing times vary from 4–12 weeks. We recommend applying at least 8–12 weeks before your course start date. Gurumantra Education Consultancy ensures your application is complete to avoid delays." },
+      { question: "What is the GTE requirement for Australian student visa?", answer: "The Genuine Temporary Entrant (GTE) requirement has been replaced by Genuine Student (GS) requirement from March 2024. You must demonstrate genuine intention to study, not just migrate. Gurumantra Educational Consultancy helps you craft a compelling GS statement." },
+      { question: "How long does the Australian student visa take to process?", answer: "Processing times vary from 4–12 weeks. We recommend applying at least 8–12 weeks before your course start date. Gurumantra Educational Consultancy ensures your application is complete to avoid delays." },
     ],
     workRights: "48 hours per fortnight during studies, unlimited during breaks. Post-study: 2–4 years depending on qualification level.",
     postStudyVisa: "Temporary Graduate visa (subclass 485): Bachelor's = 2 years, Master's = 3 years, PhD = 4 years. Regional study bonus of 1–2 extra years.",
@@ -184,12 +184,12 @@ export const countries: CountryData[] = [
       { name: "Bow Valley College", ranking: "Top College", location: "Calgary, AB" },
     ],
     visaSteps: [
-      { step: 1, title: "Get Letter of Acceptance", description: "Apply to a DLI (Designated Learning Institution) through Gurumantra Education Consultancy and receive your official Letter of Acceptance." },
+      { step: 1, title: "Get Letter of Acceptance", description: "Apply to a DLI (Designated Learning Institution) through Gurumantra Educational Consultancy and receive your official Letter of Acceptance." },
       { step: 2, title: "Pay Tuition Deposit (GIC Optional)", description: "Pay first semester tuition and optionally open a GIC account (CAD 20,635) to strengthen your visa application." },
       { step: 3, title: "Gather Financial Documents", description: "Prepare bank statements, income proof, property documents, and education loan sanction letter if applicable." },
       { step: 4, title: "Apply Online via IRCC Portal", description: "Create an IRCC account and submit your study permit application with all supporting documents." },
       { step: 5, title: "Biometrics & Medical Exam", description: "Provide biometrics at the nearest VAC and complete medical examination at an approved panel physician." },
-      { step: 6, title: "Visa Decision", description: "Processing takes 8–16 weeks. Gurumantra Education Consultancy tracks your application status and provides updates throughout." },
+      { step: 6, title: "Visa Decision", description: "Processing takes 8–16 weeks. Gurumantra Educational Consultancy tracks your application status and provides updates throughout." },
     ],
     intakes: [
       { intake: "Fall (September)", months: "Sep", deadline: "Jan–Apr", popular: true },
@@ -204,7 +204,7 @@ export const countries: CountryData[] = [
     ],
     faqs: [
       { question: "Can Nepali students get PR after studying in Canada?", answer: "Yes, Canada offers one of the clearest pathways to PR. After completing a program of 2+ years, you receive a 3-year PGWP. With 1 year of Canadian work experience, you can apply through Express Entry (CRS score) or Provincial Nominee Programs." },
-      { question: "Is GIC mandatory for Canadian student visa from Nepal?", answer: "GIC is not officially mandatory but strongly recommended. Having a GIC of CAD 20,635 significantly strengthens your study permit application and shows genuine intent. Gurumantra Education Consultancy helps you open a GIC account seamlessly." },
+      { question: "Is GIC mandatory for Canadian student visa from Nepal?", answer: "GIC is not officially mandatory but strongly recommended. Having a GIC of CAD 20,635 significantly strengthens your study permit application and shows genuine intent. Gurumantra Educational Consultancy helps you open a GIC account seamlessly." },
       { question: "What are the best cities in Canada for Nepali students?", answer: "Toronto, Vancouver, and Calgary have the largest Nepali communities. However, smaller cities like Kitchener-Waterloo, London (ON), and Edmonton offer lower living costs and better PR pathways through PNP." },
     ],
     workRights: "20 hours/week during studies, full-time during scheduled breaks. On-campus work: unlimited.",
@@ -254,7 +254,7 @@ export const countries: CountryData[] = [
       { step: 2, title: "Prepare Financial Evidence", description: "Show funds: tuition + 9 months living costs in your account for 28 consecutive days. £12,006 for London, £9,207 outside London." },
       { step: 3, title: "Apply for Student Visa (Tier 4)", description: "Apply online via the UK government's visa portal. Upload supporting documents including CAS, financials, TB test certificate." },
       { step: 4, title: "TB Test & Biometrics", description: "Get TB screening at IOM Kathmandu. Provide biometrics at VFS Global centre in Kathmandu." },
-      { step: 5, title: "Visa Decision (15 working days)", description: "Standard processing is 15 working days. Priority service (5 days) available for extra fee. Gurumantra Education Consultancy monitors the status." },
+      { step: 5, title: "Visa Decision (15 working days)", description: "Standard processing is 15 working days. Priority service (5 days) available for extra fee. Gurumantra Educational Consultancy monitors the status." },
       { step: 6, title: "Collect BRP & Travel", description: "Receive your vignette sticker and collect your Biometric Residence Permit (BRP) within 10 days of arriving in the UK." },
     ],
     intakes: [
@@ -320,7 +320,7 @@ export const countries: CountryData[] = [
       { step: 2, title: "Pay SEVIS Fee (I-901)", description: "Pay the SEVIS fee of USD 350 online at fmjfee.com. Keep the receipt — you'll need it for the interview." },
       { step: 3, title: "Complete DS-160 Form", description: "Fill out the DS-160 nonimmigrant visa application online. This takes 1–2 hours. Double-check all entries." },
       { step: 4, title: "Schedule Visa Interview", description: "Book your F-1 visa interview at the US Embassy in Kathmandu. Interview slots fill fast — book early!" },
-      { step: 5, title: "Prepare for Interview", description: "The visa interview is the most critical step. Gurumantra Education Consultancy provides 3-5 mock interviews covering academic plans, financial capacity, and ties to Nepal." },
+      { step: 5, title: "Prepare for Interview", description: "The visa interview is the most critical step. Gurumantra Educational Consultancy provides 3-5 mock interviews covering academic plans, financial capacity, and ties to Nepal." },
       { step: 6, title: "Attend Visa Interview", description: "Arrive early with all original documents: I-20, SEVIS receipt, DS-160 confirmation, financial documents, academic transcripts, test scores." },
     ],
     intakes: [
@@ -335,7 +335,7 @@ export const countries: CountryData[] = [
       { name: "Community College Scholarships", amount: "USD 2,000–8,000/year", eligibility: "International students at community colleges" },
     ],
     faqs: [
-      { question: "How difficult is it to get a US student visa from Nepal?", answer: "The F-1 visa approval rate for Nepali students has improved in recent years. Key factors: strong academic record, clear study plan, solid financial proof, and demonstrating intent to return. Gurumantra Education Consultancy's 98% visa success rate comes from thorough preparation and honest applications." },
+      { question: "How difficult is it to get a US student visa from Nepal?", answer: "The F-1 visa approval rate for Nepali students has improved in recent years. Key factors: strong academic record, clear study plan, solid financial proof, and demonstrating intent to return. Gurumantra Educational Consultancy's 98% visa success rate comes from thorough preparation and honest applications." },
       { question: "Can I work in the USA after graduation?", answer: "Yes, through OPT (Optional Practical Training). Standard OPT gives 12 months of work authorization. STEM graduates get a 24-month extension, totaling 3 years. Employers can then sponsor your H-1B work visa." },
       { question: "What is the cheapest way to study in the USA from Nepal?", answer: "Start at a community college (USD 8,000–12,000/year), then transfer to a 4-year university. Many community colleges offer international student scholarships. States like Texas, Florida, and Ohio have affordable options." },
     ],
@@ -380,12 +380,12 @@ export const countries: CountryData[] = [
       { name: "University of Waikato", ranking: "#235 QS 2026", location: "Hamilton" },
     ],
     visaSteps: [
-      { step: 1, title: "Receive Offer of Place", description: "Apply through Gurumantra Education Consultancy and receive an official offer letter from a NZQA-approved institution." },
+      { step: 1, title: "Receive Offer of Place", description: "Apply through Gurumantra Educational Consultancy and receive an official offer letter from a NZQA-approved institution." },
       { step: 2, title: "Prepare Financial Documents", description: "Show NZD 20,000 per year for living costs plus tuition fees. Acceptable: bank statements, FDR, sponsor letter." },
       { step: 3, title: "Get Medical & Travel Insurance", description: "Arrange compliant travel and medical insurance for the duration of your studies." },
       { step: 4, title: "Apply Online (Immigration NZ)", description: "Submit your student visa application through Immigration New Zealand's online portal." },
       { step: 5, title: "Medical & Police Clearance", description: "Complete a medical exam at an approved clinic and provide a police clearance certificate." },
-      { step: 6, title: "Visa Approval & Travel", description: "Processing takes 4–8 weeks. Once approved, plan your travel with Gurumantra Education Consultancy's pre-departure support." },
+      { step: 6, title: "Visa Approval & Travel", description: "Processing takes 4–8 weeks. Once approved, plan your travel with Gurumantra Educational Consultancy's pre-departure support." },
     ],
     intakes: [
       { intake: "February", months: "Feb", deadline: "Oct–Nov", popular: true },
@@ -502,10 +502,10 @@ export const countries: CountryData[] = [
       { name: "Waseda University", ranking: "#181 QS 2026", location: "Tokyo" },
     ],
     visaSteps: [
-      { step: 1, title: "Apply to Institution / MEXT", description: "Apply to a language school, university, or MEXT scholarship through Gurumantra Education Consultancy. Institution applies for COE on your behalf." },
+      { step: 1, title: "Apply to Institution / MEXT", description: "Apply to a language school, university, or MEXT scholarship through Gurumantra Educational Consultancy. Institution applies for COE on your behalf." },
       { step: 2, title: "Receive Certificate of Eligibility (COE)", description: "Your institution submits to Immigration Bureau. COE processing takes 1–3 months." },
       { step: 3, title: "Apply for Student Visa", description: "With COE in hand, apply at the Embassy of Japan in Kathmandu. Processing takes 3–5 working days." },
-      { step: 4, title: "Arrange Accommodation & Travel", description: "Gurumantra Education Consultancy helps arrange airport pickup, dormitory/apartment, and provides pre-departure orientation including basic Japanese phrases." },
+      { step: 4, title: "Arrange Accommodation & Travel", description: "Gurumantra Educational Consultancy helps arrange airport pickup, dormitory/apartment, and provides pre-departure orientation including basic Japanese phrases." },
     ],
     intakes: [
       { intake: "April", months: "Apr", deadline: "Aug–Nov (prior year)", popular: true },
@@ -520,7 +520,7 @@ export const countries: CountryData[] = [
     ],
     faqs: [
       { question: "Do I need to know Japanese to study in Japan?", answer: "For language schools: no, you'll learn there. For English-taught university programs: JLPT is not required but recommended. For Japanese-taught programs: you need JLPT N2 or higher. Most Nepali students start at a language school then progress to university." },
-      { question: "Is the MEXT scholarship realistic for Nepali students?", answer: "Yes! Nepal has a strong track record with MEXT. The Embassy recommends 20–30 candidates annually from Nepal. Key factors: strong academics, clear research plan, and Japanese language willingness. Gurumantra Education Consultancy has helped students successfully win MEXT." },
+      { question: "Is the MEXT scholarship realistic for Nepali students?", answer: "Yes! Nepal has a strong track record with MEXT. The Embassy recommends 20–30 candidates annually from Nepal. Key factors: strong academics, clear research plan, and Japanese language willingness. Gurumantra Educational Consultancy has helped students successfully win MEXT." },
     ],
     workRights: "28 hours/week during semester (special permission required). Unlimited during long holidays. Many students work in convenience stores, restaurants.",
     postStudyVisa: "Change status to 'Engineer/Specialist in Humanities' work visa. Job seeker activities allowed for 6 months after graduation.",

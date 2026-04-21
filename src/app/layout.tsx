@@ -7,8 +7,8 @@ import Providers from "@/components/providers";
 
 export const metadata: Metadata = {
   title: {
-    default: "Gurumantra Education Consultancy — Best Study Abroad Consultancy in Nepal 2026",
-    template: "%s | Gurumantra Education Consultancy",
+    default: "Gurumantra Educational Consultancy — Best Study Abroad Consultancy in Nepal 2026",
+    template: "%s | Gurumantra Educational Consultancy",
   },
   description:
     "Nepal's premium study abroad consultancy. 2,000+ students placed in Australia, Canada, UK, USA, Germany & Japan. 98% visa success rate. Free consultation in Kathmandu.",
@@ -26,14 +26,14 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: "https://gurumantra.com.np",
-    siteName: "Gurumantra Education Consultancy",
-    title: "Gurumantra Education Consultancy — Best Study Abroad Consultancy in Nepal 2026",
+    siteName: "Gurumantra Educational Consultancy",
+    title: "Gurumantra Educational Consultancy — Best Study Abroad Consultancy in Nepal 2026",
     description:
       "Nepal's premium study abroad consultancy. 2,000+ students placed. 98% visa success rate. Free consultation.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Gurumantra Education Consultancy — Best Study Abroad Consultancy Nepal",
+    title: "Gurumantra Educational Consultancy — Best Study Abroad Consultancy Nepal",
     description: "2,000+ students placed. 98% visa success rate. Study in Australia, Canada, UK, USA, Germany, Japan & more.",
   },
   robots: { index: true, follow: true },
